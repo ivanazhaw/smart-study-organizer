@@ -64,7 +64,6 @@
 			return matchesSearch && matchesSubject;
 		})
 	);
-    
 </script>
 
 <section class="home">
@@ -79,7 +78,7 @@
 
 	<div class="filters">
 		<div class="search-box">
-			<span>⌕</span>
+			<img src="/images/search.png" alt="Search" class="search-icon" />
 			<input bind:value={search} placeholder="Suche nach Materialien..." />
 		</div>
 
@@ -104,10 +103,10 @@
 		{#each filteredMaterials as material}
 			<a class="table-row" href={`/materials/${material.id}`}>
 				<div class="title-cell">
-					<span class="file-icon">▤</span>
+					<img src="/images/file.png" alt="Datei" class="file-icon" />
 					<span>{material.title}</span>
 					{#if material.favorite}
-						<span class="star">☆</span>
+						<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
 					{/if}
 				</div>
 
@@ -237,13 +236,24 @@
 		gap: 10px;
 	}
 
-	.file-icon {
-		font-size: 22px;
+	.search-icon {
+		width: 22px;
+		height: 22px;
+		object-fit: contain;
+		opacity: 0.7;
 	}
 
-	.star {
-		font-size: 24px;
-		margin-left: 8px;
+	.file-icon {
+		width: 22px;
+		height: 22px;
+		object-fit: contain;
+	}
+
+	.favorite-icon {
+		width: 20px;
+		height: 20px;
+		object-fit: contain;
+		margin-left: 6px;
 	}
 
 	.menu {
