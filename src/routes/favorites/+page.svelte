@@ -30,9 +30,14 @@
 		<div>
 			<h1>Favoriten</h1>
 			<p>Deine favorisierten Materialien auf einen Blick.</p>
+
+			<a href="/" class="back-link">
+				<img src="/images/back.png" alt="" class="back-icon" />
+				<span>Zurück zur Übersicht</span>
+			</a>
 		</div>
 
-		<a href="/add" class="add-button"> + Material hinzufügen </a>
+		<a href="/add" class="add-button">+ Material hinzufügen</a>
 	</div>
 
 	<div class="search-box">
@@ -64,7 +69,7 @@
 				<span>{material.type}</span>
 				<span>{material.date}</span>
 
-				<span class="menu">⋮</span>
+				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</a>
 		{/each}
 	</div>
@@ -91,6 +96,26 @@
 		margin-top: 8px;
 		font-size: 17px;
 		color: #444;
+	}
+
+	.back-link {
+		margin-top: 18px;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: #111;
+		text-decoration: none;
+		font-size: 16px;
+	}
+
+	.back-link:hover {
+		text-decoration: underline;
+	}
+
+	.back-icon {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
 	}
 
 	.add-button {
@@ -124,6 +149,7 @@
 	.search-icon {
 		width: 22px;
 		height: 22px;
+		object-fit: contain;
 		opacity: 0.7;
 	}
 
@@ -174,8 +200,10 @@
 		margin-left: 6px;
 	}
 
-	.menu {
-		text-align: right;
-		font-size: 22px;
+	.menu-icon {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
+		margin-left: auto;
 	}
 </style>
