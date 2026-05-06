@@ -73,6 +73,11 @@
 				</button>
 			{/if}
 
+			<a class="edit-btn" href={`/materials/${material._id}/edit`}>
+				<img src="/images/edit.png" alt="" class="button-icon" />
+				Bearbeiten
+			</a>
+
 			<form method="POST" action="?/delete">
 				<button class="delete" type="submit">
 					<img src="/images/delete.png" alt="" class="button-icon delete-icon" />
@@ -98,7 +103,8 @@
 	.back-link,
 	.fav-btn,
 	.download,
-	.delete {
+	.delete,
+	.edit-btn {
 		display: inline-flex;
 		align-items: center;
 		gap: 10px;
@@ -140,7 +146,8 @@
 
 	.fav-btn,
 	.download,
-	.delete {
+	.delete,
+	.edit-btn {
 		border-radius: 8px;
 		cursor: pointer;
 		font-size: 16px;
@@ -164,6 +171,13 @@
 	.download:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
+	}
+
+	.edit-btn {
+		padding: 14px 24px;
+		border: 1px solid #111;
+		background: white;
+		color: #111;
 	}
 
 	.delete {
