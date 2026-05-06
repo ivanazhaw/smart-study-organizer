@@ -3,6 +3,12 @@
 	let subject = $state('');
 	let type = $state('');
 	let note = $state('');
+	let selectedFileName = $state('');
+
+	function handleFileChange(event) {
+		const file = event.target.files[0];
+		selectedFileName = file ? file.name : '';
+	}
 </script>
 
 <section class="add-page">
@@ -10,6 +16,7 @@
 		<div class="page-header">
 			<div>
 				<h1>Neues Material hinzufügen</h1>
+
 				<a href="/" class="back-link">
 					<img src="/images/back.png" alt="" class="back-icon" />
 					<span>Zurück zur Übersicht</span>
@@ -17,20 +24,25 @@
 			</div>
 		</div>
 
-		<form class="form">
+		<form class="form" method="POST" enctype="multipart/form-data">
 			<label>
 				<span>Titel <strong>*</strong></span>
-				<input bind:value={title} placeholder="Titel des Materials eingeben..." />
+				<input
+					name="title"
+					bind:value={title}
+					placeholder="Titel des Materials eingeben..."
+					required
+				/>
 			</label>
 
 			<label>
 				<span>Fach <strong>*</strong></span>
-				<input bind:value={subject} placeholder="Fach angeben" />
+				<input name="subject" bind:value={subject} placeholder="Fach angeben" required />
 			</label>
 
 			<label>
 				<span>Typ <strong>*</strong></span>
-				<select bind:value={type}>
+				<select name="type" bind:value={type} required>
 					<option value="" disabled>Material-Typ auswählen</option>
 					<option value="PDF">PDF</option>
 					<option value="Notizen">Notizen</option>
@@ -44,20 +56,25 @@
 				<span class="field-label">Datei</span>
 
 				<label class="upload-box" for="file">
-					<input id="file" type="file" />
+					<input id="file" name="file" type="file" onchange={handleFileChange} />
 					<img src="/images/upload.png" alt="Upload" class="upload-icon" />
-					<p>Datei hier ziehen oder klicken zum Auswählen</p>
+
+					{#if selectedFileName}
+						<p class="selected-file">{selectedFileName}</p>
+					{:else}
+						<p>Datei hier ziehen oder klicken zum Auswählen</p>
+					{/if}
 				</label>
 			</div>
 
 			<label>
 				<span>Notiz</span>
-				<input bind:value={note} placeholder="Notizen hinzufügen..." />
+				<input name="note" bind:value={note} placeholder="Notizen hinzufügen..." />
 			</label>
 
 			<div class="actions">
 				<a href="/" class="cancel-button">Abbrechen</a>
-				<button type="button" class="save-button">Speichern</button>
+				<button type="submit" class="save-button">Speichern</button>
 			</div>
 		</form>
 	</div>
@@ -176,6 +193,11 @@
 		margin: 0;
 		font-size: 15px;
 		font-weight: 400;
+	}
+
+	.selected-file {
+		color: #6c5dd3;
+		font-weight: 600;
 	}
 
 	.actions {
