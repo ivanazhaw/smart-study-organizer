@@ -6,7 +6,15 @@
 
 	let materials = $derived(data.materials ?? []);
 
-	const subjects = ['Alle Fächer', 'Mathematik', 'BWL', 'Statistik', 'Englisch', 'WINS'];
+	let subjects = $derived([
+		'Alle Fächer',
+		...new Set(
+			materials
+				.map((material) => material.subject)
+				.filter(Boolean)
+				.sort()
+		)
+	]);
 
 	let filteredMaterials = $derived(
 		materials.filter((material) => {

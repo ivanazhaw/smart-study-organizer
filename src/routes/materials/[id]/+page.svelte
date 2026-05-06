@@ -16,7 +16,11 @@
 
 			<form method="POST" action="?/toggleFavorite">
 				<button class="fav-btn" type="submit">
-					<img src="/images/favorites.png" alt="" class="button-icon" />
+					<img
+						src={material.favorite ? '/images/favorites-filled.png' : '/images/favorites.png'}
+						alt=""
+						class="button-icon"
+					/>
 
 					{material.favorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
 				</button>
