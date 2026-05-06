@@ -56,7 +56,7 @@
 		</div>
 
 		{#each filteredMaterials as material}
-			<a class="table-row" href={`/materials/${material.id}`}>
+			<a class="table-row" href={`/materials/${material._id}`}>
 				<div class="title-cell">
 					<img src="/images/file.png" alt="" class="file-icon" />
 

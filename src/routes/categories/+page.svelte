@@ -73,7 +73,7 @@
 					{#each category.materials as material}
 						<div class="material-row">
 							<div class="title-cell">
-								<a class="material-link" href={`/materials/${material.id}`}>
+								<a class="material-link" href={`/materials/${material._id}`}>
 									<img src="/images/file.png" alt="" class="file-icon" />
 									<span>{material.title}</span>
 								</a>

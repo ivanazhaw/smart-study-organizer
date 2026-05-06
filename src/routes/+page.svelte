@@ -1,57 +1,10 @@
 <script>
+	let { data } = $props();
+
 	let search = $state('');
 	let selectedSubject = $state('Alle Fächer');
 
-	const materials = [
-		{
-			id: 1,
-			title: 'Mathe Zusammenfassung',
-			subject: 'Mathematik',
-			type: 'PDF',
-			date: '12.04.2025',
-			favorite: false
-		},
-		{
-			id: 2,
-			title: 'BWL Notizen',
-			subject: 'BWL',
-			type: 'Notizen',
-			date: '08.04.2025',
-			favorite: true
-		},
-		{
-			id: 3,
-			title: 'Statistik Übungen',
-			subject: 'Statistik',
-			type: 'PDF',
-			date: '02.03.2025',
-			favorite: false
-		},
-		{
-			id: 4,
-			title: 'Englisch Reading',
-			subject: 'Englisch',
-			type: 'PDF',
-			date: '23.02.2025',
-			favorite: false
-		},
-		{
-			id: 5,
-			title: 'Statistik SW03',
-			subject: 'Statistik',
-			type: 'Notizen',
-			date: '21.02.2025',
-			favorite: true
-		},
-		{
-			id: 6,
-			title: 'WINS SW02',
-			subject: 'WINS',
-			type: 'Notizen',
-			date: '14.02.2025',
-			favorite: false
-		}
-	];
+	let materials = $derived(data.materials);
 
 	const subjects = ['Alle Fächer', 'Mathematik', 'BWL', 'Statistik', 'Englisch', 'WINS'];
 
@@ -105,7 +58,7 @@
 		{#each filteredMaterials as material}
 			<div class="table-row">
 				<div class="title-cell">
-					<a class="material-link" href={`/materials/${material.id}`}>
+					<a class="material-link" href={`/materials/${material._id}`}>
 						<img src="/images/file.png" alt="Datei" class="file-icon" />
 
 						<span>{material.title}</span>
