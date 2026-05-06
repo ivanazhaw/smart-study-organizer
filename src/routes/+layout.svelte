@@ -4,10 +4,10 @@
 	let { children } = $props();
 
 	const navItems = [
-		{ href: '/', label: 'Übersicht', icon: '⌂' },
-		{ href: '/favorites', label: 'Favoriten', icon: '☆' },
-		{ href: '/recent', label: 'Zuletzt verwendet', icon: '◷' },
-		{ href: '/categories', label: 'Kategorien', icon: '▣' }
+		{ href: '/', label: 'Übersicht', icon: '/images/home.png' },
+		{ href: '/favorites', label: 'Favoriten', icon: '/images/favorites.png' },
+		{ href: '/recent', label: 'Zuletzt verwendet', icon: '/images/recent.png' },
+		{ href: '/categories', label: 'Kategorien', icon: '/images/categories.png' }
 	];
 
 	function isActive(href) {
@@ -19,7 +19,7 @@
 <div class="app-shell">
 	<aside class="sidebar">
 		<div class="logo">
-			<div class="logo-icon">🎓</div>
+			<img src="/images/logo.png" alt="Smart Study Organizer Logo" class="logo-icon" />
 			<div class="logo-text">
 				<strong>Smart Study</strong>
 				<strong>Organizer</strong>
@@ -29,7 +29,7 @@
 		<nav class="nav">
 			{#each navItems as item}
 				<a href={item.href} class:active={isActive(item.href)}>
-					<span class="nav-icon">{item.icon}</span>
+					<img src={item.icon} alt="" class="nav-icon" />
 					<span>{item.label}</span>
 				</a>
 			{/each}
@@ -37,11 +37,11 @@
 
 		<div class="bottom-nav">
 			<a href="/">
-				<span class="nav-icon">⚙</span>
+				<img src="/images/settings.png" alt="" class="nav-icon" />
 				<span>Einstellungen</span>
 			</a>
 			<a href="/">
-				<span class="nav-icon">?</span>
+				<img src="/images/help.png" alt="" class="nav-icon" />
 				<span>Hilfe</span>
 			</a>
 		</div>
@@ -86,7 +86,9 @@
 	}
 
 	.logo-icon {
-		font-size: 38px;
+		width: 48px;
+		height: 48px;
+		object-fit: contain;
 	}
 
 	.logo-text {
@@ -95,7 +97,8 @@
 		line-height: 1.1;
 	}
 
-	.nav {
+	.nav,
+	.bottom-nav {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -120,15 +123,12 @@
 
 	.nav-icon {
 		width: 24px;
-		display: inline-block;
-		text-align: center;
+		height: 24px;
+		object-fit: contain;
 	}
 
 	.bottom-nav {
 		margin-top: auto;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
 	}
 
 	.content {
