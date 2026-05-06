@@ -1,38 +1,7 @@
 <script>
-	const materials = [
-		{
-			id: 2,
-			title: 'BWL Notizen',
-			subject: 'BWL',
-			type: 'Notizen',
-			lastOpened: 'heute, 10:24 Uhr',
-			favorite: true
-		},
-		{
-			id: 4,
-			title: 'Englisch Reading',
-			subject: 'Englisch',
-			type: 'PDF',
-			lastOpened: 'gestern, 18:23 Uhr',
-			favorite: false
-		},
-		{
-			id: 5,
-			title: 'Statistik SW03',
-			subject: 'Statistik',
-			type: 'Notizen',
-			lastOpened: 'vor 2 Tagen',
-			favorite: false
-		},
-		{
-			id: 6,
-			title: 'WINS SW02',
-			subject: 'WINS',
-			type: 'Notizen',
-			lastOpened: 'vor 5 Tagen',
-			favorite: false
-		}
-	];
+	let { data } = $props();
+
+	let materials = $derived(data.materials ?? []);
 </script>
 
 <section class="recent-page">
@@ -69,15 +38,19 @@
 					</a>
 
 					{#if material.favorite}
-						<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
+						<a href="/favorites" class="favorite-link">
 							<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
 						</a>
 					{/if}
 				</div>
 
 				<span>{material.subject}</span>
+
 				<span>{material.type}</span>
-				<span>{material.lastOpened}</span>
+
+				<span>
+					{material.lastOpened ? new Date(material.lastOpened).toLocaleDateString('de-CH') : 'Nie'}
+				</span>
 
 				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</div>
@@ -195,10 +168,6 @@
 	.favorite-link {
 		display: inline-flex;
 		align-items: center;
-	}
-
-	.favorite-link:hover {
-		opacity: 0.8;
 	}
 
 	.favorite-icon {

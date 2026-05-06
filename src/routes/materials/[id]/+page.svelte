@@ -1,64 +1,7 @@
 <script>
-	import { page } from '$app/state';
+	let { data } = $props();
 
-	const materials = [
-		{
-			id: 1,
-			title: 'Mathe Zusammenfassung',
-			subject: 'Mathematik',
-			type: 'PDF',
-			date: '12.04.2025',
-			size: '2.4 MB',
-			note: ''
-		},
-		{
-			id: 2,
-			title: 'BWL Notizen',
-			subject: 'BWL',
-			type: 'Notizen',
-			date: '08.04.2025',
-			size: '1.2 MB',
-			note: 'Wichtige Zusammenfassung'
-		},
-		{
-			id: 3,
-			title: 'Statistik Übungen',
-			subject: 'Statistik',
-			type: 'PDF',
-			date: '02.03.2025',
-			size: '3.1 MB',
-			note: 'Übungsblatt für Statistik'
-		},
-		{
-			id: 4,
-			title: 'Englisch Reading',
-			subject: 'Englisch',
-			type: 'PDF',
-			date: '23.02.2025',
-			size: '900 KB',
-			note: ''
-		},
-		{
-			id: 5,
-			title: 'Statistik SW03',
-			subject: 'Statistik',
-			type: 'Notizen',
-			date: '21.02.2025',
-			size: '600 KB',
-			note: ''
-		},
-		{
-			id: 6,
-			title: 'WINS SW02',
-			subject: 'WINS',
-			type: 'Notizen',
-			date: '14.02.2025',
-			size: '1.8 MB',
-			note: ''
-		}
-	];
-
-	let material = $derived(materials.find((m) => m.id === Number(page.params.id)) || null);
+	let material = $derived(data.material);
 </script>
 
 <section class="detail-page">
@@ -96,12 +39,12 @@
 
 			<div class="row">
 				<span>Hinzugefügt am</span>
-				<strong>{material.date}</strong>
+				<strong>{material.date || 'Kein Datum'}</strong>
 			</div>
 
 			<div class="row">
-				<span>Grösse</span>
-				<strong>{material.size}</strong>
+				<span>Dateiname</span>
+				<strong>{material.fileName || 'Keine Datei'}</strong>
 			</div>
 
 			<div class="row">
@@ -115,6 +58,7 @@
 				<img src="/images/upload.png" alt="" class="button-icon white-icon" />
 				Öffnen / Herunterladen
 			</button>
+
 			<button class="delete">
 				<img src="/images/delete.png" alt="" class="button-icon delete-icon" />
 				Löschen

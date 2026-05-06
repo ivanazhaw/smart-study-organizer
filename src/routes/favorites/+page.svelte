@@ -1,24 +1,8 @@
 <script>
-	let search = $state('');
+	let { data } = $props();
 
-	const materials = [
-		{
-			id: 2,
-			title: 'BWL Notizen',
-			subject: 'BWL',
-			type: 'Notizen',
-			date: '08.04.2025',
-			favorite: true
-		},
-		{
-			id: 5,
-			title: 'Statistik SW03',
-			subject: 'Statistik',
-			type: 'Notizen',
-			date: '21.02.2025',
-			favorite: true
-		}
-	];
+	let search = $state('');
+	let materials = $derived(data.materials ?? []);
 
 	let filteredMaterials = $derived(
 		materials.filter((material) => material.title.toLowerCase().includes(search.toLowerCase()))
@@ -42,7 +26,6 @@
 
 	<div class="search-box">
 		<img src="/images/search.png" alt="" class="search-icon" />
-
 		<input bind:value={search} placeholder="Suche nach Materialien..." />
 	</div>
 
@@ -56,22 +39,29 @@
 		</div>
 
 		{#each filteredMaterials as material}
-			<a class="table-row" href={`/materials/${material._id}`}>
+			<div class="table-row">
 				<div class="title-cell">
-					<img src="/images/file.png" alt="" class="file-icon" />
+					<a class="material-link" href={`/materials/${material._id}`}>
+						<img src="/images/file.png" alt="Datei" class="file-icon" />
+						<span>{material.title}</span>
+					</a>
 
-					<span>{material.title}</span>
-
-					<img src="/images/favorites.png" alt="" class="favorite-icon" />
+					<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
+						<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
+					</a>
 				</div>
 
 				<span>{material.subject}</span>
 				<span>{material.type}</span>
-				<span>{material.date}</span>
+				<span>{material.date || 'Kein Datum'}</span>
 
 				<img src="/images/menu.png" alt="" class="menu-icon" />
-			</a>
+			</div>
 		{/each}
+
+		{#if filteredMaterials.length === 0}
+			<div class="empty-state">Keine Favoriten gefunden.</div>
+		{/if}
 	</div>
 </section>
 
@@ -153,6 +143,10 @@
 		opacity: 0.7;
 	}
 
+	.table {
+		width: 100%;
+	}
+
 	.table-header,
 	.table-row {
 		display: grid;
@@ -169,12 +163,11 @@
 	}
 
 	.table-row {
-		text-decoration: none;
-		color: #111;
 		padding: 16px 10px;
 		border: 1px solid #c9c9d1;
 		border-top: none;
 		font-size: 16px;
+		color: #111;
 	}
 
 	.table-row:hover {
@@ -187,17 +180,37 @@
 		gap: 10px;
 	}
 
+	.material-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: #111;
+		text-decoration: none;
+	}
+
+	.material-link:hover {
+		text-decoration: underline;
+	}
+
 	.file-icon {
 		width: 22px;
 		height: 22px;
 		object-fit: contain;
 	}
 
+	.favorite-link {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.favorite-link:hover {
+		opacity: 0.8;
+	}
+
 	.favorite-icon {
 		width: 20px;
 		height: 20px;
 		object-fit: contain;
-		margin-left: 6px;
 	}
 
 	.menu-icon {
@@ -205,5 +218,12 @@
 		height: 18px;
 		object-fit: contain;
 		margin-left: auto;
+	}
+
+	.empty-state {
+		padding: 32px;
+		border: 1px solid #ddd;
+		border-top: none;
+		color: #777;
 	}
 </style>

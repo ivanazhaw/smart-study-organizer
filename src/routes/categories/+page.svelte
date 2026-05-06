@@ -1,49 +1,26 @@
 <script>
-	const categories = [
-		{
-			name: 'Mathematik',
-			materials: [
-				{
-					id: 1,
-					title: 'Mathe Zusammenfassung',
-					type: 'PDF',
-					date: '12.04.2025',
-					favorite: false
+	let { data } = $props();
+
+	let materials = $derived(data.materials ?? []);
+
+	let categories = $derived(
+		Object.values(
+			materials.reduce((groups, material) => {
+				const subject = material.subject || 'Ohne Fach';
+
+				if (!groups[subject]) {
+					groups[subject] = {
+						name: subject,
+						materials: []
+					};
 				}
-			]
-		},
-		{
-			name: 'BWL',
-			materials: [
-				{
-					id: 2,
-					title: 'BWL Notizen',
-					type: 'Notizen',
-					date: '08.04.2025',
-					favorite: true
-				}
-			]
-		},
-		{
-			name: 'Statistik',
-			materials: [
-				{
-					id: 3,
-					title: 'Statistik Übungen',
-					type: 'PDF',
-					date: '02.03.2025',
-					favorite: false
-				},
-				{
-					id: 5,
-					title: 'Statistik SW03',
-					type: 'Notizen',
-					date: '21.02.2025',
-					favorite: false
-				}
-			]
-		}
-	];
+
+				groups[subject].materials.push(material);
+
+				return groups;
+			}, {})
+		)
+	);
 </script>
 
 <section class="categories-page">
@@ -86,7 +63,7 @@
 							</div>
 
 							<span>{material.type}</span>
-							<span>{material.date}</span>
+							<span>{material.date || 'Kein Datum'}</span>
 
 							<img src="/images/menu.png" alt="" class="menu-icon" />
 						</div>
@@ -94,6 +71,10 @@
 				</div>
 			</section>
 		{/each}
+
+		{#if categories.length === 0}
+			<div class="empty-state">Keine Kategorien gefunden.</div>
+		{/if}
 	</div>
 </section>
 
@@ -241,5 +222,12 @@
 		height: 18px;
 		object-fit: contain;
 		margin-left: auto;
+	}
+
+	.empty-state {
+		padding: 32px;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		color: #777;
 	}
 </style>
