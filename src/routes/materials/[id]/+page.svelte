@@ -14,10 +14,13 @@
 		<div class="topbar">
 			<h1>{material.title}</h1>
 
-			<button class="fav-btn">
-				<img src="/images/favorites.png" alt="" class="button-icon" />
-				Zu Favoriten hinzufügen
-			</button>
+			<form method="POST" action="?/toggleFavorite">
+				<button class="fav-btn" type="submit">
+					<img src="/images/favorites.png" alt="" class="button-icon" />
+
+					{material.favorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+				</button>
+			</form>
 		</div>
 
 		<div class="card">
@@ -59,10 +62,12 @@
 				Öffnen / Herunterladen
 			</button>
 
-			<button class="delete">
-				<img src="/images/delete.png" alt="" class="button-icon delete-icon" />
-				Löschen
-			</button>
+			<form method="POST" action="?/delete">
+				<button class="delete" type="submit">
+					<img src="/images/delete.png" alt="" class="button-icon delete-icon" />
+					Löschen
+				</button>
+			</form>
 		</div>
 	{:else}
 		<div class="not-found">
