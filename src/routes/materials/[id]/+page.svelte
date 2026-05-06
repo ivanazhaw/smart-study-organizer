@@ -57,10 +57,17 @@
 		</div>
 
 		<div class="actions">
-			<button class="download">
-				<img src="/images/upload.png" alt="" class="button-icon white-icon" />
-				Öffnen / Herunterladen
-			</button>
+			{#if material.filePath}
+				<a class="download" href={material.filePath} target="_blank" rel="noreferrer">
+					<img src="/images/upload.png" alt="" class="button-icon white-icon" />
+					Öffnen / Herunterladen
+				</a>
+			{:else}
+				<button class="download" disabled>
+					<img src="/images/upload.png" alt="" class="button-icon white-icon" />
+					Keine Datei vorhanden
+				</button>
+			{/if}
 
 			<form method="POST" action="?/delete">
 				<button class="delete" type="submit">
@@ -84,14 +91,24 @@
 		margin: 0 auto;
 	}
 
-	.back-link {
+	.back-link,
+	.fav-btn,
+	.download,
+	.delete {
 		display: inline-flex;
 		align-items: center;
 		gap: 10px;
+		text-decoration: none;
+	}
+
+	.back-link {
 		margin-bottom: 32px;
 		color: #111;
-		text-decoration: none;
 		font-size: 16px;
+	}
+
+	.back-link:hover {
+		text-decoration: underline;
 	}
 
 	.back-icon {
@@ -100,15 +117,16 @@
 		object-fit: contain;
 	}
 
-	.back-link:hover {
-		text-decoration: underline;
-	}
-
 	.topbar {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 32px;
+	}
+
+	.topbar form,
+	.actions form {
+		margin: 0;
 	}
 
 	h1 {
@@ -119,29 +137,33 @@
 	.fav-btn,
 	.download,
 	.delete {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		padding: 14px 24px;
 		border-radius: 8px;
 		cursor: pointer;
 		font-size: 16px;
+		border: none;
+		box-sizing: border-box;
 	}
 
 	.fav-btn {
+		padding: 12px 18px;
 		border: 1px solid #6c5dd3;
 		background: white;
 		color: #6c5dd3;
-		padding: 12px 18px;
 	}
 
 	.download {
-		border: none;
+		padding: 14px 24px;
 		background: #6c5dd3;
 		color: white;
 	}
 
+	.download:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
 	.delete {
+		padding: 14px 24px;
 		border: 1px solid #e53935;
 		background: white;
 		color: #e53935;
