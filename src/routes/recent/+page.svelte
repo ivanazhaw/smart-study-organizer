@@ -2,6 +2,40 @@
 	let { data } = $props();
 
 	let materials = $derived(data.materials ?? []);
+
+	function formatLastOpened(value) {
+		if (!value) return 'Nie';
+
+		const date = new Date(value);
+		const today = new Date();
+		const yesterday = new Date();
+
+		yesterday.setDate(today.getDate() - 1);
+
+		const isSameDay = (a, b) =>
+			a.getFullYear() === b.getFullYear() &&
+			a.getMonth() === b.getMonth() &&
+			a.getDate() === b.getDate();
+
+		const time = date.toLocaleTimeString('de-CH', {
+			hour: '2-digit',
+			minute: '2-digit'
+		});
+
+		if (isSameDay(date, today)) {
+			return `heute, ${time} Uhr`;
+		}
+
+		if (isSameDay(date, yesterday)) {
+			return `gestern, ${time} Uhr`;
+		}
+
+		return date.toLocaleDateString('de-CH', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		});
+	}
 </script>
 
 <section class="recent-page">
@@ -33,7 +67,6 @@
 				<div class="title-cell">
 					<a class="material-link" href={`/materials/${material._id}`}>
 						<img src="/images/file.png" alt="Datei" class="file-icon" />
-
 						<span>{material.title}</span>
 					</a>
 
@@ -45,12 +78,8 @@
 				</div>
 
 				<span>{material.subject}</span>
-
 				<span>{material.type}</span>
-
-				<span>
-					{material.lastOpened ? new Date(material.lastOpened).toLocaleDateString('de-CH') : 'Nie'}
-				</span>
+				<span>{formatLastOpened(material.lastOpened)}</span>
 
 				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</div>

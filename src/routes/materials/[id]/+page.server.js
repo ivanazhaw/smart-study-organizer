@@ -1,14 +1,28 @@
 import { ObjectId } from 'mongodb';
-import { redirect } from '@sveltejs/kit';
+import { redirect, error } from '@sveltejs/kit';
 import { unlink } from 'fs/promises';
 import path from 'path';
 import { connectToDatabase } from '$lib/server/db';
 
 export async function load({ params }) {
+    if (!ObjectId.isValid(params.id)) {
+        throw error(404, 'Material nicht gefunden');
+    }
+
     const db = await connectToDatabase();
+    const materialId = new ObjectId(params.id);
+
+    await db.collection('materials').updateOne(
+        { _id: materialId },
+        {
+            $set: {
+                lastOpened: new Date()
+            }
+        }
+    );
 
     const material = await db.collection('materials').findOne({
-        _id: new ObjectId(params.id)
+        _id: materialId
     });
 
     return {
@@ -23,15 +37,20 @@ export async function load({ params }) {
 
 export const actions = {
     toggleFavorite: async ({ params }) => {
+        if (!ObjectId.isValid(params.id)) {
+            throw error(404, 'Material nicht gefunden');
+        }
+
         const db = await connectToDatabase();
+        const materialId = new ObjectId(params.id);
 
         const material = await db.collection('materials').findOne({
-            _id: new ObjectId(params.id)
+            _id: materialId
         });
 
         if (material) {
             await db.collection('materials').updateOne(
-                { _id: new ObjectId(params.id) },
+                { _id: materialId },
                 {
                     $set: {
                         favorite: !material.favorite
@@ -44,10 +63,15 @@ export const actions = {
     },
 
     delete: async ({ params }) => {
+        if (!ObjectId.isValid(params.id)) {
+            throw error(404, 'Material nicht gefunden');
+        }
+
         const db = await connectToDatabase();
+        const materialId = new ObjectId(params.id);
 
         const material = await db.collection('materials').findOne({
-            _id: new ObjectId(params.id)
+            _id: materialId
         });
 
         if (material?.filePath) {
@@ -61,7 +85,7 @@ export const actions = {
         }
 
         await db.collection('materials').deleteOne({
-            _id: new ObjectId(params.id)
+            _id: materialId
         });
 
         throw redirect(303, '/');

@@ -4,7 +4,7 @@
 	let search = $state('');
 	let selectedSubject = $state('Alle Fächer');
 
-	let materials = $derived(data.materials);
+	let materials = $derived(data.materials ?? []);
 
 	const subjects = ['Alle Fächer', 'Mathematik', 'BWL', 'Statistik', 'Englisch', 'WINS'];
 
@@ -18,6 +18,32 @@
 			return matchesSearch && matchesSubject;
 		})
 	);
+
+	function formatDate(value) {
+		if (!value) return 'Kein Datum';
+
+		const date = new Date(value);
+
+		if (Number.isNaN(date.getTime())) {
+			const parts = value.split('.');
+
+			if (parts.length === 3) {
+				const day = parts[0].padStart(2, '0');
+				const month = parts[1].padStart(2, '0');
+				const year = parts[2];
+
+				return `${day}.${month}.${year}`;
+			}
+
+			return value;
+		}
+
+		return date.toLocaleDateString('de-CH', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		});
+	}
 </script>
 
 <section class="home">
@@ -73,7 +99,7 @@
 
 				<span>{material.subject}</span>
 				<span>{material.type}</span>
-				<span>{material.date}</span>
+				<span>{formatDate(material.date || material.createdAt)}</span>
 
 				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</div>
