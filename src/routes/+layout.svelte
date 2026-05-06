@@ -18,13 +18,14 @@
 
 <div class="app-shell">
 	<aside class="sidebar">
-		<div class="logo">
+		<a href="/" class="logo">
 			<img src="/images/logo.png" alt="Smart Study Organizer Logo" class="logo-icon" />
+
 			<div class="logo-text">
 				<strong>Smart Study</strong>
 				<strong>Organizer</strong>
 			</div>
-		</div>
+		</a>
 
 		<nav class="nav">
 			{#each navItems as item}
@@ -36,11 +37,12 @@
 		</nav>
 
 		<div class="bottom-nav">
-			<a href="/settings">
+			<a href="/">
 				<img src="/images/settings.png" alt="" class="nav-icon" />
 				<span>Einstellungen</span>
 			</a>
-			<a href="/help">
+
+			<a href="/">
 				<img src="/images/help.png" alt="" class="nav-icon" />
 				<span>Hilfe</span>
 			</a>
@@ -83,6 +85,8 @@
 		gap: 14px;
 		font-size: 18px;
 		margin-bottom: 56px;
+		text-decoration: none;
+		color: #111;
 	}
 
 	.logo-icon {
