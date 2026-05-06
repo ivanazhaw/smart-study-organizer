@@ -36,11 +36,11 @@
 		</nav>
 
 		<div class="bottom-nav">
-			<a href="/">
+			<a href="/settings">
 				<img src="/images/settings.png" alt="" class="nav-icon" />
 				<span>Einstellungen</span>
 			</a>
-			<a href="/">
+			<a href="/help">
 				<img src="/images/help.png" alt="" class="nav-icon" />
 				<span>Hilfe</span>
 			</a>

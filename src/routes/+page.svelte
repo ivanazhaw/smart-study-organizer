@@ -113,7 +113,7 @@
 				<span>{material.subject}</span>
 				<span>{material.type}</span>
 				<span>{material.date}</span>
-				<span class="menu">⋮</span>
+				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</a>
 		{/each}
 
@@ -170,10 +170,6 @@
 		align-items: center;
 		gap: 14px;
 		padding: 0 16px;
-	}
-
-	.search-box span {
-		font-size: 24px;
 	}
 
 	input,
@@ -256,9 +252,11 @@
 		margin-left: 6px;
 	}
 
-	.menu {
-		text-align: right;
-		font-size: 22px;
+	.menu-icon {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
+		margin-left: auto;
 	}
 
 	.empty-state {

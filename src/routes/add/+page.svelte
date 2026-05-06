@@ -10,7 +10,10 @@
 		<div class="page-header">
 			<div>
 				<h1>Neues Material hinzufügen</h1>
-				<a href="/" class="back-link">← Zurück zur Übersicht</a>
+				<a href="/" class="back-link">
+					<img src="/images/back.png" alt="" class="back-icon" />
+					<span>Zurück zur Übersicht</span>
+				</a>
 			</div>
 		</div>
 
@@ -85,6 +88,15 @@
 		color: #111;
 		text-decoration: none;
 		font-size: 16px;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.back-icon {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
 	}
 
 	.back-link:hover {

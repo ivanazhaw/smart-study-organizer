@@ -62,7 +62,10 @@
 </script>
 
 <section class="detail-page">
-	<a href="/" class="back-link">← Zurück zur Übersicht</a>
+	<a href="/" class="back-link">
+		<img src="/images/back.png" alt="" class="back-icon" />
+		<span>Zurück zur Übersicht</span>
+	</a>
 
 	{#if material}
 		<div class="topbar">
@@ -133,11 +136,19 @@
 	}
 
 	.back-link {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
 		margin-bottom: 32px;
 		color: #111;
 		text-decoration: none;
 		font-size: 16px;
+	}
+
+	.back-icon {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
 	}
 
 	.back-link:hover {
