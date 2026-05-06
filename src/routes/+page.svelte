@@ -41,7 +41,7 @@
 			subject: 'Statistik',
 			type: 'Notizen',
 			date: '21.02.2025',
-			favorite: false
+			favorite: true
 		},
 		{
 			id: 6,
@@ -58,6 +58,7 @@
 	let filteredMaterials = $derived(
 		materials.filter((material) => {
 			const matchesSearch = material.title.toLowerCase().includes(search.toLowerCase());
+
 			const matchesSubject =
 				selectedSubject === 'Alle Fächer' || material.subject === selectedSubject;
 
@@ -79,6 +80,7 @@
 	<div class="filters">
 		<div class="search-box">
 			<img src="/images/search.png" alt="Search" class="search-icon" />
+
 			<input bind:value={search} placeholder="Suche nach Materialien..." />
 		</div>
 
@@ -101,20 +103,27 @@
 		</div>
 
 		{#each filteredMaterials as material}
-			<a class="table-row" href={`/materials/${material.id}`}>
+			<div class="table-row">
 				<div class="title-cell">
-					<img src="/images/file.png" alt="Datei" class="file-icon" />
-					<span>{material.title}</span>
+					<a class="material-link" href={`/materials/${material.id}`}>
+						<img src="/images/file.png" alt="Datei" class="file-icon" />
+
+						<span>{material.title}</span>
+					</a>
+
 					{#if material.favorite}
-						<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
+						<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
+							<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
+						</a>
 					{/if}
 				</div>
 
 				<span>{material.subject}</span>
 				<span>{material.type}</span>
 				<span>{material.date}</span>
+
 				<img src="/images/menu.png" alt="" class="menu-icon" />
-			</a>
+			</div>
 		{/each}
 
 		{#if filteredMaterials.length === 0}
@@ -214,12 +223,11 @@
 	}
 
 	.table-row {
-		text-decoration: none;
-		color: #111;
 		padding: 16px 10px;
 		border: 1px solid #c9c9d1;
 		border-top: none;
 		font-size: 16px;
+		color: #111;
 	}
 
 	.table-row:hover {
@@ -230,6 +238,18 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
+	}
+
+	.material-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: #111;
+		text-decoration: none;
+	}
+
+	.material-link:hover {
+		text-decoration: underline;
 	}
 
 	.search-icon {
@@ -245,11 +265,19 @@
 		object-fit: contain;
 	}
 
+	.favorite-link {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.favorite-link:hover {
+		opacity: 0.8;
+	}
+
 	.favorite-icon {
 		width: 20px;
 		height: 20px;
 		object-fit: contain;
-		margin-left: 6px;
 	}
 
 	.menu-icon {

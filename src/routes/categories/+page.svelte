@@ -71,14 +71,17 @@
 
 				<div class="material-list">
 					{#each category.materials as material}
-						<a class="material-row" href={`/materials/${material.id}`}>
+						<div class="material-row">
 							<div class="title-cell">
-								<img src="/images/file.png" alt="" class="file-icon" />
-
-								<span>{material.title}</span>
+								<a class="material-link" href={`/materials/${material.id}`}>
+									<img src="/images/file.png" alt="" class="file-icon" />
+									<span>{material.title}</span>
+								</a>
 
 								{#if material.favorite}
-									<img src="/images/favorites.png" alt="" class="favorite-icon" />
+									<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
+										<img src="/images/favorites.png" alt="" class="favorite-icon" />
+									</a>
 								{/if}
 							</div>
 
@@ -86,7 +89,7 @@
 							<span>{material.date}</span>
 
 							<img src="/images/menu.png" alt="" class="menu-icon" />
-						</a>
+						</div>
 					{/each}
 				</div>
 			</section>
@@ -186,9 +189,8 @@
 		align-items: center;
 		padding: 16px 18px;
 		border-top: 1px solid #e2e2ea;
-		color: #111;
-		text-decoration: none;
 		font-size: 16px;
+		color: #111;
 	}
 
 	.material-row:hover {
@@ -201,17 +203,37 @@
 		gap: 10px;
 	}
 
+	.material-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: #111;
+		text-decoration: none;
+	}
+
+	.material-link:hover {
+		text-decoration: underline;
+	}
+
 	.file-icon {
 		width: 22px;
 		height: 22px;
 		object-fit: contain;
 	}
 
+	.favorite-link {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.favorite-link:hover {
+		opacity: 0.8;
+	}
+
 	.favorite-icon {
 		width: 20px;
 		height: 20px;
 		object-fit: contain;
-		margin-left: 6px;
 	}
 
 	.menu-icon {
