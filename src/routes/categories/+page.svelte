@@ -57,7 +57,7 @@
 
 								{#if material.favorite}
 									<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
-										<img src="/images/favorites.png" alt="" class="favorite-icon" />
+										<img src="/images/favorites-filled.png" alt="" class="favorite-icon" />
 									</a>
 								{/if}
 							</div>

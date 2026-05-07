@@ -1,4 +1,5 @@
 import { connectToDatabase } from '$lib/server/db';
+import { ObjectId } from 'mongodb';
 
 export async function load() {
     const db = await connectToDatabase();
@@ -16,3 +17,29 @@ export async function load() {
         }))
     };
 }
+
+export const actions = {
+    toggleFavorite: async ({ request }) => {
+        const db = await connectToDatabase();
+
+        const formData = await request.formData();
+
+        const id = formData.get('id');
+        const favorite = formData.get('favorite') === 'true';
+
+        await db.collection('materials').updateOne(
+            {
+                _id: new ObjectId(id)
+            },
+            {
+                $set: {
+                    favorite
+                }
+            }
+        );
+
+        return {
+            success: true
+        };
+    }
+};

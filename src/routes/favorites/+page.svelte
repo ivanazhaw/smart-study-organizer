@@ -1,12 +1,28 @@
 <script>
+	import { enhance } from '$app/forms';
+
 	let { data } = $props();
 
 	let search = $state('');
+	let removedFavoriteIds = $state([]);
+
 	let materials = $derived(data.materials ?? []);
 
 	let filteredMaterials = $derived(
 		materials.filter((material) => material.title.toLowerCase().includes(search.toLowerCase()))
 	);
+
+	function toggleFavoriteLocally(id) {
+		if (removedFavoriteIds.includes(id)) {
+			removedFavoriteIds = removedFavoriteIds.filter((removedId) => removedId !== id);
+		} else {
+			removedFavoriteIds = [...removedFavoriteIds, id];
+		}
+	}
+
+	function isRemoved(id) {
+		return removedFavoriteIds.includes(id);
+	}
 </script>
 
 <section class="favorites-page">
@@ -21,11 +37,12 @@
 			</a>
 		</div>
 
-		<a href="/add" class="add-button">+ Material hinzufügen</a>
+		<a href="/add" class="add-button"> + Material hinzufügen </a>
 	</div>
 
 	<div class="search-box">
 		<img src="/images/search.png" alt="" class="search-icon" />
+
 		<input bind:value={search} placeholder="Suche nach Materialien..." />
 	</div>
 
@@ -42,18 +59,51 @@
 			<div class="table-row">
 				<div class="title-cell">
 					<a class="material-link" href={`/materials/${material._id}`}>
-						<img src="/images/file.png" alt="Datei" class="file-icon" />
+						<img src="/images/file.png" alt="" class="file-icon" />
 						<span>{material.title}</span>
 					</a>
 
-					<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
-						<img src="/images/favorites.png" alt="Favorit" class="favorite-icon" />
-					</a>
+					<form
+						method="POST"
+						action="?/toggleFavorite"
+						use:enhance={() => {
+							return async ({ result }) => {
+								if (result.type === 'success') {
+									toggleFavoriteLocally(material._id);
+								}
+							};
+						}}
+					>
+						<input type="hidden" name="id" value={material._id} />
+
+						<input
+							type="hidden"
+							name="favorite"
+							value={isRemoved(material._id) ? 'true' : 'false'}
+						/>
+
+						<button class="favorite-button" type="submit">
+							<img
+								src={isRemoved(material._id)
+									? '/images/favorites.png'
+									: '/images/favorites-filled.png'}
+								alt=""
+								class="favorite-icon"
+							/>
+						</button>
+					</form>
 				</div>
 
 				<span>{material.subject}</span>
 				<span>{material.type}</span>
-				<span>{material.date || 'Kein Datum'}</span>
+
+				<span>
+					{new Date(material.createdAt || material.date).toLocaleDateString('de-CH', {
+						day: '2-digit',
+						month: '2-digit',
+						year: 'numeric'
+					})}
+				</span>
 
 				<img src="/images/menu.png" alt="" class="menu-icon" />
 			</div>
@@ -198,12 +248,16 @@
 		object-fit: contain;
 	}
 
-	.favorite-link {
+	.favorite-button {
+		border: none;
+		background: transparent;
+		padding: 0;
+		cursor: pointer;
 		display: inline-flex;
 		align-items: center;
 	}
 
-	.favorite-link:hover {
+	.favorite-button:hover {
 		opacity: 0.8;
 	}
 
