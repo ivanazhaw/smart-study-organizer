@@ -63,7 +63,13 @@
 							</div>
 
 							<span>{material.type}</span>
-							<span>{material.date || 'Kein Datum'}</span>
+							<span>
+								{new Date(material.createdAt).toLocaleDateString('de-CH', {
+									day: '2-digit',
+									month: '2-digit',
+									year: 'numeric'
+								})}
+							</span>
 
 							<img src="/images/menu.png" alt="" class="menu-icon" />
 						</div>
