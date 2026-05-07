@@ -1,6 +1,7 @@
 <script>
 	let { data } = $props();
 
+	let openMenuId = $state(null);
 	let materials = $derived(data.materials ?? []);
 
 	let categories = $derived(
@@ -21,6 +22,10 @@
 			}, {})
 		)
 	);
+
+	function toggleMenu(id) {
+		openMenuId = openMenuId === id ? null : id;
+	}
 </script>
 
 <section class="categories-page">
@@ -63,6 +68,7 @@
 							</div>
 
 							<span>{material.type}</span>
+
 							<span>
 								{new Date(material.createdAt).toLocaleDateString('de-CH', {
 									day: '2-digit',
@@ -71,7 +77,34 @@
 								})}
 							</span>
 
-							<img src="/images/menu.png" alt="" class="menu-icon" />
+							<div
+								class="menu-wrapper"
+								role="menu"
+								tabindex="-1"
+								onmouseleave={() => {
+									openMenuId = null;
+								}}
+							>
+								<button
+									class="menu-button"
+									type="button"
+									aria-label="Material-Aktionen öffnen"
+									onclick={() => toggleMenu(material._id)}
+								>
+									<img src="/images/menu.png" alt="" class="menu-icon" />
+								</button>
+
+								{#if openMenuId === material._id}
+									<div class="menu-dropdown">
+										<a href={`/materials/${material._id}`}>Öffnen</a>
+										<a href={`/materials/${material._id}/edit`}>Bearbeiten</a>
+
+										<form method="POST" action={`/materials/${material._id}?/delete`}>
+											<button type="submit" class="delete-action">Löschen</button>
+										</form>
+									</div>
+								{/if}
+							</div>
 						</div>
 					{/each}
 				</div>
@@ -140,12 +173,18 @@
 		display: flex;
 		flex-direction: column;
 		gap: 28px;
+		overflow: visible;
 	}
 
 	.category-card {
 		border: 1px solid #e2e2ea;
 		border-radius: 12px;
-		overflow: hidden;
+		overflow: visible;
+	}
+
+	.material-list {
+		width: 100%;
+		overflow: visible;
 	}
 
 	.category-header {
@@ -166,10 +205,6 @@
 		font-size: 15px;
 	}
 
-	.material-list {
-		width: 100%;
-	}
-
 	.material-row {
 		display: grid;
 		grid-template-columns: 2fr 1fr 1.2fr 40px;
@@ -184,16 +219,21 @@
 		background: #f8f6ff;
 	}
 
-	.title-cell {
+	.title-cell,
+	.material-link,
+	.favorite-link,
+	.menu-wrapper,
+	.menu-button {
 		display: flex;
 		align-items: center;
+	}
+
+	.title-cell,
+	.material-link {
 		gap: 10px;
 	}
 
 	.material-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
 		color: #111;
 		text-decoration: none;
 	}
@@ -208,11 +248,6 @@
 		object-fit: contain;
 	}
 
-	.favorite-link {
-		display: inline-flex;
-		align-items: center;
-	}
-
 	.favorite-link:hover {
 		opacity: 0.8;
 	}
@@ -223,11 +258,64 @@
 		object-fit: contain;
 	}
 
+	.menu-wrapper {
+		position: relative;
+		justify-content: flex-end;
+	}
+
+	.menu-button {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		padding: 4px;
+	}
+
 	.menu-icon {
 		width: 18px;
 		height: 18px;
 		object-fit: contain;
-		margin-left: auto;
+	}
+
+	.menu-dropdown {
+		position: absolute;
+		top: 28px;
+		right: 0;
+		min-width: 170px;
+		background: white;
+		border: 1px solid #e2e2ea;
+		border-radius: 8px;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		z-index: 999;
+	}
+
+	.menu-dropdown a,
+	.menu-dropdown button {
+		width: 100%;
+		padding: 12px 16px;
+		border: none;
+		background: white;
+		color: #111;
+		text-align: left;
+		text-decoration: none;
+		font-size: 15px;
+		cursor: pointer;
+		box-sizing: border-box;
+	}
+
+	.menu-dropdown a:hover,
+	.menu-dropdown button:hover {
+		background: #f8f6ff;
+	}
+
+	.menu-dropdown form {
+		margin: 0;
+	}
+
+	.delete-action {
+		color: #e53935;
 	}
 
 	.empty-state {

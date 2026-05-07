@@ -3,6 +3,7 @@
 
 	let search = $state('');
 	let selectedSubject = $state('Alle Fächer');
+	let openMenuId = $state(null);
 
 	let materials = $derived(data.materials ?? []);
 
@@ -19,7 +20,6 @@
 	let filteredMaterials = $derived(
 		materials.filter((material) => {
 			const matchesSearch = material.title.toLowerCase().includes(search.toLowerCase());
-
 			const matchesSubject =
 				selectedSubject === 'Alle Fächer' || material.subject === selectedSubject;
 
@@ -27,12 +27,18 @@
 		})
 	);
 
+	function toggleMenu(id) {
+		openMenuId = openMenuId === id ? null : id;
+	}
+
+	function closeMenu() {
+		openMenuId = null;
+	}
+
 	function formatDate(value) {
 		if (!value) return 'Kein Datum';
 
-		const date = new Date(value);
-
-		if (Number.isNaN(date.getTime())) {
+		if (typeof value === 'string' && value.includes('.')) {
 			const parts = value.split('.');
 
 			if (parts.length === 3) {
@@ -42,7 +48,11 @@
 
 				return `${day}.${month}.${year}`;
 			}
+		}
 
+		const date = new Date(value);
+
+		if (Number.isNaN(date.getTime())) {
 			return value;
 		}
 
@@ -66,8 +76,7 @@
 
 	<div class="filters">
 		<div class="search-box">
-			<img src="/images/search.png" alt="Search" class="search-icon" />
-
+			<img src="/images/search.png" alt="" class="search-icon" />
 			<input bind:value={search} placeholder="Suche nach Materialien..." />
 		</div>
 
@@ -93,14 +102,13 @@
 			<div class="table-row">
 				<div class="title-cell">
 					<a class="material-link" href={`/materials/${material._id}`}>
-						<img src="/images/file.png" alt="Datei" class="file-icon" />
-
+						<img src="/images/file.png" alt="" class="file-icon" />
 						<span>{material.title}</span>
 					</a>
 
 					{#if material.favorite}
 						<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
-							<img src="/images/favorites-filled.png" alt="Favorit" class="favorite-icon" />
+							<img src="/images/favorites-filled.png" alt="" class="favorite-icon" />
 						</a>
 					{/if}
 				</div>
@@ -109,7 +117,35 @@
 				<span>{material.type}</span>
 				<span>{formatDate(material.date || material.createdAt)}</span>
 
-				<img src="/images/menu.png" alt="" class="menu-icon" />
+				<div
+					class="menu-wrapper"
+					role="menu"
+					tabindex="-1"
+					onmouseleave={() => {
+						openMenuId = null;
+					}}
+				>
+					<button
+						class="menu-button"
+						type="button"
+						aria-label="Material-Aktionen öffnen"
+						onclick={() => toggleMenu(material._id)}
+					>
+						<img src="/images/menu.png" alt="" class="menu-icon" />
+					</button>
+
+					{#if openMenuId === material._id}
+						<div class="menu-dropdown">
+							<a href={`/materials/${material._id}`}>Öffnen</a>
+
+							<a href={`/materials/${material._id}/edit`}> Bearbeiten </a>
+
+							<form method="POST" action={`/materials/${material._id}?/delete`}>
+								<button type="submit" class="delete-action">Löschen</button>
+							</form>
+						</div>
+					{/if}
+				</div>
 			</div>
 		{/each}
 
@@ -159,9 +195,9 @@
 	}
 
 	.search-box {
+		height: 52px;
 		border: 1px solid #e2e2ea;
 		border-radius: 8px;
-		height: 52px;
 		display: flex;
 		align-items: center;
 		gap: 14px;
@@ -221,16 +257,21 @@
 		background: #f8f6ff;
 	}
 
-	.title-cell {
+	.title-cell,
+	.material-link,
+	.favorite-link,
+	.menu-wrapper,
+	.menu-button {
 		display: flex;
 		align-items: center;
+	}
+
+	.title-cell,
+	.material-link {
 		gap: 10px;
 	}
 
 	.material-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
 		color: #111;
 		text-decoration: none;
 	}
@@ -239,22 +280,15 @@
 		text-decoration: underline;
 	}
 
-	.search-icon {
-		width: 22px;
-		height: 22px;
-		object-fit: contain;
-		opacity: 0.7;
-	}
-
+	.search-icon,
 	.file-icon {
 		width: 22px;
 		height: 22px;
 		object-fit: contain;
 	}
 
-	.favorite-link {
-		display: inline-flex;
-		align-items: center;
+	.search-icon {
+		opacity: 0.7;
 	}
 
 	.favorite-link:hover {
@@ -267,11 +301,64 @@
 		object-fit: contain;
 	}
 
+	.menu-wrapper {
+		position: relative;
+		justify-content: flex-end;
+	}
+
+	.menu-button {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		padding: 4px;
+	}
+
 	.menu-icon {
 		width: 18px;
 		height: 18px;
 		object-fit: contain;
-		margin-left: auto;
+	}
+
+	.menu-dropdown {
+		position: absolute;
+		top: 28px;
+		right: 0;
+		min-width: 170px;
+		background: white;
+		border: 1px solid #e2e2ea;
+		border-radius: 8px;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		z-index: 10;
+	}
+
+	.menu-dropdown a,
+	.menu-dropdown button {
+		width: 100%;
+		padding: 12px 16px;
+		border: none;
+		background: white;
+		color: #111;
+		text-align: left;
+		text-decoration: none;
+		font-size: 15px;
+		cursor: pointer;
+		box-sizing: border-box;
+	}
+
+	.menu-dropdown a:hover,
+	.menu-dropdown button:hover {
+		background: #f8f6ff;
+	}
+
+	.menu-dropdown form {
+		margin: 0;
+	}
+
+	.delete-action {
+		color: #e53935;
 	}
 
 	.empty-state {

@@ -43,6 +43,14 @@ export const actions = {
             fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
         }
 
+        const now = new Date();
+
+        const formattedDate = now.toLocaleDateString('de-DE', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+
         const db = await connectToDatabase();
 
         await db.collection('materials').insertOne({
@@ -54,9 +62,9 @@ export const actions = {
             filePath,
             fileSize,
             favorite: false,
-            date: new Date().toLocaleDateString('de-CH'),
-            createdAt: new Date(),
-            lastOpened: new Date()
+            date: formattedDate,
+            createdAt: now,
+            lastOpened: now
         });
 
         throw redirect(303, '/');
