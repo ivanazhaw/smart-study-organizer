@@ -46,7 +46,23 @@
 
 			<div class="row">
 				<span>Hinzugefügt am</span>
-				<strong>{material.date || 'Kein Datum'}</strong>
+				<strong>
+					{material.date
+						? (() => {
+								const parts = material.date.split('.');
+
+								if (parts.length === 3) {
+									const day = parts[0].padStart(2, '0');
+									const month = parts[1].padStart(2, '0');
+									const year = parts[2];
+
+									return `${day}.${month}.${year}`;
+								}
+
+								return material.date;
+							})()
+						: 'Kein Datum'}
+				</strong>
 			</div>
 
 			<div class="row">
