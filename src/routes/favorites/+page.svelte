@@ -1,5 +1,6 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
+	import { formatDate } from '$lib/utils/date';
 	import { enhance } from '$app/forms';
 
 	let { data } = $props();

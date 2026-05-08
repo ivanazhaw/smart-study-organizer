@@ -1,4 +1,6 @@
 <script>
+	import { formatDate } from '$lib/utils/date';
+
 	let { data } = $props();
 
 	let material = $derived(data.material);
@@ -46,23 +48,7 @@
 
 			<div class="row">
 				<span>Hinzugefügt am</span>
-				<strong>
-					{material.date
-						? (() => {
-								const parts = material.date.split('.');
-
-								if (parts.length === 3) {
-									const day = parts[0].padStart(2, '0');
-									const month = parts[1].padStart(2, '0');
-									const year = parts[2];
-
-									return `${day}.${month}.${year}`;
-								}
-
-								return material.date;
-							})()
-						: 'Kein Datum'}
-				</strong>
+				<strong>{formatDate(material.date || material.createdAt)}</strong>
 			</div>
 
 			<div class="row">

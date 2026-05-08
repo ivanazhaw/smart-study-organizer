@@ -1,5 +1,6 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
+	import { formatDate } from '$lib/utils/date';
 
 	let { data } = $props();
 
@@ -67,11 +68,7 @@
 							<span>{material.type}</span>
 
 							<span>
-								{new Date(material.createdAt).toLocaleDateString('de-CH', {
-									day: '2-digit',
-									month: '2-digit',
-									year: 'numeric'
-								})}
+								{formatDate(material.date || material.createdAt)}
 							</span>
 
 							<MaterialMenu materialId={material._id} />
