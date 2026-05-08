@@ -1,32 +1,37 @@
-import { ObjectId } from 'mongodb';
 import { redirect, error } from '@sveltejs/kit';
 import { writeFile, mkdir, unlink } from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import { connectToDatabase } from '$lib/server/db';
+
+import {
+    isValidMaterialId,
+    getMaterialById,
+    updateMaterial,
+    serializeMaterial
+} from '$lib/server/materials';
 
 export async function load({ params }) {
-    const db = await connectToDatabase();
+    if (!isValidMaterialId(params.id)) {
+        throw error(404, 'Material nicht gefunden');
+    }
 
-    const material = await db.collection('materials').findOne({
-        _id: new ObjectId(params.id)
-    });
+    const material = await getMaterialById(params.id);
 
     if (!material) {
         throw error(404, 'Material nicht gefunden');
     }
 
     return {
-        material: {
-            ...material,
-            _id: material._id.toString()
-        }
+        material: serializeMaterial(material)
     };
 }
 
 export const actions = {
     update: async ({ request, params }) => {
-        const db = await connectToDatabase();
+        if (!isValidMaterialId(params.id)) {
+            throw error(404, 'Material nicht gefunden');
+        }
+
         const formData = await request.formData();
 
         const title = formData.get('title');
@@ -35,9 +40,7 @@ export const actions = {
         const note = formData.get('note');
         const file = formData.get('file');
 
-        const material = await db.collection('materials').findOne({
-            _id: new ObjectId(params.id)
-        });
+        const material = await getMaterialById(params.id);
 
         const updateData = {
             title,
@@ -76,14 +79,7 @@ export const actions = {
             updateData.fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
         }
 
-        await db.collection('materials').updateOne(
-            {
-                _id: new ObjectId(params.id)
-            },
-            {
-                $set: updateData
-            }
-        );
+        await updateMaterial(params.id, updateData);
 
         throw redirect(303, `/materials/${params.id}`);
     }

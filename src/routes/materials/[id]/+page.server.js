@@ -1,78 +1,54 @@
-import { ObjectId } from 'mongodb';
 import { redirect, error } from '@sveltejs/kit';
 import { unlink } from 'fs/promises';
 import path from 'path';
-import { connectToDatabase } from '$lib/server/db';
+
+import {
+    isValidMaterialId,
+    getMaterialById,
+    updateMaterial,
+    deleteMaterial,
+    serializeMaterial
+} from '$lib/server/materials';
 
 export async function load({ params }) {
-    if (!ObjectId.isValid(params.id)) {
+    if (!isValidMaterialId(params.id)) {
         throw error(404, 'Material nicht gefunden');
     }
 
-    const db = await connectToDatabase();
-    const materialId = new ObjectId(params.id);
-
-    await db.collection('materials').updateOne(
-        { _id: materialId },
-        {
-            $set: {
-                lastOpened: new Date()
-            }
-        }
-    );
-
-    const material = await db.collection('materials').findOne({
-        _id: materialId
+    await updateMaterial(params.id, {
+        lastOpened: new Date()
     });
 
+    const material = await getMaterialById(params.id);
+
     return {
-        material: material
-            ? {
-                ...material,
-                _id: material._id.toString()
-            }
-            : null
+        material: material ? serializeMaterial(material) : null
     };
 }
 
 export const actions = {
     toggleFavorite: async ({ params }) => {
-        if (!ObjectId.isValid(params.id)) {
+        if (!isValidMaterialId(params.id)) {
             throw error(404, 'Material nicht gefunden');
         }
 
-        const db = await connectToDatabase();
-        const materialId = new ObjectId(params.id);
-
-        const material = await db.collection('materials').findOne({
-            _id: materialId
-        });
+        const material = await getMaterialById(params.id);
 
         if (material) {
-            await db.collection('materials').updateOne(
-                { _id: materialId },
-                {
-                    $set: {
-                        favorite: !material.favorite
-                    }
-                }
-            );
+            await updateMaterial(params.id, {
+                favorite: !material.favorite
+            });
         }
 
         throw redirect(303, `/materials/${params.id}`);
     },
 
     delete: async ({ params }) => {
-        if (!ObjectId.isValid(params.id)) {
+        if (!isValidMaterialId(params.id)) {
             throw error(404, 'Material nicht gefunden');
         }
 
-        const db = await connectToDatabase();
-        const materialId = new ObjectId(params.id);
-
-        const material = await db.collection('materials').findOne({
-            _id: materialId
-        });
+        const material = await getMaterialById(params.id);
 
         if (material?.filePath) {
             const filePath = path.join(process.cwd(), 'static', material.filePath);
@@ -84,9 +60,7 @@ export const actions = {
             }
         }
 
-        await db.collection('materials').deleteOne({
-            _id: materialId
-        });
+        await deleteMaterial(params.id);
 
         throw redirect(303, '/');
     }

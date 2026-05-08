@@ -2,7 +2,8 @@ import { redirect, fail } from '@sveltejs/kit';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import { connectToDatabase } from '$lib/server/db';
+
+import { createMaterial } from '$lib/server/materials';
 
 export const actions = {
     default: async ({ request }) => {
@@ -51,9 +52,7 @@ export const actions = {
             year: 'numeric'
         });
 
-        const db = await connectToDatabase();
-
-        await db.collection('materials').insertOne({
+        await createMaterial({
             title,
             subject,
             type,

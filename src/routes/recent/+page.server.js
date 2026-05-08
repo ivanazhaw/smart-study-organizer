@@ -1,18 +1,9 @@
-import { connectToDatabase } from '$lib/server/db';
+import { getRecentMaterials, serializeMaterials } from '$lib/server/materials';
 
 export async function load() {
-    const db = await connectToDatabase();
-
-    const materials = await db
-        .collection('materials')
-        .find()
-        .sort({ lastOpened: -1 })
-        .toArray();
+    const materials = await getRecentMaterials();
 
     return {
-        materials: materials.map((material) => ({
-            ...material,
-            _id: material._id.toString()
-        }))
+        materials: serializeMaterials(materials)
     };
 }
