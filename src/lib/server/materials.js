@@ -6,53 +6,66 @@ async function getMaterialsCollection() {
     return db.collection('materials');
 }
 
-export async function getAllMaterials() {
+export async function getAllMaterials(userId) {
     const collection = await getMaterialsCollection();
 
-    return collection.find().sort({ createdAt: -1 }).toArray();
+    return collection.find({ userId }).sort({ createdAt: -1 }).toArray();
 }
 
-export async function getFavoriteMaterials() {
+export async function getFavoriteMaterials(userId) {
     const collection = await getMaterialsCollection();
 
-    return collection.find({ favorite: true }).sort({ createdAt: -1 }).toArray();
+    return collection.find({ userId, favorite: true }).sort({ createdAt: -1 }).toArray();
 }
 
-export async function getRecentMaterials() {
+export async function getRecentMaterials(userId) {
     const collection = await getMaterialsCollection();
 
-    return collection.find().sort({ lastOpened: -1 }).toArray();
+    return collection.find({ userId }).sort({ lastOpened: -1 }).toArray();
 }
 
-export async function getMaterialsBySubject() {
+export async function getMaterialsBySubject(userId) {
     const collection = await getMaterialsCollection();
 
-    return collection.find().sort({ subject: 1, createdAt: -1 }).toArray();
+    return collection.find({ userId }).sort({ subject: 1, createdAt: -1 }).toArray();
 }
 
-export async function getMaterialById(id) {
+export async function getMaterialById(id, userId) {
     const collection = await getMaterialsCollection();
 
     return collection.findOne({
-        _id: new ObjectId(id)
+        _id: new ObjectId(id),
+        userId
     });
 }
 
-export async function updateMaterial(id, data) {
+export async function updateMaterial(id, userId, data) {
     const collection = await getMaterialsCollection();
 
     return collection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: data }
+        {
+            _id: new ObjectId(id),
+            userId
+        },
+        {
+            $set: data
+        }
     );
 }
 
-export async function deleteMaterial(id) {
+export async function deleteMaterial(id, userId) {
     const collection = await getMaterialsCollection();
 
     return collection.deleteOne({
-        _id: new ObjectId(id)
+        _id: new ObjectId(id),
+        userId
     });
+}
+
+export async function createMaterial(data) {
+    const collection = await getMaterialsCollection();
+
+    return collection.insertOne(data);
 }
 
 export function serializeMaterial(material) {
@@ -68,10 +81,4 @@ export function serializeMaterials(materials) {
 
 export function isValidMaterialId(id) {
     return ObjectId.isValid(id);
-}
-
-export async function createMaterial(data) {
-    const collection = await getMaterialsCollection();
-
-    return collection.insertOne(data);
 }

@@ -10,16 +10,16 @@ import {
 
 import { deleteUploadedFile } from '$lib/server/upload';
 
-export async function load({ params }) {
+export async function load({ params, locals }) {
     if (!isValidMaterialId(params.id)) {
         throw error(404, 'Material nicht gefunden');
     }
 
-    await updateMaterial(params.id, {
+    await updateMaterial(params.id, locals.user._id, {
         lastOpened: new Date()
     });
 
-    const material = await getMaterialById(params.id);
+    const material = await getMaterialById(params.id, locals.user._id);
 
     return {
         material: material ? serializeMaterial(material) : null
@@ -27,15 +27,15 @@ export async function load({ params }) {
 }
 
 export const actions = {
-    toggleFavorite: async ({ params }) => {
+    toggleFavorite: async ({ params, locals }) => {
         if (!isValidMaterialId(params.id)) {
             throw error(404, 'Material nicht gefunden');
         }
 
-        const material = await getMaterialById(params.id);
+        const material = await getMaterialById(params.id, locals.user._id);
 
         if (material) {
-            await updateMaterial(params.id, {
+            await updateMaterial(params.id, locals.user._id, {
                 favorite: !material.favorite
             });
         }
@@ -43,16 +43,16 @@ export const actions = {
         throw redirect(303, `/materials/${params.id}`);
     },
 
-    delete: async ({ params }) => {
+    delete: async ({ params, locals }) => {
         if (!isValidMaterialId(params.id)) {
             throw error(404, 'Material nicht gefunden');
         }
 
-        const material = await getMaterialById(params.id);
+        const material = await getMaterialById(params.id, locals.user._id);
 
         await deleteUploadedFile(material?.filePath);
 
-        await deleteMaterial(params.id);
+        await deleteMaterial(params.id, locals.user._id);
 
         throw redirect(303, '/');
     }

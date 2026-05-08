@@ -3,7 +3,7 @@ import { saveUploadedFile } from '$lib/server/upload';
 import { createMaterial } from '$lib/server/materials';
 
 export const actions = {
-    default: async ({ request }) => {
+    default: async ({ request, locals }) => {
         const formData = await request.formData();
 
         const title = formData.get('title');
@@ -29,6 +29,7 @@ export const actions = {
         });
 
         await createMaterial({
+            userId: locals.user._id,
             title,
             subject,
             type,
