@@ -11,49 +11,57 @@
 		{ href: '/categories', label: 'Kategorien', icon: '/images/categories.png' }
 	];
 
+	let user = $derived(page.data.user);
+
 	function isActive(href) {
 		if (href === '/') return page.url.pathname === '/';
 		return page.url.pathname.startsWith(href);
 	}
 </script>
 
-<div class="app-shell">
-	<aside class="sidebar">
-		<a href="/" class="logo">
-			<img src="/images/logo.png" alt="Smart Study Organizer Logo" class="logo-icon" />
+{#if user}
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a href="/" class="logo">
+				<img src="/images/logo.png" alt="Smart Study Organizer Logo" class="logo-icon" />
 
-			<div class="logo-text">
-				<strong>Smart Study</strong>
-				<strong>Organizer</strong>
-			</div>
-		</a>
+				<div class="logo-text">
+					<strong>Smart Study</strong>
+					<strong>Organizer</strong>
+				</div>
+			</a>
 
-		<nav class="nav">
-			{#each navItems as item}
-				<a href={item.href} class:active={isActive(item.href)}>
-					<img src={item.icon} alt="" class="nav-icon" />
-					<span>{item.label}</span>
+			<nav class="nav">
+				{#each navItems as item}
+					<a href={item.href} class:active={isActive(item.href)}>
+						<img src={item.icon} alt="" class="nav-icon" />
+						<span>{item.label}</span>
+					</a>
+				{/each}
+			</nav>
+
+			<div class="bottom-nav">
+				<a href="/">
+					<img src="/images/settings.png" alt="" class="nav-icon" />
+					<span>Einstellungen</span>
 				</a>
-			{/each}
-		</nav>
 
-		<div class="bottom-nav">
-			<a href="/">
-				<img src="/images/settings.png" alt="" class="nav-icon" />
-				<span>Einstellungen</span>
-			</a>
+				<a href="/">
+					<img src="/images/help.png" alt="" class="nav-icon" />
+					<span>Hilfe</span>
+				</a>
+			</div>
+		</aside>
 
-			<a href="/">
-				<img src="/images/help.png" alt="" class="nav-icon" />
-				<span>Hilfe</span>
-			</a>
-		</div>
-	</aside>
-
-	<main class="content">
+		<main class="content">
+			{@render children()}
+		</main>
+	</div>
+{:else}
+	<main class="public-content">
 		{@render children()}
 	</main>
-</div>
+{/if}
 
 <style>
 	:global(body) {
@@ -141,5 +149,11 @@
 		padding: 48px 56px;
 		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 		border-radius: 0 12px 12px 0;
+	}
+
+	.public-content {
+		min-height: 100vh;
+		padding: 48px;
+		box-sizing: border-box;
 	}
 </style>
