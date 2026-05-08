@@ -1,8 +1,5 @@
 import { redirect, fail } from '@sveltejs/kit';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-import { randomUUID } from 'crypto';
-
+import { saveUploadedFile } from '$lib/server/upload';
 import { createMaterial } from '$lib/server/materials';
 
 export const actions = {
@@ -21,28 +18,7 @@ export const actions = {
             });
         }
 
-        let fileName = '';
-        let filePath = '';
-        let fileSize = '';
-
-        if (file && file.size > 0) {
-            const uploadDir = path.join(process.cwd(), 'static', 'uploads');
-
-            await mkdir(uploadDir, { recursive: true });
-
-            const fileExtension = path.extname(file.name);
-            const savedFileName = `${randomUUID()}${fileExtension}`;
-            const savedPath = path.join(uploadDir, savedFileName);
-
-            const arrayBuffer = await file.arrayBuffer();
-            const buffer = Buffer.from(arrayBuffer);
-
-            await writeFile(savedPath, buffer);
-
-            fileName = file.name;
-            filePath = `/uploads/${savedFileName}`;
-            fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
-        }
+        const uploadedFile = await saveUploadedFile(file);
 
         const now = new Date();
 
@@ -57,9 +33,9 @@ export const actions = {
             subject,
             type,
             note,
-            fileName,
-            filePath,
-            fileSize,
+            fileName: uploadedFile.fileName,
+            filePath: uploadedFile.filePath,
+            fileSize: uploadedFile.fileSize,
             favorite: false,
             date: formattedDate,
             createdAt: now,

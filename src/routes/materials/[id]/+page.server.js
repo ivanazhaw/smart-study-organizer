@@ -1,6 +1,4 @@
 import { redirect, error } from '@sveltejs/kit';
-import { unlink } from 'fs/promises';
-import path from 'path';
 
 import {
     isValidMaterialId,
@@ -9,6 +7,8 @@ import {
     deleteMaterial,
     serializeMaterial
 } from '$lib/server/materials';
+
+import { deleteUploadedFile } from '$lib/server/upload';
 
 export async function load({ params }) {
     if (!isValidMaterialId(params.id)) {
@@ -50,15 +50,7 @@ export const actions = {
 
         const material = await getMaterialById(params.id);
 
-        if (material?.filePath) {
-            const filePath = path.join(process.cwd(), 'static', material.filePath);
-
-            try {
-                await unlink(filePath);
-            } catch {
-                console.log('Datei konnte nicht gelöscht werden oder existiert nicht mehr.');
-            }
-        }
+        await deleteUploadedFile(material?.filePath);
 
         await deleteMaterial(params.id);
 

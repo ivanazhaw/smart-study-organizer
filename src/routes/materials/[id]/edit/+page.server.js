@@ -1,7 +1,4 @@
 import { redirect, error } from '@sveltejs/kit';
-import { writeFile, mkdir, unlink } from 'fs/promises';
-import path from 'path';
-import { randomUUID } from 'crypto';
 
 import {
     isValidMaterialId,
@@ -9,6 +6,8 @@ import {
     updateMaterial,
     serializeMaterial
 } from '$lib/server/materials';
+
+import { saveUploadedFile, deleteUploadedFile } from '$lib/server/upload';
 
 export async function load({ params }) {
     if (!isValidMaterialId(params.id)) {
@@ -51,32 +50,13 @@ export const actions = {
         };
 
         if (file && file.size > 0) {
-            if (material?.filePath) {
-                const oldFilePath = path.join(process.cwd(), 'static', material.filePath);
+            await deleteUploadedFile(material?.filePath);
 
-                try {
-                    await unlink(oldFilePath);
-                } catch {
-                    console.log('Alte Datei konnte nicht gelöscht werden.');
-                }
-            }
+            const uploadedFile = await saveUploadedFile(file);
 
-            const uploadDir = path.join(process.cwd(), 'static', 'uploads');
-
-            await mkdir(uploadDir, { recursive: true });
-
-            const fileExtension = path.extname(file.name);
-            const savedFileName = `${randomUUID()}${fileExtension}`;
-            const savedPath = path.join(uploadDir, savedFileName);
-
-            const arrayBuffer = await file.arrayBuffer();
-            const buffer = Buffer.from(arrayBuffer);
-
-            await writeFile(savedPath, buffer);
-
-            updateData.fileName = file.name;
-            updateData.filePath = `/uploads/${savedFileName}`;
-            updateData.fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+            updateData.fileName = uploadedFile.fileName;
+            updateData.filePath = uploadedFile.filePath;
+            updateData.fileSize = uploadedFile.fileSize;
         }
 
         await updateMaterial(params.id, updateData);
