@@ -1,4 +1,6 @@
 <script>
+	import BackLink from '$lib/components/BackLink.svelte';
+
 	let title = $state('');
 	let subject = $state('');
 	let type = $state('');
@@ -16,11 +18,7 @@
 		<div class="page-header">
 			<div>
 				<h1>Neues Material hinzufügen</h1>
-
-				<a href="/" class="back-link">
-					<img src="/images/back.png" alt="" class="back-icon" />
-					<span>Zurück zur Übersicht</span>
-				</a>
+				<BackLink />
 			</div>
 		</div>
 
@@ -99,25 +97,6 @@
 	h1 {
 		margin: 0 0 8px;
 		font-size: 28px;
-	}
-
-	.back-link {
-		color: #111;
-		text-decoration: none;
-		font-size: 16px;
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.back-icon {
-		width: 18px;
-		height: 18px;
-		object-fit: contain;
-	}
-
-	.back-link:hover {
-		text-decoration: underline;
 	}
 
 	.form {

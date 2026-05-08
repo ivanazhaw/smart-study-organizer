@@ -1,4 +1,6 @@
 <script>
+	import BackLink from '$lib/components/BackLink.svelte';
+
 	let { data } = $props();
 
 	let material = $derived(data.material);
@@ -14,7 +16,7 @@
 <section class="edit-page">
 	<h1>Material bearbeiten</h1>
 
-	<a href={`/materials/${material._id}`} class="back-link"> ← Zurück zur Detailansicht </a>
+	<BackLink href={`/materials/${material._id}`} text="Zurück zur Detailansicht" />
 
 	<form method="POST" action="?/update" enctype="multipart/form-data" class="form">
 		<div class="field">
@@ -85,17 +87,6 @@
 	h1 {
 		font-size: 32px;
 		margin-bottom: 12px;
-	}
-
-	.back-link {
-		display: inline-block;
-		margin-bottom: 40px;
-		color: #555;
-		text-decoration: none;
-	}
-
-	.back-link:hover {
-		text-decoration: underline;
 	}
 
 	.form {

@@ -2,6 +2,7 @@
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
 	import { formatDate } from '$lib/utils/date';
 	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
+	import BackLink from '$lib/components/BackLink.svelte';
 
 	let { data } = $props();
 
@@ -32,11 +33,7 @@
 		<div>
 			<h1>Kategorien</h1>
 			<p>Deine Lernmaterialien nach Fach geordnet.</p>
-
-			<a href="/" class="back-link">
-				<img src="/images/back.png" alt="" class="back-icon" />
-				<span>Zurück zur Übersicht</span>
-			</a>
+			<BackLink />
 		</div>
 
 		<a href="/add" class="add-button">+ Material hinzufügen</a>
@@ -106,26 +103,6 @@
 		margin: 8px 0 0;
 		font-size: 17px;
 		color: #333;
-	}
-
-	.back-link {
-		margin-top: 18px;
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		color: #111;
-		text-decoration: none;
-		font-size: 16px;
-	}
-
-	.back-link:hover {
-		text-decoration: underline;
-	}
-
-	.back-icon {
-		width: 18px;
-		height: 18px;
-		object-fit: contain;
 	}
 
 	.add-button {

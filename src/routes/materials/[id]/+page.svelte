@@ -1,6 +1,7 @@
 <script>
 	import { formatDate } from '$lib/utils/date';
 	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
+	import BackLink from '$lib/components/BackLink.svelte';
 
 	let { data } = $props();
 
@@ -8,10 +9,7 @@
 </script>
 
 <section class="detail-page">
-	<a href="/" class="back-link">
-		<img src="/images/back.png" alt="" class="back-icon" />
-		<span>Zurück zur Übersicht</span>
-	</a>
+	<BackLink />
 
 	{#if material}
 		<div class="topbar">
@@ -99,7 +97,6 @@
 		margin: 0 auto;
 	}
 
-	.back-link,
 	.fav-btn,
 	.download,
 	.delete,
@@ -108,22 +105,6 @@
 		align-items: center;
 		gap: 10px;
 		text-decoration: none;
-	}
-
-	.back-link {
-		margin-bottom: 32px;
-		color: #111;
-		font-size: 16px;
-	}
-
-	.back-link:hover {
-		text-decoration: underline;
-	}
-
-	.back-icon {
-		width: 18px;
-		height: 18px;
-		object-fit: contain;
 	}
 
 	.topbar {
