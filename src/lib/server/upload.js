@@ -1,8 +1,48 @@
 import { writeFile, mkdir, unlink } from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
+import { fail } from '@sveltejs/kit';
 
-export async function saveUploadedFile(file) {
+const allowedExtensionsByType = {
+    PDF: ['.pdf'],
+    Notizen: ['.txt', '.md'],
+    Link: [],
+    Präsentation: ['.ppt', '.pptx'],
+    Docx: ['.doc', '.docx']
+};
+
+export function getAllowedExtensions(type) {
+    return allowedExtensionsByType[type] ?? [];
+}
+
+export function validateUploadedFile(file, type) {
+    if (!file || file.size === 0) return null;
+
+    const allowedExtensions = getAllowedExtensions(type);
+    const fileExtension = path.extname(file.name).toLowerCase();
+
+    if (type === 'Link') {
+        return fail(400, {
+            error: 'Beim Typ Link darf keine Datei hochgeladen werden.'
+        });
+    }
+
+    if (!allowedExtensions.includes(fileExtension)) {
+        return fail(400, {
+            error: `Ungültiges Dateiformat. Für "${type}" sind nur folgende Dateien erlaubt: ${allowedExtensions.join(', ')}`
+        });
+    }
+
+    return null;
+}
+
+export async function saveUploadedFile(file, type) {
+    const validationError = validateUploadedFile(file, type);
+
+    if (validationError) {
+        return validationError;
+    }
+
     if (!file || file.size === 0) {
         return {
             fileName: '',
@@ -15,7 +55,7 @@ export async function saveUploadedFile(file) {
 
     await mkdir(uploadDir, { recursive: true });
 
-    const fileExtension = path.extname(file.name);
+    const fileExtension = path.extname(file.name).toLowerCase();
     const savedFileName = `${randomUUID()}${fileExtension}`;
     const savedPath = path.join(uploadDir, savedFileName);
 

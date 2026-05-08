@@ -18,7 +18,11 @@ export const actions = {
             });
         }
 
-        const uploadedFile = await saveUploadedFile(file);
+        const uploadedFile = await saveUploadedFile(file, type);
+
+        if (uploadedFile?.status === 400) {
+            return uploadedFile;
+        }
 
         const now = new Date();
 

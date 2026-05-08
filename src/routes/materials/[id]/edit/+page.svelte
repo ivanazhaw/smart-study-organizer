@@ -1,11 +1,24 @@
 <script>
 	import BackLink from '$lib/components/BackLink.svelte';
 
-	let { data } = $props();
+	let { data, form } = $props();
 
 	let material = $derived(data.material);
 
+	let selectedType = $derived(material.type);
 	let selectedFileName = $state('');
+
+	let acceptedFileTypes = $derived(
+		selectedType === 'PDF'
+			? '.pdf'
+			: selectedType === 'Notizen'
+				? '.txt,.md'
+				: selectedType === 'Präsentation'
+					? '.ppt,.pptx'
+					: selectedType === 'Docx'
+						? '.doc,.docx'
+						: ''
+	);
 
 	function handleFileChange(event) {
 		const file = event.target.files[0];
@@ -18,52 +31,70 @@
 
 	<BackLink href={`/materials/${material._id}`} text="Zurück zur Detailansicht" />
 
+	{#if form?.error}
+		<div class="error-message">{form.error}</div>
+	{/if}
+
 	<form method="POST" action="?/update" enctype="multipart/form-data" class="form">
 		<div class="field">
 			<label for="title">Titel</label>
-
 			<input id="title" name="title" value={material.title} required />
 		</div>
 
 		<div class="field">
 			<label for="subject">Fach</label>
-
 			<input id="subject" name="subject" value={material.subject} required />
 		</div>
 
 		<div class="field">
 			<label for="type">Typ</label>
 
-			<select id="type" name="type">
-				<option value="PDF" selected={material.type === 'PDF'}> PDF </option>
-
-				<option value="Notizen" selected={material.type === 'Notizen'}> Notizen </option>
+			<select
+				id="type"
+				name="type"
+				value={selectedType}
+				onchange={(event) => {
+					selectedType = event.target.value;
+				}}
+				required
+			>
+				<option value="PDF">PDF</option>
+				<option value="Notizen">Notizen</option>
+				<option value="Link">Link</option>
+				<option value="Präsentation">Präsentation</option>
+				<option value="Docx">Docx</option>
 			</select>
 		</div>
 
 		<div class="field">
 			<label for="note">Notiz</label>
-
-			<textarea id="note" name="note"> {material.note}</textarea>
+			<textarea id="note" name="note">{material.note}</textarea>
 		</div>
 
 		<div class="field">
 			<label for="file">Datei</label>
 
 			<label class="upload-box" for="file">
-				<input id="file" name="file" type="file" onchange={handleFileChange} />
+				<input
+					id="file"
+					name="file"
+					type="file"
+					accept={acceptedFileTypes}
+					onchange={handleFileChange}
+				/>
 
 				<img src="/images/upload.png" alt="" class="upload-icon" />
 
 				{#if selectedFileName}
-					<p class="selected-file">
-						{selectedFileName}
-					</p>
+					<p class="selected-file">{selectedFileName}</p>
+				{:else if selectedType === 'Link'}
+					<p>Beim Typ Link wird keine Datei hochgeladen.</p>
 				{:else if material.fileName}
-					<p>
-						Aktuelle Datei:
-						{material.fileName}
-					</p>
+					<p>Aktuelle Datei: {material.fileName}</p>
+					<p class="file-hint">Erlaubte Formate: {acceptedFileTypes}</p>
+				{:else if selectedType}
+					<p>Datei hinzufügen</p>
+					<p class="file-hint">Erlaubte Formate: {acceptedFileTypes || 'keine Datei'}</p>
 				{:else}
 					<p>Datei hinzufügen</p>
 				{/if}
@@ -71,9 +102,8 @@
 		</div>
 
 		<div class="actions">
-			<a href={`/materials/${material._id}`} class="cancel-btn"> Abbrechen </a>
-
-			<button type="submit" class="save-btn"> Speichern </button>
+			<a href={`/materials/${material._id}`} class="cancel-btn">Abbrechen</a>
+			<button type="submit" class="save-btn">Speichern</button>
 		</div>
 	</form>
 </section>
@@ -89,10 +119,20 @@
 		margin-bottom: 12px;
 	}
 
+	.error-message {
+		background: #fdecea;
+		color: #c62828;
+		padding: 14px 16px;
+		border-radius: 8px;
+		margin: 24px 0;
+		font-size: 15px;
+	}
+
 	.form {
 		display: flex;
 		flex-direction: column;
 		gap: 28px;
+		margin-top: 28px;
 	}
 
 	.field {
@@ -132,7 +172,7 @@
 	}
 
 	.upload-box {
-		height: 140px;
+		height: 150px;
 		border: 1px solid #ddd;
 		border-radius: 10px;
 		display: flex;
@@ -144,6 +184,7 @@
 		cursor: pointer;
 		box-sizing: border-box;
 		padding: 20px;
+		text-align: center;
 		transition: border-color 0.2s ease;
 	}
 
@@ -169,9 +210,18 @@
 		text-align: center;
 	}
 
+	.upload-box p + p {
+		margin-top: 6px;
+	}
+
 	.selected-file {
 		color: #6c5dd3;
 		font-weight: 600;
+	}
+
+	.file-hint {
+		color: #777;
+		font-size: 13px;
 	}
 
 	.actions {

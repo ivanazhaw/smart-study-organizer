@@ -1,11 +1,25 @@
 <script>
 	import BackLink from '$lib/components/BackLink.svelte';
 
+	let { form } = $props();
+
 	let title = $state('');
 	let subject = $state('');
 	let type = $state('');
 	let note = $state('');
 	let selectedFileName = $state('');
+
+	let acceptedFileTypes = $derived(
+		type === 'PDF'
+			? '.pdf'
+			: type === 'Notizen'
+				? '.txt,.md'
+				: type === 'Präsentation'
+					? '.ppt,.pptx'
+					: type === 'Docx'
+						? '.doc,.docx'
+						: ''
+	);
 
 	function handleFileChange(event) {
 		const file = event.target.files[0];
@@ -21,6 +35,10 @@
 				<BackLink />
 			</div>
 		</div>
+
+		{#if form?.error}
+			<div class="error-message">{form.error}</div>
+		{/if}
 
 		<form class="form" method="POST" enctype="multipart/form-data">
 			<label>
@@ -46,7 +64,7 @@
 					<option value="Notizen">Notizen</option>
 					<option value="Link">Link</option>
 					<option value="Präsentation">Präsentation</option>
-					<option value="Übung">Übung</option>
+					<option value="Docx">Docx</option>
 				</select>
 			</label>
 
@@ -54,11 +72,22 @@
 				<span class="field-label">Datei</span>
 
 				<label class="upload-box" for="file">
-					<input id="file" name="file" type="file" onchange={handleFileChange} />
+					<input
+						id="file"
+						name="file"
+						type="file"
+						accept={acceptedFileTypes}
+						onchange={handleFileChange}
+					/>
+
 					<img src="/images/upload.png" alt="Upload" class="upload-icon" />
 
 					{#if selectedFileName}
 						<p class="selected-file">{selectedFileName}</p>
+					{:else if type === 'Link'}
+						<p>Beim Typ Link wird keine Datei hochgeladen.</p>
+					{:else if type}
+						<p>Erlaubte Formate: {acceptedFileTypes || 'keine Datei'}</p>
 					{:else}
 						<p>Datei hier ziehen oder klicken zum Auswählen</p>
 					{/if}
@@ -97,6 +126,15 @@
 	h1 {
 		margin: 0 0 8px;
 		font-size: 28px;
+	}
+
+	.error-message {
+		background: #fdecea;
+		color: #c62828;
+		padding: 14px 16px;
+		border-radius: 8px;
+		margin-bottom: 24px;
+		font-size: 15px;
 	}
 
 	.form {
@@ -155,6 +193,12 @@
 		background: white;
 		cursor: pointer;
 		box-sizing: border-box;
+		text-align: center;
+		padding: 20px;
+	}
+
+	.upload-box:hover {
+		border-color: #6c5dd3;
 	}
 
 	.upload-box input {

@@ -56,7 +56,11 @@ export const actions = {
         if (file && file.size > 0) {
             await deleteUploadedFile(material.filePath);
 
-            const uploadedFile = await saveUploadedFile(file);
+            const uploadedFile = await saveUploadedFile(file, type);
+
+            if (uploadedFile?.status === 400) {
+                return uploadedFile;
+            }
 
             updateData.fileName = uploadedFile.fileName;
             updateData.filePath = uploadedFile.filePath;
