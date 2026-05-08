@@ -43,18 +43,19 @@
 </script>
 
 <section class="recent-page">
-	<div class="topbar">
+	<div class="page-topbar recent-topbar">
 		<div>
-			<h1>Zuletzt verwendet</h1>
-			<p>Materialien, die du zuletzt geöffnet hast.</p>
+			<h1 class="page-title">Zuletzt verwendet</h1>
+			<p class="page-subtitle">Materialien, die du zuletzt geöffnet hast.</p>
+
 			<BackLink />
 		</div>
 
-		<a href="/add" class="add-button">+ Material hinzufügen</a>
+		<a href="/add" class="primary-button">+ Material hinzufügen</a>
 	</div>
 
-	<div class="table">
-		<div class="table-header">
+	<div class="data-table">
+		<div class="data-table-header recent-table-grid">
 			<span>Titel</span>
 			<span>Fach</span>
 			<span>Typ</span>
@@ -63,8 +64,8 @@
 		</div>
 
 		{#each materials as material}
-			<div class="table-row">
-				<div class="title-cell">
+			<div class="data-table-row recent-table-grid">
+				<div class="material-title-cell">
 					<a class="material-link" href={`/materials/${material._id}`}>
 						<img src="/images/file.png" alt="" class="file-icon" />
 						<span>{material.title}</span>
@@ -92,89 +93,23 @@
 		width: 100%;
 	}
 
-	.topbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
+	.recent-topbar {
 		margin-bottom: 96px;
 	}
 
-	h1 {
-		margin: 0;
-		font-size: 28px;
-	}
-
-	p {
-		margin: 8px 0 0;
-		font-size: 17px;
-		color: #333;
-	}
-
-	.add-button {
-		background: #6c5dd3;
-		color: white;
-		text-decoration: none;
-		padding: 14px 28px;
-		border-radius: 8px;
-		font-size: 16px;
-	}
-
-	.table {
-		width: 100%;
-	}
-
-	.table-header,
-	.table-row {
-		display: grid;
+	.recent-table-grid {
 		grid-template-columns: 2fr 1.2fr 1fr 1.4fr 40px;
-		align-items: center;
-	}
-
-	.table-header {
-		background: #f1f1f1;
-		color: #666;
-		padding: 18px 28px;
-		border-radius: 8px 8px 0 0;
-		font-size: 16px;
-	}
-
-	.table-row {
-		padding: 16px 10px;
-		border: 1px solid #c9c9d1;
-		border-top: none;
-		font-size: 16px;
-		color: #111;
-	}
-
-	.table-row:hover {
-		background: #f8f6ff;
-	}
-
-	.title-cell,
-	.material-link,
-	.favorite-link {
-		display: flex;
-		align-items: center;
-	}
-
-	.title-cell,
-	.material-link {
-		gap: 10px;
-	}
-
-	.material-link {
-		color: #111;
-		text-decoration: none;
-	}
-
-	.material-link:hover {
-		text-decoration: underline;
 	}
 
 	.file-icon {
 		width: 22px;
 		height: 22px;
 		object-fit: contain;
+	}
+
+	.favorite-link {
+		display: flex;
+		align-items: center;
 	}
 
 	.favorite-link:hover {

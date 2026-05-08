@@ -1,7 +1,7 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
-	import { formatDate } from '$lib/utils/date';
 	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
+	import { formatDate } from '$lib/utils/date';
 
 	let { data } = $props();
 
@@ -29,20 +29,16 @@
 			return matchesSearch && matchesSubject;
 		})
 	);
-
-	function closeMenu() {
-		openMenuId = null;
-	}
 </script>
 
 <section class="home">
-	<div class="topbar">
+	<div class="page-topbar home-topbar">
 		<div>
-			<h1>Willkommen zurück!</h1>
-			<p>Finde schnell dein Lernmaterial.</p>
+			<h1 class="page-title">Willkommen zurück!</h1>
+			<p class="page-subtitle">Finde schnell dein Lernmaterial.</p>
 		</div>
 
-		<a href="/add" class="add-button">+ Material hinzufügen</a>
+		<a href="/add" class="primary-button">+ Material hinzufügen</a>
 	</div>
 
 	<div class="filters">
@@ -60,8 +56,8 @@
 
 	<h2>Meine Materialien ({filteredMaterials.length})</h2>
 
-	<div class="table">
-		<div class="table-header">
+	<div class="data-table">
+		<div class="data-table-header home-table-grid">
 			<span>Titel</span>
 			<span>Fach</span>
 			<span>Typ</span>
@@ -70,8 +66,8 @@
 		</div>
 
 		{#each filteredMaterials as material}
-			<div class="table-row">
-				<div class="title-cell">
+			<div class="data-table-row home-table-grid">
+				<div class="material-title-cell">
 					<a class="material-link" href={`/materials/${material._id}`}>
 						<img src="/images/file.png" alt="" class="file-icon" />
 						<span>{material.title}</span>
@@ -103,31 +99,8 @@
 		width: 100%;
 	}
 
-	.topbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
+	.home-topbar {
 		margin-bottom: 64px;
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 28px;
-	}
-
-	p {
-		margin: 8px 0 0;
-		font-size: 17px;
-		color: #333;
-	}
-
-	.add-button {
-		background: #6c5dd3;
-		color: white;
-		text-decoration: none;
-		padding: 14px 28px;
-		border-radius: 8px;
-		font-size: 16px;
 	}
 
 	.filters {
@@ -169,56 +142,8 @@
 		margin-bottom: 28px;
 	}
 
-	.table {
-		width: 100%;
-	}
-
-	.table-header,
-	.table-row {
-		display: grid;
+	.home-table-grid {
 		grid-template-columns: 2fr 1.2fr 1fr 1.2fr 40px;
-		align-items: center;
-	}
-
-	.table-header {
-		background: #f1f1f1;
-		color: #666;
-		padding: 18px 28px;
-		border-radius: 8px 8px 0 0;
-		font-size: 16px;
-	}
-
-	.table-row {
-		padding: 16px 10px;
-		border: 1px solid #c9c9d1;
-		border-top: none;
-		font-size: 16px;
-		color: #111;
-	}
-
-	.table-row:hover {
-		background: #f8f6ff;
-	}
-
-	.title-cell,
-	.material-link,
-	.favorite-link {
-		display: flex;
-		align-items: center;
-	}
-
-	.title-cell,
-	.material-link {
-		gap: 10px;
-	}
-
-	.material-link {
-		color: #111;
-		text-decoration: none;
-	}
-
-	.material-link:hover {
-		text-decoration: underline;
 	}
 
 	.search-icon,
@@ -232,14 +157,12 @@
 		opacity: 0.7;
 	}
 
-	.favorite-link:hover {
-		opacity: 0.8;
+	.favorite-link {
+		display: flex;
+		align-items: center;
 	}
 
-	.empty-state {
-		padding: 32px;
-		border: 1px solid #ddd;
-		border-top: none;
-		color: #777;
+	.favorite-link:hover {
+		opacity: 0.8;
 	}
 </style>

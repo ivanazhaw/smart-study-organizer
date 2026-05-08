@@ -1,8 +1,8 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
-	import { formatDate } from '$lib/utils/date';
 	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
 	import BackLink from '$lib/components/BackLink.svelte';
+	import { formatDate } from '$lib/utils/date';
 
 	let { data } = $props();
 
@@ -29,14 +29,15 @@
 </script>
 
 <section class="categories-page">
-	<div class="topbar">
+	<div class="page-topbar">
 		<div>
-			<h1>Kategorien</h1>
-			<p>Deine Lernmaterialien nach Fach geordnet.</p>
+			<h1 class="page-title">Kategorien</h1>
+			<p class="page-subtitle">Deine Lernmaterialien nach Fach geordnet.</p>
+
 			<BackLink />
 		</div>
 
-		<a href="/add" class="add-button">+ Material hinzufügen</a>
+		<a href="/add" class="primary-button">+ Material hinzufügen</a>
 	</div>
 
 	<div class="category-list">
@@ -49,8 +50,8 @@
 
 				<div class="material-list">
 					{#each category.materials as material}
-						<div class="material-row">
-							<div class="title-cell">
+						<div class="data-table-row category-table-grid">
+							<div class="material-title-cell">
 								<a class="material-link" href={`/materials/${material._id}`}>
 									<img src="/images/file.png" alt="" class="file-icon" />
 									<span>{material.title}</span>
@@ -64,10 +65,7 @@
 							</div>
 
 							<span>{material.type}</span>
-
-							<span>
-								{formatDate(material.date || material.createdAt)}
-							</span>
+							<span>{formatDate(material.date || material.createdAt)}</span>
 
 							<MaterialMenu materialId={material._id} />
 						</div>
@@ -77,7 +75,7 @@
 		{/each}
 
 		{#if categories.length === 0}
-			<div class="empty-state">Keine Kategorien gefunden.</div>
+			<div class="empty-state category-empty-state">Keine Kategorien gefunden.</div>
 		{/if}
 	</div>
 </section>
@@ -85,33 +83,6 @@
 <style>
 	.categories-page {
 		width: 100%;
-	}
-
-	.topbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 56px;
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 28px;
-	}
-
-	p {
-		margin: 8px 0 0;
-		font-size: 17px;
-		color: #333;
-	}
-
-	.add-button {
-		background: #6c5dd3;
-		color: white;
-		text-decoration: none;
-		padding: 14px 28px;
-		border-radius: 8px;
-		font-size: 16px;
 	}
 
 	.category-list {
@@ -124,11 +95,6 @@
 	.category-card {
 		border: 1px solid #e2e2ea;
 		border-radius: 12px;
-		overflow: visible;
-	}
-
-	.material-list {
-		width: 100%;
 		overflow: visible;
 	}
 
@@ -150,39 +116,19 @@
 		font-size: 15px;
 	}
 
-	.material-row {
-		display: grid;
+	.material-list {
+		width: 100%;
+		overflow: visible;
+	}
+
+	.category-table-grid {
 		grid-template-columns: 2fr 1fr 1.2fr 40px;
-		align-items: center;
-		padding: 16px 18px;
+		border-left: none;
+		border-right: none;
+	}
+
+	.category-table-grid:first-child {
 		border-top: 1px solid #e2e2ea;
-		font-size: 16px;
-		color: #111;
-	}
-
-	.material-row:hover {
-		background: #f8f6ff;
-	}
-
-	.title-cell,
-	.material-link,
-	.favorite-link {
-		display: flex;
-		align-items: center;
-	}
-
-	.title-cell,
-	.material-link {
-		gap: 10px;
-	}
-
-	.material-link {
-		color: #111;
-		text-decoration: none;
-	}
-
-	.material-link:hover {
-		text-decoration: underline;
 	}
 
 	.file-icon {
@@ -191,14 +137,17 @@
 		object-fit: contain;
 	}
 
+	.favorite-link {
+		display: flex;
+		align-items: center;
+	}
+
 	.favorite-link:hover {
 		opacity: 0.8;
 	}
 
-	.empty-state {
-		padding: 32px;
-		border: 1px solid #ddd;
+	.category-empty-state {
 		border-radius: 8px;
-		color: #777;
+		border-top: 1px solid #ddd;
 	}
 </style>
