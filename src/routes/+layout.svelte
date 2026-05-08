@@ -41,12 +41,12 @@
 			</nav>
 
 			<div class="bottom-nav">
-				<a href="/">
+				<a href="/settings" class:active={isActive('/settings')}>
 					<img src="/images/settings.png" alt="" class="nav-icon" />
 					<span>Einstellungen</span>
 				</a>
 
-				<a href="/">
+				<a href="/help" class:active={isActive('/help')}>
 					<img src="/images/help.png" alt="" class="nav-icon" />
 					<span>Hilfe</span>
 				</a>
@@ -129,7 +129,8 @@
 		gap: 14px;
 	}
 
-	.nav a.active {
+	.nav a.active,
+	.bottom-nav a.active {
 		background: #ded4fb;
 		color: #4f36b8;
 	}
