@@ -1,6 +1,7 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
 	import { formatDate } from '$lib/utils/date';
+	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
 	import { enhance } from '$app/forms';
 
 	let { data } = $props();
@@ -83,13 +84,7 @@
 						/>
 
 						<button class="favorite-button" type="submit">
-							<img
-								src={isRemoved(material._id)
-									? '/images/favorites.png'
-									: '/images/favorites-filled.png'}
-								alt=""
-								class="favorite-icon"
-							/>
+							<FavoriteIcon filled={!isRemoved(material._id)} />
 						</button>
 					</form>
 				</div>
@@ -260,12 +255,6 @@
 
 	.favorite-button:hover {
 		opacity: 0.8;
-	}
-
-	.favorite-icon {
-		width: 20px;
-		height: 20px;
-		object-fit: contain;
 	}
 
 	.empty-state {

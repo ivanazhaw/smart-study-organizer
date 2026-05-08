@@ -1,6 +1,7 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
 	import { formatDate } from '$lib/utils/date';
+	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
 
 	let { data } = $props();
 
@@ -60,7 +61,7 @@
 
 								{#if material.favorite}
 									<a href="/favorites" class="favorite-link" aria-label="Favoriten öffnen">
-										<img src="/images/favorites-filled.png" alt="" class="favorite-icon" />
+										<FavoriteIcon filled={true} />
 									</a>
 								{/if}
 							</div>
@@ -215,12 +216,6 @@
 
 	.favorite-link:hover {
 		opacity: 0.8;
-	}
-
-	.favorite-icon {
-		width: 20px;
-		height: 20px;
-		object-fit: contain;
 	}
 
 	.empty-state {

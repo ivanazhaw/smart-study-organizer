@@ -1,5 +1,6 @@
 <script>
 	import { formatDate } from '$lib/utils/date';
+	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
 
 	let { data } = $props();
 
@@ -18,11 +19,7 @@
 
 			<form method="POST" action="?/toggleFavorite">
 				<button class="fav-btn" type="submit">
-					<img
-						src={material.favorite ? '/images/favorites-filled.png' : '/images/favorites.png'}
-						alt=""
-						class="button-icon"
-					/>
+					<FavoriteIcon filled={material.favorite} />
 
 					{material.favorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
 				</button>

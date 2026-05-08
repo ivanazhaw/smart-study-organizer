@@ -1,5 +1,7 @@
 <script>
 	import MaterialMenu from '$lib/components/MaterialMenu.svelte';
+	import FavoriteIcon from '$lib/components/FavoriteIcon.svelte';
+
 	let { data } = $props();
 
 	let materials = $derived(data.materials ?? []);
@@ -73,7 +75,7 @@
 
 					{#if material.favorite}
 						<a href="/favorites" class="favorite-link">
-							<img src="/images/favorites-filled.png" alt="" class="favorite-icon" />
+							<FavoriteIcon filled={true} />
 						</a>
 					{/if}
 				</div>
@@ -195,12 +197,6 @@
 	.file-icon {
 		width: 22px;
 		height: 22px;
-		object-fit: contain;
-	}
-
-	.favorite-icon {
-		width: 20px;
-		height: 20px;
 		object-fit: contain;
 	}
 
