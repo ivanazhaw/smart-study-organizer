@@ -58,14 +58,20 @@
 			</p>
 		</div>
 
-		<div class="profile-card">
-			<h2>Sitzung</h2>
+		<div class="profile-card session-card">
+			<div>
+				<h2>Sitzung</h2>
 
-			<p class="card-text">
-				Du kannst dich jederzeit ausloggen. Deine Materialien bleiben gespeichert.
-			</p>
+				<p class="card-text">
+					Du bist aktuell angemeldet. Beim Ausloggen bleiben deine Materialien sicher gespeichert
+					und sind beim nächsten Login wieder verfügbar.
+				</p>
+			</div>
 
-			<a href="/logout" class="logout-action">Ausloggen</a>
+			<div class="session-status">
+				<span class="status-dot"></span>
+				<span>Aktive Sitzung</span>
+			</div>
 		</div>
 
 		<div class="profile-card">
@@ -296,5 +302,36 @@
 	.password-message.success {
 		background: #e8f5e9;
 		color: #2e7d32;
+	}
+
+	.session-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 220px;
+	}
+
+	.session-status {
+		margin-top: 28px;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: #2e7d32;
+		font-weight: 600;
+	}
+
+	.status-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #2e7d32;
+	}
+
+	:global(:root[data-theme='dark']) .session-status {
+		color: #7ddc8a;
+	}
+
+	:global(:root[data-theme='dark']) .status-dot {
+		background: #7ddc8a;
 	}
 </style>

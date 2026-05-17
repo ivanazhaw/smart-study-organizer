@@ -57,6 +57,11 @@
 					<img src="/images/help.png" alt="" class="nav-icon" />
 					<span>Hilfe</span>
 				</a>
+
+				<a href="/logout">
+					<img src="/images/logout.png" alt="" class="nav-icon" />
+					<span>Ausloggen</span>
+				</a>
 			</div>
 		</aside>
 

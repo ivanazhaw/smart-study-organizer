@@ -108,7 +108,6 @@
 			</div>
 
 			<div class="topbar-actions">
-				<a href="/logout" class="logout-button">Ausloggen</a>
 				<a href="/add" class="primary-button">+ Material hinzufügen</a>
 			</div>
 		</div>
