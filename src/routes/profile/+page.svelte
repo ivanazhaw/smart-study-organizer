@@ -1,4 +1,6 @@
 <script>
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+
 	let { data } = $props();
 
 	let user = $derived(data.user);
@@ -60,6 +62,16 @@
 			</p>
 
 			<a href="/logout" class="logout-action">Ausloggen</a>
+		</div>
+
+		<div class="profile-card">
+			<h2>Darstellung</h2>
+
+			<p class="card-text">Wähle zwischen hellem und dunklem Design.</p>
+
+			<div class="theme-section">
+				<ThemeToggle />
+			</div>
 		</div>
 	</div>
 </section>
@@ -161,5 +173,9 @@
 		.profile-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.theme-section {
+		margin-top: 22px;
 	}
 </style>

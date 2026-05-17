@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import '../app.css';
+	import { browser } from '$app/environment';
 
 	let { children } = $props();
 
@@ -12,6 +13,13 @@
 	];
 
 	let user = $derived(page.data.user);
+
+	$effect(() => {
+		if (browser) {
+			const savedTheme = localStorage.getItem('theme') || 'light';
+			document.documentElement.dataset.theme = savedTheme;
+		}
+	});
 
 	function isActive(href) {
 		if (href === '/') return page.url.pathname === '/';
@@ -66,8 +74,11 @@
 	:global(body) {
 		margin: 0;
 		font-family: Arial, sans-serif;
-		background: #f7f7fb;
-		color: #111;
+		background: var(--page-bg);
+		color: var(--text-color);
+		transition:
+			background 0.2s ease,
+			color 0.2s ease;
 	}
 
 	.app-shell {
@@ -155,5 +166,10 @@
 		min-height: 100vh;
 		padding: 48px;
 		box-sizing: border-box;
+	}
+
+	.nav a:hover,
+	.bottom-nav a:hover {
+		background: rgba(255, 255, 255, 0.05);
 	}
 </style>

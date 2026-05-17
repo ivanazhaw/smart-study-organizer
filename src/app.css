@@ -1,3 +1,61 @@
+:root {
+    --page-bg: #f7f7fb;
+    --shell-bg: #ffffff;
+    --sidebar-bg: #fbfbfe;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+
+    --text-color: #111111;
+    --muted-text: #555555;
+    --border-color: #e2e2ea;
+
+    --table-header-bg: #f1f1f1;
+    --hover-bg: #f8f6ff;
+    --active-bg: #ded4fb;
+    --active-text: #4f36b8;
+}
+
+:root[data-theme='dark'] {
+    --page-bg: #111118;
+    --shell-bg: #181820;
+    --sidebar-bg: #15151c;
+    --card-bg: #20202a;
+    --input-bg: #242430;
+
+    --text-color: #f5f5f7;
+    --muted-text: #d8d8e2;
+    --border-color: #383846;
+
+    --table-header-bg: #2a2a36;
+    --hover-bg: #2d2940;
+    --active-bg: #3b315f;
+    --active-text: #ffffff;
+}
+
+/* Global Layout */
+
+body {
+    background: var(--page-bg);
+    color: var(--text-color);
+}
+
+.app-shell {
+    background: var(--page-bg);
+}
+
+.content {
+    background: var(--shell-bg) !important;
+    color: var(--text-color) !important;
+}
+
+.sidebar {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Shared Page Elements */
+
 .page-topbar {
     display: flex;
     justify-content: space-between;
@@ -8,12 +66,13 @@
 .page-title {
     margin: 0;
     font-size: 28px;
+    color: var(--text-color) !important;
 }
 
 .page-subtitle {
     margin: 8px 0 0;
     font-size: 17px;
-    color: #333;
+    color: var(--muted-text) !important;
 }
 
 .primary-button {
@@ -24,6 +83,72 @@
     border-radius: 8px;
     font-size: 16px;
 }
+
+/* Navigation */
+
+.logo,
+.nav a,
+.bottom-nav a {
+    color: var(--text-color) !important;
+}
+
+.nav a.active,
+.bottom-nav a.active {
+    background: var(--active-bg) !important;
+    color: var(--active-text) !important;
+}
+
+:root[data-theme='dark'] .nav a:hover,
+:root[data-theme='dark'] .bottom-nav a:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Shared Cards / Inputs */
+
+.profile-card,
+.help-card,
+.faq-section,
+.auth-card,
+.landing-card,
+.upload-card,
+.feature-card,
+.category-card,
+.search-box,
+.upload-box,
+input,
+select,
+textarea {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+input,
+select,
+textarea {
+    background: var(--input-bg) !important;
+}
+
+.profile-card h2,
+.help-card h2,
+.faq-item h3,
+.info-row strong {
+    color: var(--text-color) !important;
+}
+
+.card-text,
+.info-row span,
+.help-card p,
+.faq-item p,
+.profile-card p {
+    color: var(--muted-text) !important;
+}
+
+.info-row {
+    border-color: var(--border-color) !important;
+}
+
+/* Tables */
 
 .data-table {
     width: 100%;
@@ -36,8 +161,8 @@
 }
 
 .data-table-header {
-    background: #f1f1f1;
-    color: #666;
+    background: var(--table-header-bg) !important;
+    color: var(--muted-text) !important;
     padding: 18px 28px;
     border-radius: 8px 8px 0 0;
     font-size: 16px;
@@ -45,15 +170,22 @@
 
 .data-table-row {
     padding: 16px 10px;
-    border: 1px solid #c9c9d1;
-    border-top: none;
+    border: 1px solid var(--border-color) !important;
+    border-top: none !important;
     font-size: 16px;
-    color: #111;
+    color: var(--text-color) !important;
 }
 
 .data-table-row:hover {
-    background: #f8f6ff;
+    background: var(--hover-bg) !important;
 }
+
+.category-header {
+    background: var(--table-header-bg) !important;
+    color: var(--muted-text) !important;
+}
+
+/* Material Links */
 
 .material-title-cell,
 .material-link {
@@ -63,7 +195,7 @@
 }
 
 .material-link {
-    color: #111;
+    color: var(--text-color) !important;
     text-decoration: none;
 }
 
@@ -73,7 +205,74 @@
 
 .empty-state {
     padding: 32px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-top: none;
-    color: #777;
+    color: var(--muted-text);
+}
+
+/* Back Link */
+
+.back-link,
+.back-link span {
+    color: var(--text-color) !important;
+}
+
+/* Landing Page Dark Mode */
+
+:root[data-theme='dark'] .landing-left p {
+    color: var(--muted-text) !important;
+}
+
+:root[data-theme='dark'] .landing-logo {
+    color: #b7a8ff !important;
+}
+
+:root[data-theme='dark'] .landing-benefits span {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+:root[data-theme='dark'] .feature-card span {
+    color: var(--text-color) !important;
+}
+
+:root[data-theme='dark'] .upload-icon {
+    background: #2d2940 !important;
+}
+
+/* Icon Handling */
+
+:root[data-theme='dark'] .nav-icon,
+:root[data-theme='dark'] .search-icon,
+:root[data-theme='dark'] .file-icon,
+:root[data-theme='dark'] .upload-dropzone img,
+:root[data-theme='dark'] .help-card img,
+:root[data-theme='dark'] .feature-card img,
+:root[data-theme='dark'] .back-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Logo nicht invertieren */
+:root[data-theme='dark'] .logo-icon,
+:root[data-theme='dark'] .landing-logo img {
+    filter: none !important;
+}
+
+/* Stern in Listen sichtbar machen */
+:root[data-theme='dark'] .material-title-cell .favorite-icon,
+:root[data-theme='dark'] .title-cell .favorite-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Stern im hellen Favoriten-Button NICHT invertieren */
+:root[data-theme='dark'] .fav-btn .favorite-icon,
+:root[data-theme='dark'] .fav-btn .button-icon {
+    filter: none !important;
+}
+
+/* Buttons mit weissem Hintergrund behalten schwarze Icons */
+:root[data-theme='dark'] .edit-btn .button-icon,
+:root[data-theme='dark'] .delete .button-icon {
+    filter: none !important;
 }
