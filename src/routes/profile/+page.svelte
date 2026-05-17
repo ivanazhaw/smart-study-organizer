@@ -218,20 +218,6 @@
 		line-height: 1.5;
 	}
 
-	.logout-action {
-		display: inline-flex;
-		margin-top: 22px;
-		background: #6c5dd3;
-		color: white;
-		text-decoration: none;
-		padding: 12px 22px;
-		border-radius: 8px;
-	}
-
-	.logout-action:hover {
-		opacity: 0.9;
-	}
-
 	@media (max-width: 800px) {
 		.profile-grid {
 			grid-template-columns: 1fr;

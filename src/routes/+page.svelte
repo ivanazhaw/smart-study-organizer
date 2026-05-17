@@ -317,8 +317,7 @@
 		gap: 16px;
 	}
 
-	.secondary-button,
-	.logout-button {
+	.secondary-button {
 		border: 1px solid #6c5dd3;
 		color: #6c5dd3;
 		background: white;
@@ -328,11 +327,7 @@
 		font-size: 16px;
 	}
 
-	.logout-button {
-		border-color: #ddd;
-		color: #111;
-	}
-
+	
 	.landing-preview {
 		display: flex;
 		flex-direction: column;
