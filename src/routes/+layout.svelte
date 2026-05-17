@@ -41,11 +41,10 @@
 			</nav>
 
 			<div class="bottom-nav">
-				<a href="/settings" class:active={isActive('/settings')}>
-					<img src="/images/settings.png" alt="" class="nav-icon" />
-					<span>Einstellungen</span>
+				<a href="/profile" class:active={isActive('/profile')}>
+					<img src="/images/profile.png" alt="" class="nav-icon" />
+					<span>Profil</span>
 				</a>
-
 				<a href="/help" class:active={isActive('/help')}>
 					<img src="/images/help.png" alt="" class="nav-icon" />
 					<span>Hilfe</span>

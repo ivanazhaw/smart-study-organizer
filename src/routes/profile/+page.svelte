@@ -4,16 +4,16 @@
 	let user = $derived(data.user);
 </script>
 
-<section class="settings-page">
+<section class="profile-page">
 	<div class="page-topbar">
 		<div>
-			<h1 class="page-title">Einstellungen</h1>
-			<p class="page-subtitle">Verwalte dein Konto und deine App-Einstellungen.</p>
+			<h1 class="page-title">Dein Profil</h1>
+			<p class="page-subtitle">Deine Kontoinformationen und Sitzungsverwaltung.</p>
 		</div>
 	</div>
 
-	<div class="settings-grid">
-		<div class="settings-card profile-card">
+	<div class="profile-grid">
+		<div class="profile-card profile-overview-card">
 			<div class="profile-avatar">
 				{user?.name?.charAt(0).toUpperCase() || '?'}
 			</div>
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 
-		<div class="settings-card">
+		<div class="profile-card">
 			<h2>Konto</h2>
 
 			<div class="info-row">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 
-		<div class="settings-card">
+		<div class="profile-card">
 			<h2>Speicherung</h2>
 
 			<p class="card-text">
@@ -52,7 +52,7 @@
 			</p>
 		</div>
 
-		<div class="settings-card danger-card">
+		<div class="profile-card">
 			<h2>Sitzung</h2>
 
 			<p class="card-text">
@@ -65,33 +65,42 @@
 </section>
 
 <style>
-	.settings-page {
+	.profile-page {
 		width: 100%;
 	}
 
-	.settings-grid {
+	.profile-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 24px;
 	}
 
-	.settings-card {
+	.profile-card {
 		background: white;
 		border: 1px solid #e2e2ea;
 		border-radius: 14px;
 		padding: 28px;
 	}
 
-	.settings-card h2 {
+	.profile-card h2 {
 		margin: 0 0 20px;
 		font-size: 22px;
 	}
 
-	.profile-card {
+	.profile-card p {
+		margin: 0;
+		color: #555;
+	}
+
+	.profile-overview-card {
 		display: flex;
 		align-items: center;
 		gap: 18px;
 		grid-column: 1 / -1;
+	}
+
+	.profile-overview-card h2 {
+		margin: 0 0 6px;
 	}
 
 	.profile-avatar {
@@ -105,15 +114,7 @@
 		justify-content: center;
 		font-size: 28px;
 		font-weight: 700;
-	}
-
-	.profile-card h2 {
-		margin: 0 0 6px;
-	}
-
-	.profile-card p {
-		margin: 0;
-		color: #555;
+		flex-shrink: 0;
 	}
 
 	.info-row {
@@ -140,7 +141,6 @@
 
 	.card-text {
 		line-height: 1.5;
-		margin: 0;
 	}
 
 	.logout-action {
@@ -153,8 +153,12 @@
 		border-radius: 8px;
 	}
 
+	.logout-action:hover {
+		opacity: 0.9;
+	}
+
 	@media (max-width: 800px) {
-		.settings-grid {
+		.profile-grid {
 			grid-template-columns: 1fr;
 		}
 	}
