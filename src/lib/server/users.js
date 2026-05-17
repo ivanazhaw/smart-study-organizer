@@ -40,3 +40,17 @@ export function serializeUser(user) {
         email: user.email
     };
 }
+
+export async function updateUserPassword(id, passwordHash) {
+    const collection = await getUsersCollection();
+
+    return collection.updateOne(
+        { _id: new ObjectId(id) },
+        {
+            $set: {
+                passwordHash,
+                updatedAt: new Date()
+            }
+        }
+    );
+}

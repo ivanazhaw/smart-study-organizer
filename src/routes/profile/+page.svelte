@@ -1,7 +1,11 @@
 <script>
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 
-	let { data } = $props();
+	let { data, form } = $props();
+
+	let currentPassword = $state('');
+	let newPassword = $state('');
+	let confirmPassword = $state('');
 
 	let user = $derived(data.user);
 </script>
@@ -62,6 +66,59 @@
 			</p>
 
 			<a href="/logout" class="logout-action">Ausloggen</a>
+		</div>
+
+		<div class="profile-card">
+			<h2>Passwort ändern</h2>
+
+			<p class="card-text">
+				Das neue Passwort muss mindestens 6 Zeichen und ein Sonderzeichen enthalten.
+			</p>
+
+			{#if form?.passwordError}
+				<div class="password-message error">{form.passwordError}</div>
+			{/if}
+
+			{#if form?.passwordSuccess}
+				<div class="password-message success">{form.passwordSuccess}</div>
+			{/if}
+
+			<form method="POST" action="?/changePassword" class="password-form">
+				<label>
+					<span>Aktuelles Passwort</span>
+					<input
+						name="currentPassword"
+						type="password"
+						bind:value={currentPassword}
+						placeholder="Aktuelles Passwort"
+						required
+					/>
+				</label>
+
+				<label>
+					<span>Neues Passwort</span>
+					<input
+						name="newPassword"
+						type="password"
+						bind:value={newPassword}
+						placeholder="Mindestens 6 Zeichen + Sonderzeichen"
+						required
+					/>
+				</label>
+
+				<label>
+					<span>Neues Passwort bestätigen</span>
+					<input
+						name="confirmPassword"
+						type="password"
+						bind:value={confirmPassword}
+						placeholder="Neues Passwort wiederholen"
+						required
+					/>
+				</label>
+
+				<button type="submit" class="password-button">Passwort speichern</button>
+			</form>
 		</div>
 
 		<div class="profile-card">
@@ -177,5 +234,67 @@
 
 	.theme-section {
 		margin-top: 22px;
+	}
+
+	.password-form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		margin-top: 22px;
+	}
+
+	.password-form label {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+
+	.password-form input {
+		height: 48px;
+		border: 1px solid #e2e2ea;
+		border-radius: 8px;
+		padding: 0 14px;
+		font-size: 15px;
+		box-sizing: border-box;
+	}
+
+	.password-form input:focus {
+		outline: none;
+		border-color: #6c5dd3;
+		box-shadow: 0 0 0 2px rgba(108, 93, 211, 0.12);
+	}
+
+	.password-button {
+		align-self: flex-start;
+		background: #6c5dd3;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		padding: 12px 22px;
+		font-size: 15px;
+		cursor: pointer;
+	}
+
+	.password-button:hover {
+		opacity: 0.9;
+	}
+
+	.password-message {
+		margin-top: 18px;
+		padding: 12px 14px;
+		border-radius: 8px;
+		font-size: 15px;
+	}
+
+	.password-message.error {
+		background: #fdecea;
+		color: #c62828;
+	}
+
+	.password-message.success {
+		background: #e8f5e9;
+		color: #2e7d32;
 	}
 </style>
