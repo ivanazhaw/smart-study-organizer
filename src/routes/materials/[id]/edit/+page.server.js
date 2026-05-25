@@ -17,9 +17,13 @@ const allowedExtensionsByType = {
     Docx: ['.doc', '.docx']
 };
 
+const MAX_FILE_SIZE = 4 * 1024 * 1024;
+
 function validateFile(file, type) {
-    if (!file || file.size === 0) {
-        return null;
+    if (!file || file.size === 0) return null;
+
+    if (file.size > MAX_FILE_SIZE) {
+        return 'Die Datei ist zu gross. Bitte lade eine Datei unter 4 MB hoch.';
     }
 
     if (type === 'Link') {
@@ -95,15 +99,23 @@ export const actions = {
             updatedAt: new Date()
         };
 
-        if (file && file.size > 0) {
-            const uploadedFile = await uploadFile(file);
+        try {
+            if (file && file.size > 0) {
+                const uploadedFile = await uploadFile(file);
 
-            updateData.fileName = file.name;
-            updateData.filePath = uploadedFile.secure_url;
-            updateData.fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+                updateData.fileName = file.name;
+                updateData.filePath = uploadedFile.secure_url;
+                updateData.fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+            }
+
+            await updateMaterial(params.id, locals.user._id, updateData);
+        } catch (err) {
+            console.error('Fehler beim Bearbeiten des Materials:', err);
+
+            return fail(500, {
+                error: 'Das Material konnte nicht gespeichert werden. Bitte versuche es erneut.'
+            });
         }
-
-        await updateMaterial(params.id, locals.user._id, updateData);
 
         throw redirect(303, `/materials/${params.id}`);
     }
