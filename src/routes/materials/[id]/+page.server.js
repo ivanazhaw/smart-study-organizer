@@ -8,8 +8,6 @@ import {
     serializeMaterial
 } from '$lib/server/materials';
 
-import { deleteUploadedFile } from '$lib/server/upload';
-
 export async function load({ params, locals }) {
     if (!isValidMaterialId(params.id)) {
         throw error(404, 'Material nicht gefunden');
@@ -47,10 +45,6 @@ export const actions = {
         if (!isValidMaterialId(params.id)) {
             throw error(404, 'Material nicht gefunden');
         }
-
-        const material = await getMaterialById(params.id, locals.user._id);
-
-        await deleteUploadedFile(material?.filePath);
 
         await deleteMaterial(params.id, locals.user._id);
 

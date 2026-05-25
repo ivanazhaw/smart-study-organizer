@@ -1,4 +1,4 @@
-import { redirect, error } from '@sveltejs/kit';
+import { redirect, error, fail } from '@sveltejs/kit';
 
 import {
     isValidMaterialId,
@@ -7,7 +7,35 @@ import {
     serializeMaterial
 } from '$lib/server/materials';
 
-import { saveUploadedFile, deleteUploadedFile } from '$lib/server/upload';
+import { uploadFile } from '$lib/server/upload';
+
+const allowedExtensionsByType = {
+    PDF: ['.pdf'],
+    Notizen: ['.txt', '.md'],
+    Link: [],
+    Präsentation: ['.ppt', '.pptx'],
+    Docx: ['.doc', '.docx']
+};
+
+function validateFile(file, type) {
+    if (!file || file.size === 0) {
+        return null;
+    }
+
+    if (type === 'Link') {
+        return 'Beim Typ Link darf keine Datei hochgeladen werden.';
+    }
+
+    const allowedExtensions = allowedExtensionsByType[type] ?? [];
+    const fileName = file.name.toLowerCase();
+    const isAllowed = allowedExtensions.some((extension) => fileName.endsWith(extension));
+
+    if (!isAllowed) {
+        return `Ungültiges Dateiformat. Für "${type}" sind nur folgende Dateien erlaubt: ${allowedExtensions.join(', ')}.`;
+    }
+
+    return null;
+}
 
 export async function load({ params, locals }) {
     if (!isValidMaterialId(params.id)) {
@@ -33,16 +61,30 @@ export const actions = {
 
         const formData = await request.formData();
 
-        const title = formData.get('title');
-        const subject = formData.get('subject');
-        const type = formData.get('type');
-        const note = formData.get('note');
+        const title = formData.get('title')?.toString().trim();
+        const subject = formData.get('subject')?.toString().trim();
+        const type = formData.get('type')?.toString();
+        const note = formData.get('note')?.toString().trim();
         const file = formData.get('file');
+
+        if (!title || !subject || !type) {
+            return fail(400, {
+                error: 'Bitte fülle alle Pflichtfelder aus.'
+            });
+        }
 
         const material = await getMaterialById(params.id, locals.user._id);
 
         if (!material) {
             throw error(404, 'Material nicht gefunden');
+        }
+
+        const fileError = validateFile(file, type);
+
+        if (fileError) {
+            return fail(400, {
+                error: fileError
+            });
         }
 
         const updateData = {
@@ -54,17 +96,11 @@ export const actions = {
         };
 
         if (file && file.size > 0) {
-            await deleteUploadedFile(material.filePath);
+            const uploadedFile = await uploadFile(file);
 
-            const uploadedFile = await saveUploadedFile(file, type);
-
-            if (uploadedFile?.status === 400) {
-                return uploadedFile;
-            }
-
-            updateData.fileName = uploadedFile.fileName;
-            updateData.filePath = uploadedFile.filePath;
-            updateData.fileSize = uploadedFile.fileSize;
+            updateData.fileName = file.name;
+            updateData.filePath = uploadedFile.secure_url;
+            updateData.fileSize = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
         }
 
         await updateMaterial(params.id, locals.user._id, updateData);
