@@ -17,22 +17,38 @@
 
 
 ## 1. Ausgangslage
-Kurz beschreiben, welches Problem adressiert wird und welches Ergebnis angestrebt ist. Wem nützt die Lösung, wer ist beteiligt oder betroffen?
-- **Problem:**
-Studierende speichern Lernmaterialien häufig an verschiedenen Orten (Downloads, Desktop, OneDrive, Moodle usw.) und verlieren dadurch den Überblick.  
-- **Ziele:** 
-Lernmaterialien zentral verwalten
-Schnelles Wiederfinden ermöglichen
-Materialien kategorisieren
-Favoriten speichern
-Übersichtliche Benutzeroberfläche
-- **Primäre Zielgruppe:**
- Studierende an Hochschulen und Universitäten.
-- **Weitere Stakeholder:**
-Dozierende
-Hochschulen/Bildungseinrichtungen
-Testpersonen
-Projektbetreuer
+
+Im Studium fallen laufend verschiedene Lernmaterialien wie Vorlesungsfolien, Zusammenfassungen, Notizen, Übungsaufgaben oder Präsentationen an. Diese Dateien werden häufig an unterschiedlichen Orten gespeichert, beispielsweise auf dem Desktop, im Download-Ordner, in Cloud-Speichern wie OneDrive oder direkt auf Lernplattformen wie Moodle. Dadurch wird es zunehmend schwieriger, den Überblick zu behalten und benötigte Unterlagen schnell wiederzufinden.
+
+Der Smart Study Organizer wurde entwickelt, um dieses Problem zu lösen. Die Anwendung soll Studierenden dabei helfen, ihre Lernmaterialien zentral zu verwalten, übersichtlich zu organisieren und jederzeit schnell darauf zugreifen zu können. Durch Funktionen wie Kategorien, Favoriten, Suchmöglichkeiten und eine persönliche Benutzerverwaltung wird eine strukturierte und benutzerfreundliche Lernumgebung geschaffen.
+
+### Problem
+
+Studierende speichern Lernmaterialien häufig an verschiedenen Orten (Downloads, Desktop, OneDrive, Moodle usw.) und verlieren dadurch den Überblick. Das Wiederfinden wichtiger Dokumente kann zeitaufwendig sein und führt oft zu unnötigem Suchaufwand. Besonders bei mehreren Modulen und einer grossen Anzahl an Dateien wird die Organisation der Lernunterlagen zunehmend schwierig.
+
+### Ziele
+
+Die Anwendung verfolgt folgende Ziele:
+
+- Lernmaterialien zentral an einem Ort verwalten
+- Schnelles Wiederfinden von Dokumenten ermöglichen
+- Materialien nach Fächern kategorisieren
+- Wichtige Dokumente als Favoriten markieren
+- Eine übersichtliche und moderne Benutzeroberfläche bereitstellen
+- Die Organisation und Verwaltung von Lernunterlagen vereinfachen
+
+### Primäre Zielgruppe
+
+Die primäre Zielgruppe sind Studierende von Hochschulen und Universitäten, die regelmässig mit digitalen Lernmaterialien arbeiten und eine einfache Möglichkeit suchen, ihre Unterlagen strukturiert zu verwalten.
+
+### Weitere Stakeholder
+
+Neben den Studierenden gibt es weitere Personen und Gruppen, die indirekt von der Lösung profitieren oder am Projekt beteiligt sind:
+
+- **Dozierende**, da Studierende Lernmaterialien effizienter organisieren und nutzen können
+- **Hochschulen und Bildungseinrichtungen**, welche digitale Lernprozesse fördern
+- **Testpersonen**, die im Rahmen der Evaluation Feedback zur Benutzerfreundlichkeit und Funktionalität liefern
+- **Projektbetreuer und Moduldozierende**, welche die Entwicklung begleiten und bewerten
 
 
 ## 2. Lösungsidee
