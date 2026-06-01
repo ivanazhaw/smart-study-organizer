@@ -52,10 +52,47 @@ Neben den Studierenden gibt es weitere Personen und Gruppen, die indirekt von de
 
 
 ## 2. Lösungsidee
-Beschreibt die Lösungsidee.
-- **Kernfunktionalität:** _[Workflows kurz nennen und optional illustrieren]_  
-- **Annahmen [Optional]:** _[welche Hypothesen werden geprüft?]_
-- **Abgrenzung [Optional]:** _[Was gehört explizit nicht zum Umfang?]_
+
+Um die Verwaltung von Lernmaterialien zu vereinfachen, wurde die Webanwendung **Smart Study Organizer** entwickelt. Die Anwendung bietet Studierenden eine zentrale Plattform, auf der sie ihre Lernunterlagen speichern, organisieren und verwalten können. Anstatt Dokumente an verschiedenen Speicherorten abzulegen, werden alle Materialien an einem Ort gesammelt und übersichtlich dargestellt.
+
+Die Lösung kombiniert eine einfache Benutzeroberfläche mit Funktionen zur Strukturierung und schnellen Wiederauffindbarkeit von Dokumenten. Durch die persönliche Benutzerverwaltung werden die Materialien jedem Benutzer individuell zugeordnet, sodass jeder Nutzer ausschliesslich auf seine eigenen Inhalte zugreifen kann.
+
+### Kernfunktionalität
+
+Die Anwendung unterstützt den gesamten Workflow von der Ablage bis zum Wiederfinden von Lernmaterialien:
+
+- Registrierung und Login mit persönlichem Benutzerkonto
+- Hochladen und Speichern von Lernmaterialien
+- Verwaltung von Dokumenten mit Titel, Fach, Typ und Notizen
+- Bearbeiten und Löschen bestehender Materialien
+- Kategorisierung nach Fachgebieten
+- Favoritenfunktion für häufig verwendete Dokumente
+- Übersicht über zuletzt geöffnete Materialien
+- Such- und Filterfunktion zur schnellen Navigation
+- Profilverwaltung inklusive Passwortänderung
+- Unterstützung eines Dark Modes für eine angenehme Nutzung bei unterschiedlichen Lichtverhältnissen
+
+### Annahmen
+
+Bei der Entwicklung wurden folgende Annahmen getroffen:
+
+- Studierende bevorzugen eine zentrale Verwaltung ihrer Lernmaterialien.
+- Eine einfache und übersichtliche Benutzeroberfläche erhöht die Akzeptanz der Anwendung.
+- Kategorien und Favoriten erleichtern das Wiederfinden wichtiger Dokumente.
+- Die Mehrheit der Benutzer arbeitet hauptsächlich mit digitalen Dokumenten wie PDFs, Präsentationen und Word-Dateien.
+- Ein persönlicher Login erhöht die Sicherheit und ermöglicht eine individuelle Verwaltung der Inhalte.
+
+### Abgrenzung
+
+Die folgenden Funktionen sind bewusst nicht Bestandteil des aktuellen Projektumfangs:
+
+- Gemeinsame Nutzung von Materialien zwischen mehreren Benutzern
+- Mobile App für iOS oder Android
+- Passwort-Reset per E-Mail
+- KI-basierte Suche oder automatische Kategorisierung
+- Synchronisation mit externen Lernplattformen wie Moodle
+- Echtzeit-Zusammenarbeit mehrerer Benutzer
+- Erweiterte Dokumentenvorschau direkt im Browser
 
 ## 3. Vorgehen & Artefakte
 Die Durchführung erfolgt phasenbasiert; dokumentieren Sie die wichtigsten Ergebnisse je Phase.
