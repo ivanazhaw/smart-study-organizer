@@ -103,11 +103,40 @@ Die folgenden Funktionen sind bewusst nicht Bestandteil des aktuellen Projektumf
 - Erweiterte Dokumentenvorschau direkt im Browser
 
 ## 3. Vorgehen & Artefakte
-Die Durchführung erfolgt phasenbasiert; dokumentieren Sie die wichtigsten Ergebnisse je Phase.
+
+Die Entwicklung des Smart Study Organizers erfolgte nach dem Design-Thinking-Prozess. Dabei wurde das Projekt schrittweise von der Problemidentifikation über die Ideenfindung und Konzeption bis hin zur Umsetzung und Evaluation entwickelt. Jede Phase hatte das Ziel, die Bedürfnisse der Zielgruppe besser zu verstehen und die Lösung kontinuierlich zu verfeinern.
+
+Im Folgenden werden die wichtigsten Aktivitäten, Entscheidungen und Ergebnisse der einzelnen Phasen dokumentiert.
 
 ### 3.1 Understand & Define
-- **Zielgruppenverständnis:** _[Problemraumanalyse, Recherche, (Proto-)Personas]_
-- **Wesentliche Erkenntnisse:** _[Stichpunkte]_
+
+Zu Beginn des Projekts wurde das Problem analysiert, mit dem viele Studierende im Studienalltag konfrontiert sind. Lernmaterialien wie Vorlesungsfolien, Zusammenfassungen, Übungsaufgaben oder Notizen werden häufig an unterschiedlichen Orten gespeichert. Dazu gehören beispielsweise lokale Ordner, Cloud-Speicher wie OneDrive oder Lernplattformen wie Moodle. Mit zunehmender Anzahl von Modulen und Dokumenten wird es schwieriger, den Überblick zu behalten und benötigte Dateien schnell wiederzufinden.
+
+Im Rahmen der Problemraumanalyse wurde untersucht, welche Herausforderungen bei der Organisation digitaler Lernunterlagen auftreten und welche Funktionen eine mögliche Lösung bieten sollte. Der Fokus lag dabei auf einer einfachen, zentralen und benutzerfreundlichen Verwaltung von Lernmaterialien.
+
+#### Zielgruppenverständnis
+
+Die primäre Zielgruppe sind Studierende von Hochschulen und Universitäten, die regelmässig mit digitalen Lernunterlagen arbeiten. Dabei wurde folgende Proto-Persona definiert:
+
+**Persona:**
+
+- Name: Anna, 22 Jahre
+- Studium: Wirtschaftsinformatik
+- Nutzt täglich digitale Lernmaterialien
+- Speichert Dokumente auf verschiedenen Plattformen
+- Verliert häufig Zeit beim Suchen von Unterlagen
+- Wünscht sich eine zentrale und übersichtliche Lösung zur Verwaltung ihrer Materialien
+
+#### Wesentliche Erkenntnisse
+
+- Lernmaterialien werden an unterschiedlichen Orten gespeichert.
+- Studierende verlieren häufig Zeit bei der Suche nach Dokumenten.
+- Eine zentrale Ablage verbessert die Übersichtlichkeit.
+- Kategorien erleichtern die Organisation von Unterlagen.
+- Favoriten ermöglichen einen schnelleren Zugriff auf wichtige Dokumente.
+- Eine Suchfunktion wird als hilfreich wahrgenommen.
+- Eine einfache und intuitive Benutzeroberfläche ist entscheidend für die Akzeptanz der Anwendung.
+- Eine persönliche Benutzerverwaltung erhöht die Sicherheit und Privatsphäre der Daten.
 
 ### 3.2 Sketch
 - **Variantenüberblick:** _[kurz]_
