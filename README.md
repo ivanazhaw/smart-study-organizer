@@ -57,7 +57,7 @@ Um die Verwaltung von Lernmaterialien zu vereinfachen, wurde die Webanwendung **
 
 Die Lösung kombiniert eine einfache Benutzeroberfläche mit Funktionen zur Strukturierung und schnellen Wiederauffindbarkeit von Dokumenten. Durch die persönliche Benutzerverwaltung werden die Materialien jedem Benutzer individuell zugeordnet, sodass jeder Nutzer ausschliesslich auf seine eigenen Inhalte zugreifen kann.
 
-![Landing Page](docs/images/landing-page.png)
+![Landing Page](doc/images/landing-page.png)
 
 *Abbildung 1: Landing Page des Smart Study Organizers.*
 
@@ -76,7 +76,7 @@ Die Anwendung unterstützt den gesamten Workflow von der Ablage bis zum Wiederfi
 - Profilverwaltung inklusive Passwortänderung
 - Unterstützung eines Dark Modes für eine angenehme Nutzung bei unterschiedlichen Lichtverhältnissen
 
-![Dashboard](docs/images/dashboard.png)
+![Dashboard](doc/images/dashboard.png)
 
 *Abbildung 2: Übersicht der gespeicherten Lernmaterialien.*
 
