@@ -139,8 +139,56 @@ Die primäre Zielgruppe sind Studierende von Hochschulen und Universitäten, die
 - Eine persönliche Benutzerverwaltung erhöht die Sicherheit und Privatsphäre der Daten.
 
 ### 3.2 Sketch
-- **Variantenüberblick:** _[kurz]_
-- **Skizzen:** _[Mehrere Varianten; Unterschiede kurz dokumentieren.]_
+
+In der Sketch-Phase wurden verschiedene Ideen für den Aufbau der Anwendung entwickelt und visualisiert. Ziel war es, eine möglichst übersichtliche und intuitive Benutzeroberfläche zu gestalten, welche die Verwaltung von Lernmaterialien vereinfacht. Dabei wurden unterschiedliche Layouts und Navigationskonzepte betrachtet und miteinander verglichen.
+
+#### Variantenüberblick
+
+Für die Anwendung wurden verschiedene Ansätze für die Navigation und Darstellung der Lernmaterialien untersucht:
+
+- Dashboard mit Kartenansicht
+- Dashboard mit Tabellenansicht
+- Navigation über obere Menüleiste
+- Navigation über eine permanente Sidebar
+- Direkte Dateiverwaltung auf einer einzelnen Seite
+- Aufteilung der Funktionen auf mehrere spezialisierte Seiten
+
+Die verschiedenen Varianten wurden hinsichtlich Übersichtlichkeit, Benutzerfreundlichkeit und Erweiterbarkeit bewertet.
+
+#### Skizzen
+
+**Varianten-Ansatz 1: Dashboard**
+
+![Dashboard Variante 1](doc/images/sketch-dashboard-1.png)
+
+*Abbildung 3: Variante des Dashboards*
+
+Die erste Dashboard-Variante setzt auf eine kartenbasierte Darstellung der Lernmaterialien. Jedes Dokument wird als eigene Karte dargestellt und zeigt die wichtigsten Informationen direkt an. Dadurch wirkt die Oberfläche modern und visuell ansprechend.
+
+Im Vergleich zur Tabellenansicht liegt der Fokus stärker auf der optischen Darstellung der Inhalte. Bei einer grösseren Anzahl von Lernmaterialien kann die Übersicht jedoch schnell verloren gehen, da weniger Informationen gleichzeitig sichtbar sind.
+
+
+**Varianten-Ansatz 2: Navigation**
+
+![Navigation Variante](doc/images/sketch-navigation.png)
+
+*Abbildung 4: Variante der Navigation*
+
+In dieser Variante wurde eine horizontale Navigationsleiste im oberen Bereich der Anwendung verwendet. Alle Hauptfunktionen sind über die obere Menüleiste erreichbar.
+
+Im Vergleich zur Sidebar-Navigation benötigt diese Lösung weniger Platz auf dem Bildschirm. Gleichzeitig wird die Navigation bei einer wachsenden Anzahl von Funktionen jedoch unübersichtlicher, da nur begrenzt Platz für weitere Menüpunkte vorhanden ist.
+
+
+**Varianten-Ansatz 3: Lernmaterialien**
+
+![Lernmaterialien Variante](doc/images/sketch-materials.png)
+
+*Abbildung 5: Variante der Lernmaterialien*
+
+Die erste Variante sah vor, sämtliche Funktionen wie Übersicht, Favoriten, Kategorien und zuletzt verwendete Materialien auf einer einzigen Seite darzustellen. Dadurch wären alle Informationen zentral verfügbar gewesen.
+
+Die alternative Variante teilte die Funktionen auf mehrere spezialisierte Seiten auf. Jede Seite konzentriert sich dabei auf einen bestimmten Anwendungsfall, beispielsweise die Anzeige von Favoriten, Kategorien oder zuletzt verwendeten Materialien.
+
 
 ### 3.3 Decide
 - **Gewählte Variante & Begründung:** _[Entscheidkriterien nennen]_  
