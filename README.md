@@ -191,9 +191,84 @@ Die alternative Variante teilte die Funktionen auf mehrere spezialisierte Seiten
 
 
 ### 3.3 Decide
-- **Gewählte Variante & Begründung:** _[Entscheidkriterien nennen]_  
-- **End-to-End-Ablauf:** _[Beschreibung inkl. User Journey Map]_  
-- **Mockup:** _[URL, z. B. Figma; Screenshots mit kurzen Beschreibungen]_  
+
+In der Decide-Phase wurden die in den vorherigen Schritten entwickelten Varianten bewertet und miteinander verglichen. Ziel war es, die Lösung auszuwählen, welche die Anforderungen der Zielgruppe am besten erfüllt und gleichzeitig eine einfache sowie intuitive Bedienung ermöglicht. Die Entscheidung basierte insbesondere auf den Kriterien Übersichtlichkeit, Benutzerfreundlichkeit, Skalierbarkeit und Effizienz bei der Verwaltung einer grösseren Anzahl von Lernmaterialien.
+
+#### Gewählte Variante & Begründung
+
+Für die Umsetzung des Smart Study Organizers wurde eine Kombination aus einer permanenten Sidebar-Navigation, einer tabellarischen Darstellung der Lernmaterialien sowie mehreren spezialisierten Seiten gewählt.
+
+Die Entscheidung fiel auf diese Variante, da sie gegenüber den anderen Ansätzen mehrere Vorteile bietet:
+
+- Die Sidebar-Navigation ermöglicht einen schnellen Zugriff auf alle Hauptfunktionen.
+- Die Navigation bleibt jederzeit sichtbar und erleichtert die Orientierung innerhalb der Anwendung.
+- Die Tabellenansicht bietet auch bei einer grossen Anzahl von Lernmaterialien eine gute Übersicht.
+- Funktionen wie Favoriten, Kategorien und zuletzt verwendete Materialien können klar voneinander getrennt dargestellt werden.
+- Die Anwendung bleibt auch bei zukünftigen Erweiterungen gut skalierbar.
+- Die Benutzeroberfläche wirkt aufgeräumt und reduziert die kognitive Belastung der Nutzer.
+
+Durch diese Kombination wird das Hauptziel der Anwendung – das schnelle Wiederfinden und Verwalten von Lernmaterialien – bestmöglich unterstützt.
+
+#### End-to-End-Ablauf
+
+Der typische Nutzungsvorgang eines Studierenden innerhalb der Anwendung lässt sich wie folgt beschreiben:
+
+1. Der Nutzer meldet sich an der Anwendung an.
+2. Nach dem Login gelangt er zur Übersicht seiner Lernmaterialien.
+3. Neue Dokumente können über die Funktion **„Material hinzufügen“** hochgeladen werden.
+4. Die Materialien werden automatisch gespeichert und in der Übersicht angezeigt.
+5. Über die Suchfunktion oder die Kategorien kann gezielt nach Dokumenten gesucht werden.
+6. Wichtige Dokumente können als Favoriten markiert werden.
+7. Geöffnete Dokumente erscheinen automatisch im Bereich **„Zuletzt verwendet“**.
+8. Materialien können jederzeit bearbeitet, ersetzt oder gelöscht werden.
+9. Der Nutzer kann sein Profil verwalten und die Darstellung zwischen Light- und Dark-Mode wechseln.
+
+##### User Journey Map
+
+| Phase | Aktion des Nutzers | Ziel |
+|---------|---------|---------|
+| Einstieg | Anmeldung | Zugriff auf persönliche Materialien |
+| Übersicht | Materialien anzeigen | Überblick erhalten |
+| Hochladen | Neues Material hinzufügen | Dokument speichern |
+| Verwalten | Material bearbeiten oder löschen | Informationen aktuell halten |
+| Organisieren | Favoriten setzen und Kategorien nutzen | Schnellere Wiederfindbarkeit |
+| Nutzung | Dokument öffnen | Lernen mit den Unterlagen |
+| Rückkehr | Zuletzt verwendete Materialien anzeigen | Weiterarbeiten ohne erneute Suche |
+
+#### Mockup
+
+Für die Ausarbeitung des High-Fidelity-Prototyps wurde Figma verwendet.
+
+**Interaktiver Figma-Prototyp:**
+
+[Smart Study Organizer Mockup](https://www.figma.com/proto/jx8dT8kPqwVUedgJDSohpf/Prototyping--Smart-Study-Organizer-Mockup?node-id=1-2&p=f&t=GBw77Fpgi7adbnCU-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2)
+
+Die wichtigsten Mockup-Seiten sind nachfolgend dokumentiert.
+
+##### Dashboard / Übersicht
+
+![Dashboard](doc/images/mockup-dashboard.png)
+
+*Abbildung 6: Übersicht aller Lernmaterialien.*
+
+Das Dashboard bildet die zentrale Arbeitsoberfläche der Anwendung. Nutzer erhalten hier einen Überblick über alle gespeicherten Lernmaterialien und können diese durchsuchen oder filtern.
+
+##### Material hinzufügen
+
+![Material hinzufügen](doc/images/mockup-add-material.png)
+
+*Abbildung 7: Formular zum Hochladen neuer Lernmaterialien.*
+
+Über diese Ansicht können neue Lernmaterialien hochgeladen und mit zusätzlichen Informationen wie Fach oder Notizen versehen werden.
+
+##### Materialdetails
+
+![Materialdetails](doc/images/mockup-material-details.png)
+
+*Abbildung 8: Detailansicht eines Lernmaterials.*
+
+Die Detailansicht zeigt alle Informationen eines Dokuments und ermöglicht das Öffnen, Bearbeiten oder Löschen.
+
 
 ### 3.4 Prototype
 
