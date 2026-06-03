@@ -272,12 +272,144 @@ Die Detailansicht zeigt alle Informationen eines Dokuments und ermöglicht das �
 
 ### 3.4 Prototype
 
-#### 3.4.1. Entwurf (Design)
-Beschreibt die Gestaltung und Interaktion.
-> **Hinweis:** Hier wird der **Prototyp** beschrieben, nicht das **Mockup**.
-- **Informationsarchitektur:** _[z. B. Seiten/Navigation: Konzept, nicht die technische Umsetzung]_
-- **User Interface Design:** _[wichtige Screens: Screenshots mit kurzen Erläuterungen]_  
-- **Designentscheidungen:** _[zentrale Entscheidungen und Begründungen]_
+In der Prototype-Phase wurde die zuvor entwickelte Lösung als funktionsfähiger digitaler Prototyp umgesetzt. Im Gegensatz zum Mockup stand dabei nicht mehr nur die visuelle Gestaltung im Vordergrund, sondern die tatsächliche Interaktion mit der Anwendung. Nutzer können Lernmaterialien hochladen, verwalten, bearbeiten, kategorisieren und wiederfinden. Ziel des Prototyps war es, die zentralen Funktionen der Anwendung realitätsnah abzubilden und für spätere Tests nutzbar zu machen.
+
+#### 3.4.1 Entwurf (Design)
+
+Der Prototyp wurde mit Fokus auf Übersichtlichkeit, einfache Bedienung und schnelle Auffindbarkeit von Lernmaterialien gestaltet. Alle wichtigen Funktionen sollten mit möglichst wenigen Klicks erreichbar sein und eine konsistente Benutzererfahrung bieten.
+
+##### Informationsarchitektur
+
+Die Anwendung ist in mehrere klar getrennte Bereiche aufgeteilt. Dadurch können Nutzer gezielt auf die benötigten Funktionen zugreifen, ohne von unnötigen Informationen abgelenkt zu werden.
+
+Die Hauptnavigation erfolgt über eine permanente Sidebar auf der linken Seite. Von dort aus können folgende Bereiche aufgerufen werden:
+
+- Übersicht (Dashboard)
+- Favoriten
+- Zuletzt verwendet
+- Kategorien
+- Profil
+- Hilfe
+- Logout
+
+Die Struktur orientiert sich an den typischen Arbeitsabläufen von Studierenden. Häufig verwendete Funktionen sind direkt erreichbar und die Navigation bleibt jederzeit sichtbar.
+
+##### User Interface Design
+
+Bei der Gestaltung der Benutzeroberfläche stand die Benutzerfreundlichkeit im Mittelpunkt. Die Anwendung richtet sich an Studierende, welche ihre Lernmaterialien möglichst effizient verwalten und wiederfinden möchten. Aus diesem Grund wurde bewusst auf eine übersichtliche Struktur, klare Navigationselemente und eine reduzierte visuelle Gestaltung geachtet.
+
+Die Benutzeroberfläche wurde schlicht und modern gestaltet, um die Aufmerksamkeit auf die eigentlichen Inhalte – die Lernmaterialien – zu lenken. Unnötige Designelemente wurden vermieden, sodass Nutzer ihre Dokumente schnell finden und verwalten können. Gleichzeitig sorgen eine konsistente Farbgebung, wiederkehrende Bedienelemente und eine klare Seitenstruktur für eine intuitive Bedienung.
+
+Besonderer Wert wurde darauf gelegt, häufig genutzte Funktionen wie das Hochladen, Suchen, Filtern oder Favorisieren von Lernmaterialien mit möglichst wenigen Interaktionen erreichbar zu machen. Ergänzend wurde ein Dark Mode integriert, um unterschiedlichen Nutzerpräferenzen gerecht zu werden und die Anwendung auch bei längerer Nutzung angenehm bedienbar zu halten.
+
+Die folgenden Screens zeigen die wichtigsten Bereiche von Smart Study Organizer.
+
+###### Landing Page
+
+![Landing Page](doc/images/landing-page.png)
+
+*Abbildung 9: Landing Page*
+
+Die Landing Page bildet den Einstiegspunkt der Anwendung für nicht angemeldete Nutzer. Sie stellt die wichtigsten Funktionen des Smart Study Organizers vor und bietet direkten Zugriff auf die Registrierung und den Login. Ziel der Seite ist es, den Nutzen der Anwendung verständlich zu kommunizieren und neue Nutzer zur Verwendung der Plattform zu motivieren.
+
+---
+
+###### Login & Registrierung
+
+![Login](doc/images/prototype-login.png)
+*Abbildung 10: Loginseite von Smart Study Organizer*
+
+![Login](doc/images/prototype-register.png)
+*Abbildung 11: Registrierungsseite von Smart Study Organizer*
+
+Über die Login- und Registrierungsseiten können Benutzer ein persönliches Konto erstellen oder sich mit bestehenden Zugangsdaten anmelden. Die Registrierung beinhaltet eine Passwortvalidierung, welche Mindestanforderungen an die Passwortsicherheit überprüft.
+
+---
+
+###### Dashboard
+
+![Dashboard](doc/images/dashboard.png)
+
+*Abbildung 12: Dashboard von Smart Study Organizer*
+
+Das Dashboard dient als zentrale Arbeitsoberfläche. Nutzer erhalten einen Überblick über alle gespeicherten Lernmaterialien. Zusätzlich stehen eine Suchfunktion, Filtermöglichkeiten sowie der direkte Zugriff auf das Hochladen neuer Materialien zur Verfügung.
+
+---
+
+###### Materialdetails
+
+![Materialdetails](doc/images/prototype-material-details.png)
+
+*Abbildung 13: Detailansicht eines Lernmaterials.*
+
+In der Detailansicht werden sämtliche Informationen eines Dokuments angezeigt. Materialien können geöffnet, heruntergeladen, bearbeitet, gelöscht oder als Favorit markiert werden.
+
+---
+
+###### Favoriten
+
+![Favoriten](doc/images/prototype-favorites.png)
+
+*Abbildung 14: Favoritenansicht von Smart Study Organizer*
+
+Die Favoritenansicht ermöglicht den schnellen Zugriff auf Lernmaterialien, die als Favoriten gespeichert wurden. Nutzer können Dokumente als Favoriten markieren und diese gesammelt auf einer separaten Seite anzeigen lassen. Dadurch lassen sich wichtige Unterlagen schneller wiederfinden.
+
+---
+
+###### Zuletzt verwendet
+
+![Zuletzt verwendet](doc/images/prototype-recent.png)
+
+*Abbildung 15: Ansicht der zuletzt verwendeten Lernmaterialien.*
+
+In diesem Bereich werden zuletzt geöffnete Dokumente angezeigt. Dadurch können Nutzer schnell zu Materialien zurückkehren, mit denen sie kürzlich gearbeitet haben, ohne erneut danach suchen zu müssen.
+
+---
+
+###### Kategorien
+
+![Kategorien](doc/images/prototype-categories.png)
+
+*Abbildung 16: Kategorienansicht von Smart Study Organizer*
+
+Die Kategorienansicht gruppiert Lernmaterialien nach Fachgebieten. Nutzer erhalten dadurch eine strukturierte Übersicht über ihre Unterlagen und können Dokumente gezielt innerhalb eines bestimmten Fachbereichs finden.
+
+---
+
+###### Profilseite
+
+![Profil](doc/images/prototype-profile.png)
+
+*Abbildung 17: Profilseite von Smart Study Organizer*
+
+Die Profilseite ermöglicht die Verwaltung persönlicher Einstellungen. Nutzer können ihr Passwort ändern, zwischen Light- und Dark-Mode wechseln sowie ihre Kontoinformationen einsehen.
+
+---
+
+###### Hilfe-Seite
+
+![Hilfe](doc/images/prototype-help.png)
+
+*Abbildung 18: Hilfeseite von Smart Study Organizer*
+
+Die Hilfeseite erklärt die wichtigsten Funktionen der Anwendung und unterstützt neue Nutzer beim Einstieg.
+
+---
+
+##### Designentscheidungen
+
+Während der Entwicklung wurden verschiedene Designentscheidungen getroffen, um die Benutzerfreundlichkeit zu verbessern.
+
+- Verwendung einer permanenten Sidebar-Navigation für eine schnelle Orientierung.
+- Einsatz einer Tabellenansicht zur übersichtlichen Darstellung vieler Lernmaterialien.
+- Klare Trennung der Funktionen auf verschiedene Seiten, um die Informationsdichte zu reduzieren.
+- Integration einer Suchfunktion und Kategorien zur schnelleren Wiederfindbarkeit von Dokumenten.
+- Unterstützung eines Light- und Dark-Modes, um unterschiedliche Nutzerpräferenzen zu berücksichtigen.
+- Konsistente Farbgestaltung mit einer violetten Akzentfarbe zur Hervorhebung wichtiger Aktionen.
+- Responsive Gestaltung, damit die Anwendung auf verschiedenen Bildschirmgrössen nutzbar bleibt.
+
+Die getroffenen Designentscheidungen orientieren sich an den Anforderungen der Zielgruppe und unterstützen das Ziel, Lernmaterialien möglichst effizient zu organisieren und wiederzufinden.
+
 
 #### 3.4.2. Umsetzung (Technik)
 Fasst die technische Realisierung zusammen.
