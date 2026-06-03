@@ -304,7 +304,7 @@ Besonderer Wert wurde darauf gelegt, häufig genutzte Funktionen wie das Hochlad
 
 Die folgenden Screens zeigen die wichtigsten Bereiche von Smart Study Organizer.
 
-###### Landing Page
+##### Landing Page
 
 ![Landing Page](doc/images/landing-page.png)
 
@@ -314,19 +314,21 @@ Die Landing Page bildet den Einstiegspunkt der Anwendung für nicht angemeldete 
 
 ---
 
-###### Login & Registrierung
+##### Login & Registrierung
 
 ![Login](doc/images/prototype-login.png)
+
 *Abbildung 10: Loginseite von Smart Study Organizer*
 
 ![Login](doc/images/prototype-register.png)
+
 *Abbildung 11: Registrierungsseite von Smart Study Organizer*
 
 Über die Login- und Registrierungsseiten können Benutzer ein persönliches Konto erstellen oder sich mit bestehenden Zugangsdaten anmelden. Die Registrierung beinhaltet eine Passwortvalidierung, welche Mindestanforderungen an die Passwortsicherheit überprüft.
 
 ---
 
-###### Dashboard
+##### Dashboard
 
 ![Dashboard](doc/images/dashboard.png)
 
@@ -336,7 +338,7 @@ Das Dashboard dient als zentrale Arbeitsoberfläche. Nutzer erhalten einen Über
 
 ---
 
-###### Materialdetails
+##### Materialdetails
 
 ![Materialdetails](doc/images/prototype-material-details.png)
 
@@ -346,7 +348,7 @@ In der Detailansicht werden sämtliche Informationen eines Dokuments angezeigt. 
 
 ---
 
-###### Favoriten
+##### Favoriten
 
 ![Favoriten](doc/images/prototype-favorites.png)
 
@@ -356,7 +358,7 @@ Die Favoritenansicht ermöglicht den schnellen Zugriff auf Lernmaterialien, die 
 
 ---
 
-###### Zuletzt verwendet
+##### Zuletzt verwendet
 
 ![Zuletzt verwendet](doc/images/prototype-recent.png)
 
@@ -366,7 +368,7 @@ In diesem Bereich werden zuletzt geöffnete Dokumente angezeigt. Dadurch können
 
 ---
 
-###### Kategorien
+##### Kategorien
 
 ![Kategorien](doc/images/prototype-categories.png)
 
@@ -376,7 +378,7 @@ Die Kategorienansicht gruppiert Lernmaterialien nach Fachgebieten. Nutzer erhalt
 
 ---
 
-###### Profilseite
+##### Profilseite
 
 ![Profil](doc/images/prototype-profile.png)
 
@@ -386,7 +388,7 @@ Die Profilseite ermöglicht die Verwaltung persönlicher Einstellungen. Nutzer k
 
 ---
 
-###### Hilfe-Seite
+##### Hilfe-Seite
 
 ![Hilfe](doc/images/prototype-help.png)
 
