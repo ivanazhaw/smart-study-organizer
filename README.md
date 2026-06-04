@@ -706,26 +706,92 @@ Die Evaluation zeigte, dass die Benutzeroberfläche verständlich aufgebaut ist 
 Die wichtigste Erkenntnis der Evaluation war das Problem beim Dateiupload in der deployten Version. Dieses Problem wurde nach der Testphase analysiert und durch die Integration von Cloudinary behoben. Dadurch funktioniert das Hochladen, Bearbeiten und Verwalten von Lernmaterialien nun sowohl lokal als auch in der veröffentlichten Version der Anwendung.
 
 
-## 4. Erweiterungen [Optional]
-Dokumentiert Erweiterungen über den Mindestumfang hinaus.
-> **Hinweis:** Jede Erweiterung ist separat nach dem folgenden Schema zu beschreiben.
+## 4. Erweiterungen
 
-### _[4.x Kurzbeschreibung / Titel]_  
-- **Beschreibung & Nutzen:** _[Was wurde erweitert? Warum?]_  
-- **Wo umgesetzt:** _[Wie und wo wurde es gemacht? Frontend, Backend, Datenbank?]_  
-- **Referenz:** _[Wo wird die Erweiterung auch noch beschrieben, z.B. Screenshot oder Beschreibung in einem anderen Kapitel]_  
-- **Aus Evaluation abgeleitet?:** _[Wurde diese Erweiterung als Folge eines in der Evaluation identifizierten Issues implementiert?]_  
+Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche über den ursprünglichen Mindestumfang hinausgehen oder als direkte Folge der Evaluation ergänzt wurden.
 
-> Das folgende **Beispiel** wurde bewusst kurz gehalten. Erweiterungen dürfen auch ausführlicher beschrieben werden.
+### 4.1 Dark Mode
 
-### 4.1 Tabelle nach Kategorien filtern
-- **Beschreibung & Nutzen:** Tabelle X kann nach Kategorie gefiltert werden, weil User typischerweise nur an einer bestimmten Kategorie interessiert sind.  
-- **Wo umgesetzt:** 
-  - **Frontend:** Tabelle mit Dropdown in Datei ...
-  - **Backend:** Form Action ... in Datei ...
-  - **Datenbank:** MongoDB-Query in Datei ...
-- **Referenz:** Screenshot in Kap. x.y
-- **Aus Evaluation abgeleitet?:** Ja, Issue x.y
+- **Beschreibung & Nutzen:**  
+  Die Anwendung wurde um einen Dark Mode erweitert. Nutzer können zwischen einer hellen und einer dunklen Darstellung wechseln. Dadurch wird die Anwendung insbesondere bei längerer Nutzung oder in dunkler Umgebung angenehmer nutzbar.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** ThemeToggle-Komponente zur Umschaltung zwischen Light- und Dark-Mode
+  - **Frontend:** CSS-Variablen für beide Designs in `app.css`
+  - **Browser-Speicher:** Speicherung der Benutzerauswahl mittels Local Storage
+
+- **Referenz:**  
+  - Profilseite in Kapitel 3.4.1
+  - Beschreibung der Darstellung in Kapitel 3.4.1 User Interface Design
+
+![Dark-Mode](doc/images/dark-mode-profile.png)
+
+*Abbildung 20: Dark Mode in der Profil Ansicht*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde als zusätzliche Komfortfunktion umgesetzt.
+
+### 4.2 Cloudinary-Dateispeicherung
+
+- **Beschreibung & Nutzen:**  
+  Ursprünglich wurden hochgeladene Dateien lokal auf dem Server gespeichert. Da diese Lösung in der deployten Version nicht funktionierte, wurde die Dateispeicherung auf Cloudinary umgestellt. Dadurch können Lernmaterialien nun zuverlässig hochgeladen, bearbeitet und heruntergeladen werden.
+
+- **Wo umgesetzt:**  
+  - **Backend:** Integration der Cloudinary API
+  - **Backend:** Anpassung der Upload- und Bearbeitungslogik
+  - **Datenbank:** Speicherung der Cloudinary-URL anstelle lokaler Dateipfade
+
+- **Referenz:**  
+  - Kapitel 3.4.2 Umsetzung (Technik)
+  - Kapitel 3.5 Validate (Upload-Problem während der Evaluation)
+
+- **Aus Evaluation abgeleitet?:**  
+  Ja. Das Problem wurde während der Evaluation entdeckt und anschliessend behoben mit Cloudinary.
+
+### 4.3 Passwortänderung
+
+- **Beschreibung & Nutzen:**  
+  Die Profilseite wurde um die Möglichkeit erweitert, das eigene Passwort direkt innerhalb der Anwendung zu ändern. Zusätzlich werden Anforderungen an sichere Passwörter angezeigt und überprüft. Dadurch erhalten Nutzer mehr Kontrolle über ihr Konto und die Sicherheit der Anwendung wird erhöht.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** Formular zur Passwortänderung auf der Profilseite
+  - **Backend:** Validierung der Passwortrichtlinien
+  - **Backend:** Aktualisierung des Passwort-Hashes in der Datenbank
+
+- **Referenz:**  
+  - Profilseite in Kapitel 3.4.1
+  - Beschreibung der Benutzerverwaltung in Kapitel 3.4.2
+
+![PW-Change](doc/images/change-password.png)
+
+*Abbildung 21: Passwort ändern*
+
+![PW-Changed](doc/images/changed-password.png)
+
+*Abbildung 22: Meldung des geänderten Passworts*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde als zusätzliche Sicherheitsfunktion umgesetzt.
+
+### 4.4 Dateiformat-Validierung
+
+- **Beschreibung & Nutzen:**  
+  Beim Hochladen von Lernmaterialien wird geprüft, ob der ausgewählte Dateityp mit dem gewählten Materialtyp übereinstimmt. Wird beispielsweise der Typ PDF gewählt, können nur PDF-Dateien hochgeladen werden. Dadurch werden Fehleingaben verhindert und die Datenqualität verbessert.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** Prüfung des Dateityps beim Auswählen einer Datei
+  - **Frontend:** Anzeige einer Fehlermeldung bei ungültigen Dateiformaten
+
+- **Referenz:**  
+  - Upload-Seite in Kapitel 3.4.1
+  - Testfall "Dateiformat-Prüfung" in Kapitel 3.5
+
+![Format](doc/images/format.png)
+
+*Abbildung 22: Dateiformat-Validierung*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde zur Verbesserung der Benutzerfreundlichkeit und Datenqualität umgesetzt.
 
 ## 5. Projektorganisation [Optional]
 Beispiele:
