@@ -563,14 +563,148 @@ Während der Entwicklung wurden mehrere technische Entscheidungen getroffen.
 Durch diese Architektur konnte eine einfache, wartbare und erweiterbare Anwendung realisiert werden, welche die definierten Anforderungen der Zielgruppe erfüllt.
 
 ### 3.5 Validate
-- **URL der getesteten Version** (separat deployt)
-- **Ziele der Prüfung:** _[welche Fragen sollen beantwortet werden?]_  
-- **Vorgehen:** _[moderiert/unmoderiert; remote/on-site]_  
-- **Stichprobe:** _[Mit wem wurde getestet? Profil; Anzahl]_  
-- **Aufgaben/Szenarien:** _[Ausformulierte Testaufgaben]_  
-- **Kennzahlen & Beobachtungen:** _[z. B. Erfolgsquote, Zeitbedarf, qualitative Findings]_  
-- **Zusammenfassung der Resultate:** _[Wichtigste Erkenntnisse; 2-4 Sätze]_  
-- **Abgeleitete Verbesserungen:** _[Anforderungen, die als nächstes umgesetzt werden sollten, priorisiert, kurz begründet; falls Verbesserungen im Prototyp konkret umgesetzt wurden: In Kap. 4 dokumentieren]_  
+
+In der Validate-Phase wurde der entwickelte Prototyp mit potenziellen Nutzern getestet. Ziel war es, die Benutzerfreundlichkeit der Anwendung zu überprüfen, mögliche Schwachstellen zu identifizieren und die wichtigsten Funktionen unter realistischen Bedingungen zu evaluieren.
+
+#### URL der getesteten Version
+
+Die Evaluation wurde mit der öffentlich bereitgestellten Anwendung durchgeführt:
+
+**https://smart-study-organizer-app.netlify.app/**
+
+Die getestete Version entsprach weitgehend dem aktuellen Entwicklungsstand. Nach Abschluss der Evaluation wurden jedoch einzelne technische und gestalterische Verbesserungen umgesetzt. Sofern sich Funktionen oder Ansichten gegenüber der getesteten Version verändert haben, werden diese anhand von Screenshots der damaligen Version dokumentiert.
+
+#### Ziele der Prüfung
+
+Im Rahmen der Evaluation sollten insbesondere folgende Fragestellungen beantwortet werden:
+
+- Finden sich Benutzerinnen und Benutzer schnell in der Anwendung zurecht?
+- Ist die Navigation verständlich und logisch aufgebaut?
+- Können Lernmaterialien selbstständig hinzugefügt und verwaltet werden?
+- Werden Favoriten, Kategorien und zuletzt verwendete Materialien verstanden?
+- Sind Icons, Buttons und Fehlermeldungen verständlich?
+- Funktionieren Suche und Filterung intuitiv?
+- Wird der Dark Mode als angenehm und gut lesbar wahrgenommen?
+- Wirkt die Anwendung modern, übersichtlich und benutzerfreundlich?
+
+#### Vorgehen
+
+Die Evaluation wurde als moderierter Vor-Ort-Test durchgeführt welcher lokal am Laptop getestet wurde. Die Testpersonen erhielten vorbereitete Aufgaben und konnten die Anwendung selbstständig bedienen. Während der Durchführung wurden Beobachtungen festgehalten und anschliessend Feedback zur Benutzerfreundlichkeit gegeben.
+
+#### Stichprobe
+
+Die Anwendung wurde mit zwei Studierenden aus dem Studiengang Wirtschaftsinformatik getestet.
+
+##### TP-01
+
+| Merkmal | Beschreibung |
+|----------|-------------|
+| Studiengang | Wirtschaftsinformatik |
+| Alter | 20–25 Jahre |
+| Gerät | Laptop |
+| Browser | Google Chrome |
+
+##### TP-02
+
+| Merkmal | Beschreibung |
+|----------|-------------|
+| Studiengang | Wirtschaftsinformatik |
+| Alter | 20–25 Jahre |
+| Gerät | Laptop |
+| Browser | Google Chrome |
+
+#### Aufgaben / Szenarien
+
+| Nr. | Aufgabe |
+|------|----------|
+| A1 | Landing Page betrachten und Zweck der Anwendung beschreiben |
+| A2 | Registrierung durchführen |
+| A3 | Login durchführen |
+| A4 | Neues Lernmaterial hinzufügen |
+| A5 | Lernmaterial öffnen |
+| A6 | Lernmaterial bearbeiten |
+| A7 | Lernmaterial löschen |
+| A8 | Material als Favorit markieren |
+| A9 | Nach einem Material suchen |
+| A10 | Kategorien verwenden |
+| A11 | Zuletzt verwendete Materialien aufrufen |
+| A12 | Profilseite öffnen und Dark Mode testen |
+| A13 | Registrierung mit zu schwachem Passwort versuchen |
+| A14 | Login mit falschem Passwort durchführen |
+| A15 | Login mit nicht existierender E-Mail durchführen |
+| A16 | Material ohne Pflichtfelder speichern |
+| A17 | PDF auswählen und anschliessend eine DOCX-Datei hochladen |
+| A18 | DOCX auswählen und anschliessend eine PDF-Datei hochladen |
+| A19 | Passwortänderung mit ungültigem Passwort testen |
+| A20 | Suche nach einem nicht existierenden Material durchführen |
+| A21 | Favorit hinzufügen und anschliessend wieder entfernen |
+| A22 | Material bearbeiten und eine neue Datei hochladen |
+| A23 | Material löschen und prüfen, ob es aus der Übersicht verschwindet |
+| A24 | Dark Mode aktivieren und Seite neu laden |
+
+#### Kennzahlen & Beobachtungen
+
+Zur Bewertung des Prototyps wurden sowohl quantitative als auch qualitative Kriterien berücksichtigt. Die quantitative Auswertung basiert auf der erfolgreichen Durchführung der definierten Testaufgaben durch die beiden Testpersonen. Ergänzend wurden Beobachtungen zum Nutzerverhalten, zur Verständlichkeit der Benutzeroberfläche sowie zur allgemeinen Benutzerfreundlichkeit festgehalten.
+
+##### Erfolgsquote
+
+| Bereich | Erfolgsquote |
+|----------|-------------|
+| Landing Page verstehen | 2 / 2 |
+| Registrierung | 2 / 2 |
+| Passwortvalidierung | 2 / 2 |
+| Login | 2 / 2 |
+| Fehlereingaben beim Login | 2 / 2 |
+| Navigation | 2 / 2 |
+| Suche und Filter | 2 / 2 |
+| Favoriten verwenden | 2 / 2 |
+| Kategorien verwenden | 2 / 2 |
+| Zuletzt verwendet | 2 / 2 |
+| Profilseite | 2 / 2 |
+| Dark Mode | 2 / 2 |
+| Passwortänderung | 2 / 2 |
+| Material bearbeiten | 2 / 2 |
+| Material löschen | 2 / 2 |
+| Dateiformat-Prüfung | 2 / 2 |
+| Material hochladen | 0 / 2 |
+
+
+#### Qualitative Beobachtungen
+
+Neben der reinen Erfolgsquote wurden während der Evaluation auch qualitative Beobachtungen festgehalten. Dabei lag der Fokus auf dem Verhalten der Testpersonen, ihrem Verständnis der Benutzeroberfläche sowie möglichen Unsicherheiten oder Schwierigkeiten bei der Bedienung. Die folgenden Erkenntnisse ergeben sich aus den Rückmeldungen und Beobachtungen während der Durchführung der Tests.
+
+**Positive Beobachtungen**
+
+- Die Navigation wurde von beiden Testpersonen sofort verstanden.
+- Die Such- und Filterfunktionen konnten ohne Erklärung genutzt werden.
+- Favoriten, Kategorien und zuletzt verwendete Materialien wurden intuitiv verstanden.
+- Das Design wurde als modern und übersichtlich wahrgenommen.
+- Der Dark Mode wurde als angenehm lesbar bewertet.
+- Die Materialverwaltung wurde als einfach und verständlich eingestuft.
+
+**Festgestellte Probleme**
+
+- Das Hochladen neuer Lernmaterialien funktionierte in der deployten Version nicht.
+- Beim Upload trat ein HTTP-500-Fehler auf.
+- Ursache war die lokale Speicherung der Dateien auf dem Server, welche in der Hosting-Umgebung nicht unterstützt wurde.
+
+![Error](doc/images/error-upload.png)
+
+*Abbildung 19: Fehlermeldung nach dem hochladen*
+
+#### Zusammenfassung der Resultate
+
+Die Evaluation zeigte, dass die Benutzeroberfläche verständlich aufgebaut ist und die wichtigsten Funktionen ohne zusätzliche Unterstützung genutzt werden konnten. Navigation, Suche, Favoriten, Kategorien sowie die Profilfunktionen wurden von beiden Testpersonen positiv bewertet. Das einzige kritische Problem betraf den Dateiupload in der deployten Version. Insgesamt bestätigte die Evaluation die Benutzerfreundlichkeit und Zweckmässigkeit der Anwendung.
+
+#### Abgeleitete Verbesserungen
+
+| Priorität | Verbesserung | Status |
+|------------|-------------|---------|
+| Hoch | Cloudinary für Dateispeicherung integrieren | Umgesetzt |
+
+
+Die wichtigste Erkenntnis der Evaluation war das Problem beim Dateiupload in der deployten Version. Dieses Problem wurde nach der Testphase analysiert und durch die Integration von Cloudinary behoben. Dadurch funktioniert das Hochladen, Bearbeiten und Verwalten von Lernmaterialien nun sowohl lokal als auch in der veröffentlichten Version der Anwendung.
+
 
 ## 4. Erweiterungen [Optional]
 Dokumentiert Erweiterungen über den Mindestumfang hinaus.
