@@ -688,7 +688,7 @@ Neben der reinen Erfolgsquote wurden während der Evaluation auch qualitative Be
 - Beim Upload trat ein HTTP-500-Fehler auf.
 - Ursache war die lokale Speicherung der Dateien auf dem Server, welche in der Hosting-Umgebung nicht unterstützt wurde.
 
-![Error](doc/images/error-upload.png)
+![Error](doc/images/error-upload.jpg)
 
 *Abbildung 19: Fehlermeldung nach dem hochladen*
 
