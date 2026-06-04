@@ -5,16 +5,16 @@
 1. [Ausgangslage](#1-ausgangslage)
 2. [Lösungsidee](#2-lösungsidee)
 3. [Vorgehen & Artefakte](#3-vorgehen--artefakte)
-    1. [Understand & Define](#31-understand--define)
-    2. [Sketch](#32-sketch)
-    3. [Decide](#33-decide)
-    4. [Prototype](#34-prototype)
-    5. [Validate](#35-validate)
-4. [Erweiterungen [Optional]](#4-erweiterungen-optional)
-5. [Projektorganisation [Optional]](#5-projektorganisation-optional)
+   - [3.1 Understand & Define](#31-understand--define)
+   - [3.2 Sketch](#32-sketch)
+   - [3.3 Decide](#33-decide)
+   - [3.4 Prototype](#34-prototype)
+   - [3.5 Validate](#35-validate)
+4. [Erweiterungen](#4-erweiterungen)
+5. [Projektorganisation](#5-projektorganisation)
 6. [KI-Deklaration](#6-ki-deklaration)
-7. [Anhang [Optional]](#7-anhang-optional)
-
+7. [Anhang](#7-anhang)
+ 
 
 ## 1. Ausgangslage
 
