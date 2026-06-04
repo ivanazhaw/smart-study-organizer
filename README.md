@@ -724,7 +724,7 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - Profilseite in Kapitel 3.4.1
   - Beschreibung der Darstellung in Kapitel 3.4.1 User Interface Design
 
-![Dark-Mode](doc/images/dark-mode-profile.png)
+![Dark-Mode](doc/images/dark-mode-profil.png)
 
 *Abbildung 20: Dark Mode in der Profil Ansicht*
 
