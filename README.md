@@ -413,14 +413,154 @@ Während der Entwicklung wurden verschiedene Designentscheidungen getroffen, um 
 Die getroffenen Designentscheidungen orientieren sich an den Anforderungen der Zielgruppe und unterstützen das Ziel, Lernmaterialien möglichst effizient zu organisieren und wiederzufinden.
 
 
-#### 3.4.2. Umsetzung (Technik)
-Fasst die technische Realisierung zusammen.
-- **Technologie-Stack:** _[SvelteKit, Bibliotheken falls genutzt]_
-- **Tooling:** _[IDE/Erweiterungen, lokale/Cloud-Tools; den Einsatz von KI beschreiben Sie im Kapitel **KI-Deklaration**]_  
-- **Struktur & Komponenten:** _[Seiten, Routen, State/Stores, wichtige Komponenten]_
-- **Daten & Schnittstellen:** _[Wie werden Daten gespeichert, verwaltet, abgerufen?]_
-- **Deployment:** _[URL]_  
-- **Besondere Entscheidungen:** _[z. B. Trade-offs, Vereinfachungen]_  
+#### 3.4.2 Umsetzung (Technik)
+
+Nach der Konzeption und Gestaltung des Prototyps wurde die Anwendung technisch umgesetzt. Dabei lag der Fokus auf einer modernen Webarchitektur, einer einfachen Erweiterbarkeit sowie einer klaren Trennung zwischen Benutzeroberfläche, Datenhaltung und Geschäftslogik.
+
+##### Technologie-Stack
+
+Für die Entwicklung des Smart Study Organizers wurden folgende Technologien eingesetzt:
+
+- **SvelteKit** als Full-Stack-Webframework
+- **JavaScript** für die Implementierung der Anwendungslogik
+- **MongoDB Atlas** als Cloud-Datenbank
+- **bcryptjs** zur sicheren Speicherung von Passwörtern
+- **Cloudinary** für die Speicherung und Verwaltung hochgeladener Dateien
+- **Netlify** für das Hosting und Deployment der Anwendung
+- **HTML5** und **CSS3** für die Gestaltung der Benutzeroberfläche
+
+Zusätzlich wurden verschiedene SvelteKit-Funktionen wie Server Actions, Layouts und Routing verwendet.
+
+##### Tooling
+
+Für die Entwicklung kamen verschiedene Werkzeuge und Plattformen zum Einsatz:
+
+- **Visual Studio Code (VS Code)** als Entwicklungsumgebung
+- **Git** zur Versionsverwaltung
+- **GitHub** zur Verwaltung des Quellcodes
+- **MongoDB Atlas** zur Datenhaltung
+- **Cloudinary** zur Dateispeicherung
+- **Netlify** für das Deployment
+- **Figma** für die Erstellung von Wireframes, Mockups und Prototypen
+
+##### Struktur & Komponenten
+
+Die Anwendung ist modular aufgebaut und folgt der von SvelteKit vorgegebenen Projektstruktur. Die wichtigsten Verzeichnisse und Komponenten sind nachfolgend dargestellt.
+
+```text
+src
+├── routes
+│   ├── +page.svelte                 (Landing Page)
+│   ├── login
+│   ├── register
+│   ├── profile
+│   ├── help
+│   ├── favorites
+│   ├── recent
+│   ├── categories
+│   ├── add
+│   └── materials
+│       ├── [id]
+│       └── [id]/edit
+│
+├── lib
+│   ├── components
+│   │   ├── ThemeToggle.svelte
+│   │   ├── MaterialMenu.svelte
+│   │   ├── FavoriteIcon.svelte
+│   │   └── BackLink.svelte
+│   │
+│   ├── server
+│   │   ├── auth.js
+│   │   ├── cloudinary.js
+│   │   ├── db.js
+│   │   ├── materials.js
+│   │   ├── users.js
+│   │   └── upload.js
+│   │
+│   ├──  utils
+│   │   ├── date.js
+│
+└── app.css
+```
+
+Die Navigation erfolgt über eine zentrale Sidebar, welche auf allen geschützten Seiten eingebunden wird. Wiederkehrende Funktionen wie die Theme-Umschaltung oder die Materialverwaltung wurden als separate Komponenten umgesetzt, um eine bessere Wartbarkeit und Wiederverwendbarkeit zu gewährleisten.
+
+###### State Management
+
+Für die Verwaltung von Zuständen wurden die in SvelteKit integrierten Runes und Reactive States verwendet. Dadurch können Suchbegriffe, Filtereinstellungen und Benutzerdaten dynamisch aktualisiert werden.
+
+##### Daten & Schnittstellen
+
+Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendung werden zwei zentrale Collections verwendet.
+
+###### Collection: users
+
+| Feld | Beschreibung |
+|--------|-------------|
+| _id| Referenz auf den Besitzer |
+| name | Name des Benutzers |
+| email | E-Mail-Adresse |
+| passwordHash | Verschlüsseltes Passwort |
+| createdAt | Zeitpunkt der Registrierung |
+
+###### Collection: materials
+
+| Feld | Beschreibung |
+|--------|-------------|
+| _id | Referenz auf den Besitzer |
+| title | Titel des Lernmaterials |
+| subject | Fach/Kategorie |
+| type | Dokumenttyp (PDF, DOCX usw.) |
+| note | Optionaler Beschreibungstext |
+| fileName | Ursprünglicher Dateiname |
+| filePath | Cloudinary-Dateipfad |
+| fileSize | Dateigrösse |
+| favorite | Favoritenstatus |
+| createdAt | Erstellungsdatum |
+| updatedAt | Letzte Änderung |
+| lastOpened | Letzter Zugriff |
+
+###### Datenfluss
+
+```text
+Benutzer
+    │
+    ▼
+SvelteKit Frontend
+    │
+    ▼
+Server Actions
+    │
+ ┌──┴───────────┐
+ ▼              ▼
+MongoDB      Cloudinary
+(Material)   (Dateien)
+```
+
+Beim Hochladen eines Lernmaterials wird die Datei zuerst an Cloudinary übertragen. Die zurückgelieferte URL sowie die Metadaten des Materials werden anschliessend in MongoDB gespeichert. Beim Öffnen eines Materials werden die Informationen aus der Datenbank geladen und die Datei über Cloudinary bereitgestellt.
+
+##### Deployment
+
+Die Anwendung wurde über Netlify veröffentlicht und ist unter folgender URL erreichbar:
+
+**Deployment URL:**  
+https://smart-study-organizer-app.netlify.app/
+
+
+##### Besondere Entscheidungen
+
+Während der Entwicklung wurden mehrere technische Entscheidungen getroffen.
+
+- Verwendung von MongoDB Atlas, um eine cloudbasierte Datenhaltung ohne lokale Datenbankinstallation zu ermöglichen.
+- Einsatz von Cloudinary für Datei-Uploads, da lokale Dateispeicherung auf Netlify nicht dauerhaft verfügbar ist.
+- Nutzung von bcryptjs, um Benutzerpasswörter sicher zu speichern.
+- Umsetzung eines Dark Modes zur Verbesserung der Benutzererfahrung.
+- Speicherung der Dark-Mode-Einstellung im Browser, damit die gewählte Darstellung auch nach einem erneuten Besuch erhalten bleibt.
+- Aufteilung der Anwendung in mehrere spezialisierte Seiten anstelle einer einzigen komplexen Ansicht.
+- Beschränkung auf die wichtigsten Funktionen eines Minimum Viable Products (MVP), um den Fokus auf die Kernprobleme der Zielgruppe zu legen.
+
+Durch diese Architektur konnte eine einfache, wartbare und erweiterbare Anwendung realisiert werden, welche die definierten Anforderungen der Zielgruppe erfüllt.
 
 ### 3.5 Validate
 - **URL der getesteten Version** (separat deployt)
