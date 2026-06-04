@@ -223,7 +223,7 @@ Der typische Nutzungsvorgang eines Studierenden innerhalb der Anwendung lässt s
 8. Materialien können jederzeit bearbeitet, ersetzt oder gelöscht werden.
 9. Der Nutzer kann sein Profil verwalten und die Darstellung zwischen Light- und Dark-Mode wechseln.
 
-##### User Journey Map
+#### User Journey Map
 
 | Phase | Aktion des Nutzers | Ziel |
 |---------|---------|---------|
@@ -486,7 +486,7 @@ src
 
 Die Navigation erfolgt über eine zentrale Sidebar, welche auf allen geschützten Seiten eingebunden wird. Wiederkehrende Funktionen wie die Theme-Umschaltung oder die Materialverwaltung wurden als separate Komponenten umgesetzt, um eine bessere Wartbarkeit und Wiederverwendbarkeit zu gewährleisten.
 
-###### State Management
+##### State Management
 
 Für die Verwaltung von Zuständen wurden die in SvelteKit integrierten Runes und Reactive States verwendet. Dadurch können Suchbegriffe, Filtereinstellungen und Benutzerdaten dynamisch aktualisiert werden.
 
@@ -494,7 +494,7 @@ Für die Verwaltung von Zuständen wurden die in SvelteKit integrierten Runes un
 
 Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendung werden zwei zentrale Collections verwendet.
 
-###### Collection: users
+##### Collection: users
 
 | Feld | Beschreibung |
 |--------|-------------|
@@ -504,7 +504,7 @@ Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendun
 | passwordHash | Verschlüsseltes Passwort |
 | createdAt | Zeitpunkt der Registrierung |
 
-###### Collection: materials
+##### Collection: materials
 
 | Feld | Beschreibung |
 |--------|-------------|
@@ -521,7 +521,7 @@ Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendun
 | updatedAt | Letzte Änderung |
 | lastOpened | Letzter Zugriff |
 
-###### Datenfluss
+##### Datenfluss
 
 ```text
 Benutzer
