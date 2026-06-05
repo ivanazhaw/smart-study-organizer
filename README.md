@@ -1064,11 +1064,15 @@ Die von der KI generierten Inhalte wurden nie ungeprüft übernommen. Stattdesse
 
 ### 6.3 Reflexion
 
-Der Einsatz von KI erwies sich insbesondere bei der Lösungsfindung, der Dokumentation sowie bei technischen Fragestellungen als hilfreich. Durch die schnelle Bereitstellung von Vorschlägen konnten verschiedene Lösungsansätze verglichen und Entwicklungsaufgaben effizienter umgesetzt werden.
+Der Einsatz von KI hat die Entwicklung des Smart Study Organizers in verschiedenen Bereichen unterstützt. Besonders hilfreich war die Unterstützung bei technischen Fragestellungen rund um SvelteKit, MongoDB, Cloudinary sowie bei der Gestaltung und Optimierung der Benutzeroberfläche. Auch bei der Erstellung und Strukturierung der Projektdokumentation konnte KI wertvolle Unterstützung leisten.
 
-Gleichzeitig zeigte sich, dass KI-generierte Inhalte nicht immer korrekt oder vollständig sind. Insbesondere bei technischen Problemen mussten Vorschläge getestet, angepasst oder teilweise verworfen werden. Eine kritische Überprüfung der Ergebnisse war daher jederzeit erforderlich.
+Während des Projekts zeigte sich jedoch, dass KI-generierte Lösungen nicht immer direkt übernommen werden konnten. Insbesondere bei komplexeren technischen Problemen führten die vorgeschlagenen Lösungen teilweise nicht zum gewünschten Ergebnis oder mussten an die bestehende Projektstruktur angepasst werden. Ein Beispiel hierfür war die Integration von Cloudinary sowie die Umsetzung des Dark Modes, bei denen mehrere Iterationen und eigene Anpassungen notwendig waren, bis eine funktionierende Lösung erreicht werden konnte.
 
-Insgesamt stellte KI eine wertvolle Unterstützung während des Projekts dar. Die Verantwortung für die Konzeption, Umsetzung, Qualitätssicherung und finale Entscheidung über die Verwendung der Inhalte blieb jedoch jederzeit bei der Autorin des Projekts.
+Ein weiterer wichtiger Aspekt war die Qualitätssicherung. Sämtliche Vorschläge wurden eigenständig geprüft, getestet und bei Bedarf überarbeitet. Dadurch konnte sichergestellt werden, dass die implementierten Funktionen den Anforderungen des Projekts entsprechen und keine fehlerhaften oder ungeeigneten Lösungen übernommen wurden.
+
+Rückblickend hat KI den Entwicklungsprozess beschleunigt und den Zugang zu technischen Lösungsansätzen erleichtert. Gleichzeitig wurde deutlich, dass ein fundiertes technisches Verständnis weiterhin notwendig ist, um Vorschläge kritisch zu bewerten, Fehler zu erkennen und die Lösungen erfolgreich in eine bestehende Anwendung zu integrieren.
+
+Insgesamt wurde KI als unterstützendes Werkzeug eingesetzt, welches die Entwicklung effizienter gestaltete. Die Konzeption, Umsetzung, Anpassung, Qualitätssicherung sowie alle finalen Entscheidungen wurden jedoch eigenständig durchgeführt.
 
 ## 7. Anhang [Optional]
 Beispiele:
