@@ -11,17 +11,8 @@
    - [3.4 Prototype](#34-prototype)
    - [3.5 Validate](#35-validate)
 4. [Erweiterungen](#4-erweiterungen)
-   - [4.1 Dark Mode](#41-dark-mode)
-   - [4.2 Cloudinary-Dateispeicherung](#42-cloudinary-dateispeicherung)
-   - [4.3 Passwortänderung](#43-passwortänderung)
-   - [4.4 Dateiformat-Validierung](#44-dateiformat-validierung)
-   - [4.5 Favoriten-System](#45-favoriten-system)
-   - [4.6 Zuletzt verwendete Materialien](#46-zuletzt-verwendete-materialien)
 5. [Projektorganisation](#5-projektorganisation)
 6. [KI-Deklaration](#6-ki-deklaration)
-   - [6.1 KI-Tools](#61-ki-tools)
-   - [6.2 Prompt-Vorgehen](#62-prompt-vorgehen)
-   - [6.3 Reflexion](#63-reflexion)
 7. [Anhang](#7-anhang)
  
 
