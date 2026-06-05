@@ -1074,9 +1074,43 @@ Rückblickend hat KI den Entwicklungsprozess beschleunigt und den Zugang zu tech
 
 Insgesamt wurde KI als unterstützendes Werkzeug eingesetzt, welches die Entwicklung effizienter gestaltete. Die Konzeption, Umsetzung, Anpassung, Qualitätssicherung sowie alle finalen Entscheidungen wurden jedoch eigenständig durchgeführt.
 
-## 7. Anhang [Optional]
-Beispiele:
-- **Quellen:** _[verwendete Vorlagen/Assets/Modelle; Lizenz/Urheberrecht; ...]_
-- **Testskript & Materialien:** _[Link/Datei]_  
-- **Rohdaten/Auswertung:** _[Link/Datei]_  
+## 7. Anhang
 
+Die folgenden Quellen, Werkzeuge und Ressourcen wurden während der Entwicklung des Smart Study Organizers verwendet. Zusätzlich sind die wichtigsten Projektartefakte und weiterführenden Links aufgeführt.
+
+### Quellen
+
+Für die Entwicklung, Gestaltung und Bereitstellung der Anwendung wurden folgende externe Quellen und Ressourcen verwendet:
+
+| Quelle | Verwendung |
+|----------|-------------|
+| https://kit.svelte.dev | Offizielle Dokumentation von SvelteKit |
+| https://www.mongodb.com/docs | Dokumentation für MongoDB Atlas |
+| https://cloudinary.com/documentation | Dokumentation für Cloudinary |
+| https://www.netlify.com | Hosting und Deployment der Anwendung |
+| https://www.flaticon.com | Icons für Navigation, Profil, Favoriten, Kategorien und weitere Benutzeroberflächen-Elemente |
+| https://fonts.google.com | Verwendete Schriftarten und Typografie |
+| https://www.figma.com | Erstellung der Mockups und Designentwürfe |
+
+### Lizenzhinweise
+
+Ein Teil der verwendeten Icons stammt von Flaticon (https://www.flaticon.com) und wurde gemäss den jeweiligen Lizenzbedingungen verwendet.
+
+### Testskript & Materialien
+
+Die während der Evaluation verwendeten Testaufgaben und Testszenarien sind in Kapitel 3.5 dokumentiert. Die Evaluation wurde anhand eines vorbereiteten Testskripts mit zwei Testpersonen durchgeführt.
+
+### Rohdaten / Auswertung
+
+Die Ergebnisse der Evaluation wurden in Form von Erfolgsquoten, Beobachtungen und qualitativen Rückmeldungen dokumentiert. Die zusammengefasste Auswertung ist in Kapitel 3.5 enthalten.
+
+### Weiterführende Links
+
+- **GitHub Repository:**  
+  https://github.com/ivanazhaw/smart-study-organizer
+
+- **Deployte Anwendung (Netlify):**  
+  https://smart-study-organizer-app.netlify.app/
+
+- **Figma Mockup:**  
+  https://www.figma.com/proto/jx8dT8kPqwVUedgJDSohpf/Prototyping--Smart-Study-Organizer-Mockup?node-id=1-2&p=f&t=GBw77Fpgi7adbnCU-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2
