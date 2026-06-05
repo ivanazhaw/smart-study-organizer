@@ -833,6 +833,68 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde zur Verbesserung der Benutzerfreundlichkeit und Datenqualität umgesetzt.
 
+---
+
+### 4.5 Favoriten-System
+
+- **Beschreibung & Nutzen:**  
+  Die Anwendung wurde um ein Favoriten-System erweitert. Nutzer können wichtige Lernmaterialien als Favoriten markieren und diese gesammelt auf einer separaten Seite anzeigen lassen. Dadurch können häufig benötigte Dokumente schneller wiedergefunden werden, ohne die gesamte Materialübersicht durchsuchen zu müssen.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** Favoriten-Button in der Detailansicht eines Lernmaterials
+  - **Frontend:** Separate Favoriten-Seite zur Anzeige aller favorisierten Materialien
+  - **Backend:** Aktualisierung des Favoritenstatus eines Materials
+  - **Datenbank:** Speicherung des Favoritenstatus im Feld `favorite`
+
+- **Referenz:**  
+  - Favoriten-Seite in Kapitel 3.4.1
+  - Beschreibung der Materialverwaltung in Kapitel 3.4.2
+
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Favorit markieren
+
+![Favorit hinzufügen](doc/images/favorite-add.png)
+
+*Abbildung 27: Lernmaterial als Favorit markieren.*
+
+##### Favoritenübersicht
+
+![Favoriten](doc/images/prototyp-favorites.png)
+
+*Abbildung 28: Übersicht aller favorisierten Lernmaterialien.*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde umgesetzt, um den Zugriff auf häufig verwendete Lernmaterialien zu vereinfachen.
+
+---
+
+### 4.6 Zuletzt verwendete Materialien
+
+- **Beschreibung & Nutzen:**  
+  Die Anwendung wurde um die Funktion "Zuletzt verwendet" erweitert. Dabei wird gespeichert, welche Lernmaterialien zuletzt geöffnet wurden. Nutzer können dadurch schnell zu kürzlich verwendeten Dokumenten zurückkehren, ohne erneut danach suchen zu müssen.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** Separate Seite zur Anzeige der zuletzt verwendeten Materialien
+  - **Backend:** Automatische Aktualisierung des Zeitstempels beim Öffnen eines Materials
+  - **Datenbank:** Speicherung des letzten Zugriffs im Feld `lastOpened`
+
+- **Referenz:**  
+  - Zuletzt verwendet-Seite in Kapitel 3.4.1
+  - Datenmodell in Kapitel 3.4.2
+
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Zuletzt verwendet
+
+![Zuletzt verwendet](doc/images/prototype-recent.png)
+
+*Abbildung 29: Übersicht der zuletzt verwendeten Lernmaterialien.*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde umgesetzt, um den Zugriff auf kürzlich verwendete Lernmaterialien zu erleichtern und den Arbeitsfluss der Nutzer zu verbessern.
+  
+
 ## 5. Projektorganisation [Optional]
 Beispiele:
 - **Repository & Struktur:** _[Link; kurze Strukturübersicht]_  
