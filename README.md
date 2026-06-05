@@ -904,11 +904,110 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
   Nein. Die Erweiterung wurde umgesetzt, um den Zugriff auf kürzlich verwendete Lernmaterialien zu erleichtern und den Arbeitsfluss der Nutzer zu verbessern.
 
 
-## 5. Projektorganisation [Optional]
-Beispiele:
-- **Repository & Struktur:** _[Link; kurze Strukturübersicht]_  
-- **Issue-Management:** _[Vorgehen kurz beschreiben]_  
-- **Commit-Praxis:** _[z. B. sprechende Commits]_
+## 5. Projektorganisation
+
+Die Entwicklung des Smart Study Organizers erfolgte über ein Git-Repository mit einer strukturierten Versionsverwaltung. Während der Umsetzung wurden Änderungen regelmässig dokumentiert und über GitHub verwaltet.
+
+### Repository & Struktur
+
+Das gesamte Projekt wurde in einem öffentlichen GitHub-Repository verwaltet:
+
+**Repository:**  
+https://github.com/ivanazhaw/smart-study-organizer/
+
+Die Projektstruktur orientiert sich an der von SvelteKit vorgegebenen Ordnerstruktur. Dabei wurden die Komponenten, Seiten und Serverfunktionen logisch voneinander getrennt.
+
+Die Anwendung wurde in einer klar strukturierten Ordnerhierarchie aufgebaut. Die wichtigsten Verzeichnisse und Dateien sind nachfolgend dargestellt:
+```text
+smart-study-organizer
+│
+├── docs
+│   └── images
+│       ├── dashboard.png
+│       ├── profile.png
+│       ├── dark-mode-dashboard.png
+│       ├── dark-mode-profil.png
+│       └── ...
+│
+├── src
+│   │
+│   ├── lib
+│   │   ├── components
+│   │   │   ├── BackLink.svelte
+│   │   │   ├── FavoriteIcon.svelte
+│   │   │   ├── MaterialMenu.svelte
+│   │   │   └── ThemeToggle.svelte
+│   │   │
+│   │   ├── server
+│   │   │   ├── auth.js
+│   │   │   ├── cloudinary.js
+│   │   │   ├── db.js
+│   │   │   ├── materials.js
+│   │   │   ├── upload.js
+│   │   │   └── users.js
+│   │   │
+│   │   └── utils
+│   │
+│   ├── routes
+│   │   ├── add
+│   │   ├── categories
+│   │   ├── favorites
+│   │   ├── help
+│   │   ├── login
+│   │   ├── logout
+│   │   ├── profile
+│   │   ├── recent
+│   │   ├── register
+│   │   ├── materials
+│   │   │   └── [id]
+│   │   │       └── edit
+│   │   │
+│   │   ├── +layout.server.js
+│   │   ├── +layout.svelte
+│   │   ├── +page.server.js
+│   │   └── +page.svelte
+│   │
+│   ├── app.css
+│   └── app.html
+│
+├── static
+│   └── images
+│       ├── logo.png
+│       ├── home.png
+│       ├── profile.png
+│       ├── favorites.png
+│       └── ...
+│
+├── .env
+├── .gitignore
+├── package.json
+├── svelte.config.js
+├── vite.config.js
+└── README.md
+```
+
+### Issue-Management
+
+Während der Entwicklung wurden auftretende Probleme, neue Anforderungen und Verbesserungsideen laufend dokumentiert und bearbeitet. Die Entwicklung erfolgte iterativ, wodurch Funktionen schrittweise umgesetzt, getestet und bei Bedarf verbessert werden konnten.
+
+Besonderes Augenmerk lag auf der kontinuierlichen Verbesserung der Benutzerfreundlichkeit sowie der Behebung technischer Probleme, welche während der Entwicklung und insbesondere während der Evaluation identifiziert wurden. Ein Beispiel hierfür ist die Umstellung der Dateispeicherung auf Cloudinary, nachdem beim Testing Probleme mit der lokalen Speicherung festgestellt wurden.
+
+### Commit-Praxis
+
+Für die Versionsverwaltung wurde Git in Kombination mit GitHub verwendet. Änderungen wurden regelmässig in Form von aussagekräftigen Commits dokumentiert. Dabei wurde darauf geachtet, dass die Commit-Nachrichten den Inhalt der jeweiligen Änderung möglichst präzise beschreiben.
+
+Beispiele für verwendete Commit-Nachrichten:
+
+- Added darkmode
+- fixed settings to profile
+- Add Cloudinary upload support
+- cerated edit function
+- First template of the detail page
+- improved DB functionality
+- upload function improved
+
+Durch die regelmässigen und nachvollziehbaren Commits konnte die Entwicklung jederzeit nachvollzogen werden. Gleichzeitig erleichterte dies die Fehlersuche sowie die schrittweise Erweiterung der Anwendung.
+
 
 ## 6. KI-Deklaration
 Die folgende Deklaration ist verpflichtend und beschreibt den Einsatz von KI im Projekt.
