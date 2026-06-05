@@ -1,5 +1,7 @@
 # Projektdokumentation - Smart Study Organizer 
 
+![Logo](doc/images/logo.png)
+
 ## Inhaltsverzeichnis
 
 1. [Ausgangslage](#1-ausgangslage)
