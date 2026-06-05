@@ -822,7 +822,7 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
   - Upload-Seite in Kapitel 3.4.1
   - Testfall "Dateiformat-Prüfung" in Kapitel 3.5
 
-Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+Die folgende Abbildung zeigt die Erweiterung in der Anwendung.
 
 ##### Validierung des Dateiformats
 
@@ -883,7 +883,7 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
   - Zuletzt verwendet-Seite in Kapitel 3.4.1
   - Datenmodell in Kapitel 3.4.2
 
-Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+Die folgende Abbildung zeigt die Erweiterung in der Anwendung.
 
 ##### Zuletzt verwendet
 
@@ -911,7 +911,7 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
   - Upload-Seite in Kapitel 3.4.1
   - Upload-Verarbeitung in Kapitel 3.4.2
 
-Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+Die folgende Abbildung zeigt die Erweiterung in der Anwendung.
 
 ##### Validierung der Dateigrösse
 
