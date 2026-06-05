@@ -721,15 +721,21 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - **Browser-Speicher:** Speicherung der Benutzerauswahl mittels Local Storage
 
 - **Referenz:**  
-  - Profilseite in Kapitel 3.4.1
+  - Umstellung auf der Profilseite in Kapitel 3.4.1
   - Beschreibung der Darstellung in Kapitel 3.4.1 User Interface Design
 
 ![Dark-Mode](doc/images/dark-mode-profil.png)
 
 *Abbildung 20: Dark Mode in der Profil Ansicht*
 
+![Dark-Mode](doc/images/dark-mode-dashboard.png)
+
+*Abbildung 20: Dark Mode in der Dashboardansicht*
+
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde als zusätzliche Komfortfunktion umgesetzt.
+
+---
 
 ### 4.2 Cloudinary-Dateispeicherung
 
@@ -747,6 +753,8 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
 
 - **Aus Evaluation abgeleitet?:**  
   Ja. Das Problem wurde während der Evaluation entdeckt und anschliessend behoben mit Cloudinary.
+
+---
 
 ### 4.3 Passwortänderung
 
@@ -772,6 +780,8 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde als zusätzliche Sicherheitsfunktion umgesetzt.
+
+---
 
 ### 4.4 Dateiformat-Validierung
 
