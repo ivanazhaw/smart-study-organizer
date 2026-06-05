@@ -3,11 +3,14 @@
 
 	let { form } = $props();
 
+	const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
 	let title = $state('');
 	let subject = $state('');
 	let type = $state('');
 	let note = $state('');
 	let selectedFileName = $state('');
+	let fileSizeError = $state('');
 
 	let acceptedFileTypes = $derived(
 		type === 'PDF'
@@ -23,7 +26,18 @@
 
 	function handleFileChange(event) {
 		const file = event.target.files[0];
+
+		fileSizeError = '';
 		selectedFileName = file ? file.name : '';
+
+		if (file && file.size > MAX_FILE_SIZE) {
+			const sizeMB = (file.size / 1024 / 1024).toFixed(1);
+
+			fileSizeError = `Die Datei ist ${sizeMB} MB gross. Erlaubt sind maximal 10 MB.`;
+			selectedFileName = '';
+
+			event.target.value = '';
+		}
 	}
 </script>
 
@@ -38,6 +52,10 @@
 
 		{#if form?.error}
 			<div class="error-message">{form.error}</div>
+		{/if}
+
+		{#if fileSizeError}
+			<div class="error-message">{fileSizeError}</div>
 		{/if}
 
 		<form class="form" method="POST" enctype="multipart/form-data">
@@ -90,6 +108,10 @@
 						<p>Erlaubte Formate: {acceptedFileTypes || 'keine Datei'}</p>
 					{:else}
 						<p>Datei hier ziehen oder klicken zum Auswählen</p>
+					{/if}
+
+					{#if type !== 'Link'}
+						<p class="upload-hint">Maximale Dateigrösse: 10 MB</p>
 					{/if}
 				</label>
 			</div>
@@ -182,7 +204,7 @@
 	}
 
 	.upload-box {
-		height: 140px;
+		min-height: 150px;
 		border: 1px solid #e2e2ea;
 		border-radius: 8px;
 		display: flex;
@@ -216,6 +238,12 @@
 		margin: 0;
 		font-size: 15px;
 		font-weight: 400;
+	}
+
+	.upload-hint {
+		margin-top: 8px !important;
+		font-size: 13px !important;
+		color: #777;
 	}
 
 	.selected-file {

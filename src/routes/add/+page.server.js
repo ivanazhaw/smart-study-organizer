@@ -46,6 +46,16 @@ export const actions = {
             });
         }
 
+        // Maximal 10 MB
+        const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+        if (file && file.size > MAX_FILE_SIZE) {
+            return fail(400, {
+                error:
+                    'Die ausgewählte Datei ist zu gross. Es können nur Dateien bis maximal 10 MB hochgeladen werden.'
+            });
+        }
+
         const fileError = validateFile(file, type);
 
         if (fileError) {

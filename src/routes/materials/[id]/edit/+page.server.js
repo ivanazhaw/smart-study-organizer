@@ -9,6 +9,8 @@ import {
 
 import { uploadFile } from '$lib/server/upload';
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
 const allowedExtensionsByType = {
     PDF: ['.pdf'],
     Notizen: ['.txt', '.md'],
@@ -17,13 +19,13 @@ const allowedExtensionsByType = {
     Docx: ['.doc', '.docx']
 };
 
-const MAX_FILE_SIZE = 4 * 1024 * 1024;
-
 function validateFile(file, type) {
-    if (!file || file.size === 0) return null;
+    if (!file || file.size === 0) {
+        return null;
+    }
 
     if (file.size > MAX_FILE_SIZE) {
-        return 'Die Datei ist zu gross. Bitte lade eine Datei unter 4 MB hoch.';
+        return 'Die ausgewählte Datei ist zu gross. Es können nur Dateien bis maximal 10 MB hochgeladen werden.';
     }
 
     if (type === 'Link') {
