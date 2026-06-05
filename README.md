@@ -19,6 +19,9 @@
    - [4.6 Zuletzt verwendete Materialien](#46-zuletzt-verwendete-materialien)
 5. [Projektorganisation](#5-projektorganisation)
 6. [KI-Deklaration](#6-ki-deklaration)
+   - [6.1 KI-Tools](#61-ki-tools)
+   - [6.2 Prompt-Vorgehen](#62-prompt-vorgehen)
+   - [6.3 Reflexion](#63-reflexion)
 7. [Anhang](#7-anhang)
  
 
