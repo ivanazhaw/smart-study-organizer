@@ -498,7 +498,7 @@ Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendun
 
 | Feld | Beschreibung |
 |--------|-------------|
-| _id| Referenz auf den Besitzer |
+| _id| Eindeutige ID des Benutzers |
 | name | Name des Benutzers |
 | email | E-Mail-Adresse |
 | passwordHash | Verschlüsseltes Passwort |
@@ -508,7 +508,7 @@ Die Daten werden in einer MongoDB-Atlas-Datenbank gespeichert. Für die Anwendun
 
 | Feld | Beschreibung |
 |--------|-------------|
-| _id | Referenz auf den Besitzer |
+| _id | Eindeutige ID des Materials  |
 | title | Titel des Lernmaterials |
 | subject | Fach/Kategorie |
 | type | Dokumenttyp (PDF, DOCX usw.) |
