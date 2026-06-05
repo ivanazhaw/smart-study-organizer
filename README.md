@@ -860,7 +860,7 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
 
 ##### Favoritenübersicht
 
-![Favoriten](doc/images/prototyp-favorites.png)
+![Favoriten](doc/images/prototype-favorites.png)
 
 *Abbildung 28: Übersicht aller favorisierten Lernmaterialien.*
 
@@ -893,7 +893,7 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde umgesetzt, um den Zugriff auf kürzlich verwendete Lernmaterialien zu erleichtern und den Arbeitsfluss der Nutzer zu verbessern.
-  
+
 
 ## 5. Projektorganisation [Optional]
 Beispiele:
