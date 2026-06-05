@@ -894,6 +894,33 @@ Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde umgesetzt, um den Zugriff auf kürzlich verwendete Lernmaterialien zu erleichtern und den Arbeitsfluss der Nutzer zu verbessern.
 
+---
+
+### 4.7 Dateigrössen-Validierung
+
+- **Beschreibung & Nutzen:**  
+  Die Anwendung wurde um eine Prüfung der Dateigrösse erweitert. Beim Hochladen oder Bearbeiten eines Lernmaterials wird überprüft, ob die ausgewählte Datei die maximal erlaubte Grösse von 10 MB überschreitet. Dadurch werden lange Ladezeiten, fehlgeschlagene Uploads und technische Fehler vermieden. Nutzer erhalten stattdessen eine verständliche Fehlermeldung und können direkt eine kleinere Datei auswählen.
+
+- **Wo umgesetzt:**  
+  - **Frontend:** Prüfung der Dateigrösse beim Auswählen einer Datei
+  - **Frontend:** Anzeige einer Fehlermeldung bei Überschreitung der maximalen Dateigrösse
+  - **Backend:** Zusätzliche serverseitige Validierung vor dem Upload
+  - **Backend:** Verhinderung unnötiger Cloudinary-Uploads bei zu grossen Dateien
+
+- **Referenz:**  
+  - Upload-Seite in Kapitel 3.4.1
+  - Upload-Verarbeitung in Kapitel 3.4.2
+
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Validierung der Dateigrösse
+
+![Dateigroesse](doc/images/file-size-validation.png)
+
+*Abbildung 30: Fehlermeldung bei Überschreitung der maximal erlaubten Dateigrösse.*
+
+- **Aus Evaluation abgeleitet?:**  
+  Nein. Die Erweiterung wurde zur Verbesserung der Benutzerfreundlichkeit und Datenqualität umgesetzt.
 
 ## 5. Projektorganisation
 
