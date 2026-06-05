@@ -724,13 +724,19 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - Umstellung auf der Profilseite in Kapitel 3.4.1
   - Beschreibung der Darstellung in Kapitel 3.4.1 User Interface Design
 
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Profilansicht
+
 ![Dark-Mode](doc/images/dark-mode-profil.png)
 
 *Abbildung 20: Dark Mode in der Profil Ansicht*
 
+##### Dashboardansicht
+
 ![Dark-Mode](doc/images/dark-mode-dashboard.png)
 
-*Abbildung 20: Dark Mode in der Dashboardansicht*
+*Abbildung 21: Dark Mode in der Dashboardansicht*
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde als zusätzliche Komfortfunktion umgesetzt.
@@ -751,6 +757,20 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - Kapitel 3.4.2 Umsetzung (Technik)
   - Kapitel 3.5 Validate (Upload-Problem während der Evaluation)
 
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Fehler vor der Anpassung
+
+![Error](doc/images/error-upload.jpg)
+
+*Abbildung 22: Fehler beim Hochladen eines Lernmaterials während der Evaluation.*
+
+##### Lösung nach der Anpassung
+
+![Upload](doc/images/upload-success.png)
+
+*Abbildung 23: Erfolgreicher Upload nach der Integration von Cloudinary.*
+
 - **Aus Evaluation abgeleitet?:**  
   Ja. Das Problem wurde während der Evaluation entdeckt und anschliessend behoben mit Cloudinary.
 
@@ -770,13 +790,19 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - Profilseite in Kapitel 3.4.1
   - Beschreibung der Benutzerverwaltung in Kapitel 3.4.2
 
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Passwort ändern
+
 ![PW-Change](doc/images/change-password.png)
 
-*Abbildung 21: Passwort ändern*
+*Abbildung 24: Passwort ändern*
+
+##### Erfolgreiche Passwortänderung
 
 ![PW-Changed](doc/images/changed-password.png)
 
-*Abbildung 22: Meldung des geänderten Passworts*
+*Abbildung 25: Meldung des geänderten Passworts*
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde als zusätzliche Sicherheitsfunktion umgesetzt.
@@ -796,9 +822,13 @@ Im Verlauf der Entwicklung wurden verschiedene Funktionen umgesetzt, welche übe
   - Upload-Seite in Kapitel 3.4.1
   - Testfall "Dateiformat-Prüfung" in Kapitel 3.5
 
+Die folgenden Abbildungen zeigen die Erweiterung in der Anwendung.
+
+##### Validierung des Dateiformats
+
 ![Format](doc/images/format.png)
 
-*Abbildung 22: Dateiformat-Validierung*
+*Abbildung 26: Dateiformat-Validierung*
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung wurde zur Verbesserung der Benutzerfreundlichkeit und Datenqualität umgesetzt.
