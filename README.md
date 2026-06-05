@@ -1008,20 +1008,67 @@ Beispiele für verwendete Commit-Nachrichten:
 
 Durch die regelmässigen und nachvollziehbaren Commits konnte die Entwicklung jederzeit nachvollzogen werden. Gleichzeitig erleichterte dies die Fehlersuche sowie die schrittweise Erweiterung der Anwendung.
 
-
 ## 6. KI-Deklaration
-Die folgende Deklaration ist verpflichtend und beschreibt den Einsatz von KI im Projekt.
+
+Im Rahmen dieses Projekts wurden KI-Werkzeuge unterstützend eingesetzt. Die Verantwortung für die Konzeption, Umsetzung, Überprüfung und Integration der erarbeiteten Inhalte lag jedoch jederzeit bei der Autorin des Projekts.
 
 ### 6.1 KI-Tools
-- **Eingesetzte Tools**: _[z. B. Copilot, ChatGPT, Claude, lokale Modelle; Version/Variante wenn bekannt]_
-- **Zweck & Umfang**: _[wie, wofür und in welchem Ausmass wurde KI eingesetzt (z. B. Textentwürfe, Codevorschläge, Tests, Refactoring); welche Teile stammen (ganz/teilweise) aus KI-Unterstützung?]_
-- **Eigene Leistung (Abgrenzung):** _[was ist eigenständig erarbeitet/überarbeitet worden?]_
+
+#### Eingesetzte Tools
+
+Für die Umsetzung des Projekts wurden folgende KI-Werkzeuge verwendet:
+
+- ChatGPT (OpenAI, GPT-5.5)
+- GitHub Copilot
+
+#### Zweck & Umfang
+
+Die eingesetzten KI-Werkzeuge dienten hauptsächlich als Unterstützung bei der Entwicklung, Dokumentation und Problemlösung.
+
+Folgende Anwendungsbereiche wurden durch KI unterstützt:
+
+- Erstellung und Überarbeitung von Textentwürfen für die Projektdokumentation
+- Unterstützung bei der Formulierung von Beschreibungen und Erklärungen
+- Unterstützung bei der Implementierung einzelner Frontend- und Backend-Funktionen
+- Unterstützung bei CSS-Anpassungen und UI-Verbesserungen
+- Unterstützung bei der Fehlersuche und Problemanalyse
+- Unterstützung bei der Integration von Cloudinary
+- Unterstützung bei der Erstellung von Testfällen und Testaufgaben
+- Unterstützung bei der Erstellung und Überarbeitung von GitHub-README-Inhalten
+
+Die durch KI erzeugten Vorschläge wurden jeweils überprüft, angepasst und in die bestehende Anwendung integriert.
+
+#### Eigene Leistung (Abgrenzung)
+
+Die fachliche Konzeption, die Definition der Anforderungen, die Erstellung der Mockups, die Entwicklung der Anwendung sowie sämtliche Entscheidungen bezüglich Architektur, Benutzerführung und Funktionsumfang wurden eigenständig durchgeführt.
+
+Ebenso erfolgten die Integration der einzelnen Funktionen, die Anpassung der generierten Vorschläge, das Testen der Anwendung, die Fehlerbehebung sowie die finale Qualitätssicherung eigenständig.
+
+KI wurde ausschliesslich als unterstützendes Werkzeug verwendet und ersetzte keine eigenständige Entwicklungsleistung.
 
 ### 6.2 Prompt-Vorgehen
-_[Überlegungen zu Prompt-Vorgehen, Qualität und Urheberrecht/Quellen. Wie wurde beim Prompting vorgegangen? Zu beschreiben ist die grundlegende Vorgehensweise. Einzelne, konkrete Prompts sollten höchstens als Beispiele aufgeführt werden. ]_
+
+Beim Einsatz von KI wurde ein iteratives Vorgehen gewählt. Die Qualität der Ergebnisse wurde durch präzise Fragestellungen sowie mehrere Verfeinerungsschritte verbessert.
+
+Typischerweise wurden zunächst Anforderungen oder Probleme beschrieben. Anschliessend wurden die erhaltenen Vorschläge überprüft, angepasst und auf ihre technische Umsetzbarkeit getestet. Bei Bedarf wurden weitere Rückfragen gestellt, um die Lösung schrittweise zu verbessern.
+
+Beispiele für typische Fragestellungen waren:
+
+- Wie kann eine bestimmte Funktion in SvelteKit umgesetzt werden?
+- Wie kann ein Dark Mode implementiert werden?
+- Wie kann Cloudinary in eine bestehende Anwendung integriert werden?
+- Wie können Fehlermeldungen benutzerfreundlich dargestellt werden?
+- Wie können Dokumentationskapitel verständlich formuliert werden?
+
+Die von der KI generierten Inhalte wurden nie ungeprüft übernommen. Stattdessen erfolgte eine fachliche und technische Überprüfung vor der Verwendung im Projekt.
 
 ### 6.3 Reflexion
-_[Nutzen, Grenzen, Risiken/Qualitätssicherung, ...]_
+
+Der Einsatz von KI erwies sich insbesondere bei der Lösungsfindung, der Dokumentation sowie bei technischen Fragestellungen als hilfreich. Durch die schnelle Bereitstellung von Vorschlägen konnten verschiedene Lösungsansätze verglichen und Entwicklungsaufgaben effizienter umgesetzt werden.
+
+Gleichzeitig zeigte sich, dass KI-generierte Inhalte nicht immer korrekt oder vollständig sind. Insbesondere bei technischen Problemen mussten Vorschläge getestet, angepasst oder teilweise verworfen werden. Eine kritische Überprüfung der Ergebnisse war daher jederzeit erforderlich.
+
+Insgesamt stellte KI eine wertvolle Unterstützung während des Projekts dar. Die Verantwortung für die Konzeption, Umsetzung, Qualitätssicherung und finale Entscheidung über die Verwendung der Inhalte blieb jedoch jederzeit bei der Autorin des Projekts.
 
 ## 7. Anhang [Optional]
 Beispiele:
